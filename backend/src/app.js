@@ -7,6 +7,12 @@ import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import 'dotenv/config';
 import initializePassport from './config/passport.js';
+import routes from './routes/index.routes.js';
+import __dirname from './path.js';
+
+
+
+
 const app = express();
 const PORT = 4000;
 
@@ -30,7 +36,8 @@ app.use(cors(corsOptions));
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
-app.use()
+app.use('/api', routes);
+app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
 
 try {
