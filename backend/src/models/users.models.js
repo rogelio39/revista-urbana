@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import paginate from 'mongoose-paginate-v2';
 
 const UsersSchema = new Schema({
@@ -12,7 +12,7 @@ const UsersSchema = new Schema({
         required: true
     },
     age : {
-        type: number,
+        type: Number,
         required: true
     },
     email : {
@@ -21,8 +21,12 @@ const UsersSchema = new Schema({
         required: true
     },
     password : {
-        type: Number,
+        type: String,
         required: true
+    },
+    rol: {
+        type: String,
+        default: 'admin'
     }
 
 })

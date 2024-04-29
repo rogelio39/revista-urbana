@@ -1,0 +1,127 @@
+import { createContext, useState } from "react";
+import PropTypes from 'prop-types';
+import getCookiesByName from "../utils/utils";
+
+
+const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL;
+
+export const NewsContext = createContext({
+    news: []
+});
+
+
+export const NewsProvider = ({ children }) => {
+    const [news, setNews] = useState([]);
+
+    const fetchNews = async () => {
+        try {
+            const response = await fetch(`${URL}/api/news`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setNews(data)
+                return data
+            }
+        } catch (error) {
+            console.log("error", error)
+        }
+
+
+    }
+
+    const fetchNewsById = async (id) => {
+        try {
+            const response = await fetch(`${URL}/api/news/${id}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data
+            }
+        } catch (error) {
+            console.log("error", error)
+        }
+
+
+    }
+    const createNews = async (data, token) => {
+
+        try {
+            const response = await fetch(`${URL}/api/news`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const datos = await response.json();
+
+            if (response.ok) {
+                setNews(datos)
+                return datos;
+            } else {
+                console.log("error", datos)
+            }
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
+    
+
+
+    const uploadImage = async (idProd, formData) => {
+        try {
+            const token = getCookiesByName('jwtCookie');
+            console.log("Data en context", formData)
+            if (formData && token) {
+                const response = await fetch(`http://localhost:4000/api/news/uploadImage/${idProd}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data.message); // Mostrar mensaje de éxito al usuario
+                } else {
+                    console.log("Error al subir la imagen");
+                }
+            }
+        } catch (error) {
+            console.log("Error", error);
+        }
+    }
+
+
+
+
+    return (
+        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById }}>
+            {children}
+        </NewsContext.Provider>
+    )
+
+}
+
+
+
+NewsProvider.propTypes = {
+    children: PropTypes.node.isRequired
+}
+

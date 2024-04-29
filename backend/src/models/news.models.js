@@ -1,5 +1,5 @@
 import paginate from 'mongoose-paginate-v2'
-import { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const newsSchema = new Schema({
     title: {

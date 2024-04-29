@@ -1,10 +1,12 @@
 import userRouter from "./users.routes.js";
 import newsRouter from "./news.routes.js";
+import sessionRouter from "./sessions.routes.js";
 import { Router } from "express";
 
-const routes = Router();
+const router = Router();
 
-routes.use('/users', userRouter);
-routes.use('/news', newsRouter);
+router.use('/users', userRouter);
+router.use('/news', newsRouter);
+router.use('/session', sessionRouter);
 
-export default routes
+export default router

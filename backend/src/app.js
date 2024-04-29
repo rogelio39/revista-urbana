@@ -7,7 +7,7 @@ import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import 'dotenv/config';
 import initializePassport from './config/passport.js';
-import routes from './routes/index.routes.js';
+import router from './routes/index.routes.js';
 import __dirname from './path.js';
 
 
@@ -17,6 +17,7 @@ const app = express();
 const PORT = 4000;
 
 const whiteList = [process.env.LOCAL_PORT];
+
 
 const corsOptions = {
     origin: function(origin, callback){
@@ -31,14 +32,6 @@ const corsOptions = {
 
 app.use(express.json());
 app.use(cookieParser(process.env.SIGNED_COOKIE))
-app.use(express.urlencoded({extended: true}))
-app.use(cors(corsOptions));
-initializePassport();
-app.use(passport.initialize());
-app.use(passport.session());
-app.use('/api', routes);
-app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
-
 
 try {
     app.use(session({
@@ -53,6 +46,15 @@ try {
 } catch (error) {
     console.log("error al establecer session", error)
 }
+
+app.use(express.urlencoded({extended: true}))
+app.use(cors(corsOptions));
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/api', router);
+app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
+
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {

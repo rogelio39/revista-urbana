@@ -7,16 +7,15 @@ const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState({});
 
-
-    const register = (data) => {
+    const register = async(data) => {
 
         try {
-            const response = fetch(`${URL}/api/register`, {
+            const response = await fetch(`${URL}/api/session/register`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -26,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             })
 
             if (response.ok) {
-                const data = response.json()
+                const data = await response.json()
                 return data;
             }
         } catch (error) {
@@ -35,10 +34,10 @@ export const AuthProvider = ({ children }) => {
 
     }
 
-    const login = (data) => {
+    const login = async(data) => {
 
         try {
-            const response = fetch(`${URL}/api/login`, {
+            const response = await fetch(`${URL}/api/session/login`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -48,9 +47,11 @@ export const AuthProvider = ({ children }) => {
             })
 
             if (response.ok) {
-                const data = response.json();
+                const data = await response.json();
                 if (data) {
-                    setUserData(data);
+                    setUserData(data.user);
+                    localStorage.setItem('user', data.user)
+                    localStorage.setItem('token', data.token)
                 }
             }
 
