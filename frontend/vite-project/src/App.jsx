@@ -6,10 +6,12 @@ import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
 
 
+
 const AddNew = lazy(() => import('./Components/AddNew/AddNew'))
 const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
+
 
 function App() {
 

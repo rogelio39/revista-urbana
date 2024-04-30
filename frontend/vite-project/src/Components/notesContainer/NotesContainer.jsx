@@ -11,8 +11,8 @@ const NotesContainer = ({ data }) => {
     }
     return (
         <Link to={`/newById/${data._id}`}>
-            <div className='hover:bg-blue-300 hover:shadow-xl flex-column w-96 m-10 p-5 justify-center items-center bg-blue-100' id={data._id}>
-                <img className='rounded mb-5' src={thumbnailUrl} alt="imagen" />
+            <div className='hover:shadow-xl  shadow-md flex-column h-96 overflow-hidden w-72 m-1 justify-between items-center' id={data._id}>
+                <img className='rounded mb-5 h-56' src={thumbnailUrl} alt="imagen" />
                 <h1 className='mb-5 text-xl font-bold'>{data.title}</h1>
             </div>
         </Link>
@@ -24,3 +24,17 @@ NotesContainer.propTypes = {
 }
 
 export default NotesContainer;
+
+
+
+
+
+/* 
+Estilos para consultar
+
+hover:shadow-xl hover:shadow-blue-900
+
+
+
+
+*/
