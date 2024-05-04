@@ -36,10 +36,10 @@ export const getNewById = async(req, res) => {
 
 
 export const createNews = async(req, res) => {
-    const {title, subtitle, text} = req.body;
+    const {title, subtitle, category, font, text} = req.body;
 
     try{
-        const news = await newsModels.create({title, subtitle, text});
+        const news = await newsModels.create({title, subtitle, category, font, text});
 
         if(!news){
             return res.status(400).send({message: "no se creo noticia"})

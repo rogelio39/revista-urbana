@@ -24,6 +24,7 @@ function App() {
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
+                <Route path='*'/>
                 <Route path='/' element={<MainSection/>} />
                 <Route path='/add-news' element={<AddNew />} />
                 <Route path='/newById/:id' element={<NewsById/>}/>

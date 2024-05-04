@@ -12,12 +12,14 @@ const New = ({ data }) => {
 
     let thumbnailUrl = ''
 
+
     if(data){
         thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${URL}/uploads/news/${individualNews.thumbnail[0].name}`: '';
     }
+
     
     return (
-        <div className='shadow-xl flex-column m-1 p-5 justify-center items-center mb-5' id={individualNews._id}>
+        <div className={`shadow-xl flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`} id={individualNews._id}>
             <h1 className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
             <img className='rounded mb-5' src={thumbnailUrl} alt="imagen" />
             <h2 className='font-bold'>{individualNews.subtitle}</h2>

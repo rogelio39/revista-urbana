@@ -18,6 +18,10 @@ const newsSchema = new Schema({
         type: String,
         required: true
     },
+    font: {
+        type: String,
+        required: true
+    },
     thumbnail: []
 })
 
