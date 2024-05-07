@@ -35,7 +35,6 @@ const News = () => {
     return (
         <div className='p-10 flex flex-col'>
 
-
             <div className='border-b mb-10 border-gray-400 flex flex-wrap justify-between items-center  p-1'>
                 <h1 className=''>ULTIMAS NOTICIAS</h1>
                 <div key={getLastNew._id} >
@@ -46,7 +45,7 @@ const News = () => {
 
             <div className='mb-10'>
                 <h1 className='text-center mb-5 text-xl'>TODAS LAS NOTAS</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-wrap   justify-start gap-5 items-center'>
                     {
                         allNews.map(news => (
                             <div key={news._id}>

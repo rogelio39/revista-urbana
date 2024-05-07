@@ -39,8 +39,15 @@ const AddNew = () => {
         e.preventDefault();
         try {
             const dataForm = new FormData(formRef.current);
-            const data = Object.fromEntries(dataForm);
+            let data = Object.fromEntries(dataForm);
             const token = getCookiesByName('jwtCookie')
+
+            const textWithBold = texts.map(text => {
+                return text.replace(/<<(.*?)>>/g, '**$1**');
+            })
+            
+            const textWithBoldString = textWithBold.join('\n');
+            data.text = textWithBoldString
             if (data && token) {
                 const response = await createNews(data, token)
                 if (response) {
@@ -78,6 +85,9 @@ const AddNew = () => {
         setTexts(newText);
     }
 
+
+
+
     const addSubtitle = () => {
         setSubtitles([...subtitles]);
     }
@@ -95,7 +105,7 @@ const AddNew = () => {
     }
 
     return (
-        <div className="m-3 rounded bg-red-300 p-6 my-4 flex items-center justify-center">
+        <div className="m-3 rounded bg-red-300 p-6 my-4 flex flex-wraps items-center justify-center">
             <form ref={formRef} className={!newsCreated ? `shadow-lg rounded p-6 bg-red-100 flex-col items-center` : 'hidden'} onSubmit={handleSubmit}>
 
                 <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex items-center justify-start gap-5">
@@ -141,11 +151,13 @@ const AddNew = () => {
                     {texts.map((text, index) => (
                         <div key={index}>
                             <textarea
-                                className="px-2 py-1 rounded-lg border border-blue-300 focus-ring-1"
+                                className="whitespace-pre-line px-2 py-1 rounded-lg border border-blue-300 focus-ring-1"
                                 id={`text-${index}`}
                                 name={`text`}
                                 onChange={(event) => handleTextChange(index, event)}
-                                rows="4"
+                                rows="24"
+                                cols="80"
+                                value={text} // Renderizar el valor del textarea si es un string simple
                             />
                         </div>
                     ))}
@@ -174,3 +186,18 @@ export default AddNew
 
 
 
+
+
+
+// const textWithBold = texts.map(text => {
+//     const regex = /<<([^>]*)>>/;
+//     const match = text.match(regex);
+//     if (match) {
+//         const textBefore = text.split(match[0])[0];
+//         const textEnNegrita = match[1];
+//         const textAfter = text.split(match[0])[1]
+//         return `${textBefore} **${textEnNegrita}** ${textAfter}`
+//     }
+
+//     return text;
+// })

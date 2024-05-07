@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
+import SearchResults from './Components/SearchResults/SearchResults';
 
 
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path='*'/>
                 <Route path='/' element={<MainSection/>} />
                 <Route path='/add-news' element={<AddNew />} />
+                <Route path='/search' element={<SearchResults/>}/>
                 <Route path='/newById/:id' element={<NewsById/>}/>
                 <Route path='login' element={<Login/>}/>
               </Routes>

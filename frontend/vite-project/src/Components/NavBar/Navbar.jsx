@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
+
 const Navbar = () => {
+    const [searchQuery, setSearchQuery] = useState('')
+
     const navigate = useNavigate();
 
     const goToHealthy = () => {
@@ -12,6 +16,12 @@ const Navbar = () => {
     }
 
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        navigate(`/search/${searchQuery}`)
+    }
+
 
 
 
@@ -19,6 +29,18 @@ const Navbar = () => {
         <div className="flex justify-between shadow-xl p-4 bg-red-100">
             <h1 className="text-red-600  text-4xl font-bold">REVISTA URBANA</h1>
             <ul className="flex items-center gap-5">
+                <li>
+                    <form onSubmit={handleSearch}>
+                        <input 
+                        type="text"
+                        value={searchQuery}
+                        placeholder="Buscar noticias"
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+
+                        <button type="submit">Buscar</button>
+                    </form>
+                </li>
                 <li><button onClick={goToHealthy} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
                 <li><button onClick={goToPolitics} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
                 <li><button className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">ESPECTACULO</button></li>
