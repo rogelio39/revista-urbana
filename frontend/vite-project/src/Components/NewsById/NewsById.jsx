@@ -20,6 +20,7 @@ const NewsById = () => {
                     const parts = newById.text.split('**');
                     setNewData(newById);
                     if (parts) {
+                        console.log("parts en newbyid", parts)
                         setNewsText(parts);
                     }
                 } else {

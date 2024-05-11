@@ -30,15 +30,16 @@ const Navbar = () => {
             <h1 className="text-red-600  text-4xl font-bold">REVISTA URBANA</h1>
             <ul className="flex items-center gap-5">
                 <li>
-                    <form onSubmit={handleSearch}>
+                    <form className="flex gap-1" onSubmit={handleSearch}>
                         <input 
+                        className="p-1"
                         type="text"
                         value={searchQuery}
                         placeholder="Buscar noticias"
                         onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
-                        <button type="submit">Buscar</button>
+                        <button className="p-2 shadow-lg bg-blue-200 hover:bg-blue-500 hover:text-white rounded" type="submit">Buscar</button>
                     </form>
                 </li>
                 <li><button onClick={goToHealthy} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">SALUD</button></li>

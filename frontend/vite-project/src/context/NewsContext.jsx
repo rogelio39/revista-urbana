@@ -47,7 +47,7 @@ export const NewsProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                return data
+                return data;
             }
         } catch (error) {
             console.log("error", error)

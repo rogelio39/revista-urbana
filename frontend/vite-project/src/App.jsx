@@ -28,7 +28,7 @@ function App() {
                 <Route path='*'/>
                 <Route path='/' element={<MainSection/>} />
                 <Route path='/add-news' element={<AddNew />} />
-                <Route path='/search' element={<SearchResults/>}/>
+                <Route path='/search/:query' element={<SearchResults/>}/>
                 <Route path='/newById/:id' element={<NewsById/>}/>
                 <Route path='login' element={<Login/>}/>
               </Routes>
