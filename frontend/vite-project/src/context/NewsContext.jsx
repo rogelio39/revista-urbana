@@ -81,6 +81,32 @@ export const NewsProvider = ({ children }) => {
         }
     }
 
+    const updateNews = async (id, data, token) => {
+
+        try {
+            const response = await fetch(`${URL}/api/news/updateNews/${id}`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const datos = await response.json();
+
+            if (response.ok) {
+                setNews(datos)
+                return datos;
+            } else {
+                console.log("error", datos)
+            }
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
     
 
 
@@ -112,7 +138,7 @@ export const NewsProvider = ({ children }) => {
 
 
     return (
-        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById }}>
+        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById, updateNews }}>
             {children}
         </NewsContext.Provider>
     )

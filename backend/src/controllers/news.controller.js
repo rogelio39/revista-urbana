@@ -32,9 +32,6 @@ export const getNewById = async(req, res) => {
 
 
 
-
-
-
 export const createNews = async(req, res) => {
     const {title, subtitle, category, font, text} = req.body;
 
@@ -93,4 +90,23 @@ export const uploadImage = async(req, res) => {
         res.status(500).send({error: error})
     }
 
+}
+
+
+export const updateNews = async(req, res) => {
+    const {title, subtitle, category, font, text} = req.body;
+    const {id} = req.params
+
+    try{
+        const updatedNews = await newsModels.findByIdAndUpdate( id,  {title, subtitle, category, font, text}, {new : true});
+
+        if(!updatedNews){
+            return res.status(400).send({message: "no se creo noticia"})
+        }
+
+        res.status(200).send(updatedNews);
+
+    }catch(error){
+        res.status(500).send({message: "error del servidor", error: error});
+    }
 }
