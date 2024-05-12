@@ -22,12 +22,15 @@ const Navbar = () => {
         navigate(`/search/${searchQuery}`)
     }
 
+    const goToMain = () => {
+        navigate('/')
+    }
 
 
 
     return (
         <div className="flex justify-between shadow-xl p-4 bg-red-100">
-            <h1 className="text-red-600  text-4xl font-bold">REVISTA URBANA</h1>
+            <h1 onClick={goToMain} className="text-red-600 cursor-pointer text-4xl font-bold">REVISTA URBANA</h1>
             <ul className="flex items-center gap-5">
                 <li>
                     <form className="flex gap-1" onSubmit={handleSearch}>
