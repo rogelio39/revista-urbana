@@ -113,7 +113,6 @@ export const NewsProvider = ({ children }) => {
     const uploadImage = async (idProd, formData) => {
         try {
             const token = getCookiesByName('jwtCookie');
-            console.log("Data en context", formData)
             if (formData && token) {
                 const response = await fetch(`http://localhost:4000/api/news/uploadImage/${idProd}`, {
                     method: 'POST',
@@ -124,7 +123,7 @@ export const NewsProvider = ({ children }) => {
                 });
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data.message); // Mostrar mensaje de éxito al usuario
+                    return data.message
                 } else {
                     console.log("Error al subir la imagen");
                 }

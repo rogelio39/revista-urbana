@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { NewsContext } from "../../context/NewsContext";
-import React from "react";
+// import React from "react";
 
-const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL
+const New = lazy(() => import('../New/New'))
+
+// const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL
 
 const SearchResults = () => {
     const { query } = useParams();
@@ -12,7 +14,7 @@ const SearchResults = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [newsBySearch, setNewsBySearch] = useState([])
     const [loading, setLoading] = useState(true)
-    const [newsText, setNewsText] = useState([])
+    // const [newsText, setNewsText] = useState([])
 
 
 
@@ -41,7 +43,7 @@ const SearchResults = () => {
                     return
                 }
 
-                setNewsText(parts)
+                // setNewsText(parts)
                 setNewsBySearch(newBySearch);
                 setLoading(false)
                 setError(false)
@@ -67,27 +69,7 @@ const SearchResults = () => {
                     (<>
                         {
                             newsBySearch.map(newBySearch => (
-                                <div className="mb-20 shadow-xl flex-column m-10 p-5 justify-center items-center " key={newBySearch._id}>
-                                    <h1 className='mb-5 text-xl font-bold'>{newBySearch.title}</h1>
-                                    <img className='rounded mb-5' src={`${URL}/uploads/news/${newBySearch.thumbnail[0].name}`} alt="imagen" />
-                                    <h2 className='font-bold'>{newBySearch.subtitle}</h2>
-                                    {
-                                        newsText.length > 0 && newsText.map((noticia, index) => (
-                                            index % 2 === 1 ?
-                                                (<span className="font-bold" key={index}>{noticia}</span>)
-                                                :
-                                                (
-                                                    noticia[index].split('\n').map((line, j) => (
-                                                        <React.Fragment key={j}>
-                                                            {line}
-                                                            {j < noticia[index].split('\n').length - 1 && <br />}
-                                                        </React.Fragment>
-                                                    ))
-                                                )
-                                        ))
-                                    }
-
-                                </div>
+                                    <New key={newBySearch._id} data={newBySearch} />
                             ))
                         }
                     </>)
@@ -124,3 +106,27 @@ export default SearchResults
 //         )
 //     ))
 // }
+
+
+
+// <div className="mb-20 shadow-xl flex-column m-10 p-5 justify-center items-center " key={newBySearch._id}>
+// <h1 className='mb-5 text-xl font-bold'>{newBySearch.title}</h1>
+// <img className='rounded mb-5' src={`${URL}/uploads/news/${newBySearch.thumbnail[0].name}`} alt="imagen" />
+// <h2 className='font-bold'>{newBySearch.subtitle}</h2>
+// {
+//     newsText.length > 0 && newsText.map((noticia, index) => (
+//         index % 2 === 1 ?
+//             (<span className="font-bold" key={index}>{noticia}</span>)
+//             :
+//             (
+//                 noticia[index].split('\n').map((line, j) => (
+//                     <React.Fragment key={j}>
+//                         {line}
+//                         {j < noticia[index].split('\n').length - 1 && <br />}
+//                     </React.Fragment>
+//                 ))
+//             )
+//     ))
+// }
+
+// </div>
