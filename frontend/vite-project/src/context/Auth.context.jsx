@@ -3,7 +3,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 
 
-const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL;
+const URL = import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
 

@@ -26,6 +26,10 @@ const Navbar = () => {
         navigate('/')
     }
 
+    const goToLogin = () => {
+        navigate('/login')
+    }
+
 
 
     return (
@@ -45,6 +49,7 @@ const Navbar = () => {
                         <button className="p-2 shadow-lg bg-blue-200 hover:bg-blue-500 hover:text-white rounded" type="submit">Buscar</button>
                     </form>
                 </li>
+                <li><button onClick={goToLogin} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
                 <li><button onClick={goToHealthy} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
                 <li><button onClick={goToPolitics} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
                 <li><button className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">ESPECTACULO</button></li>

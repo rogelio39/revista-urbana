@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import getCookiesByName from "../utils/utils";
 
 
-const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL;
+const URL = import.meta.env.VITE_REACT_APP_WEB_URL;
 
 export const NewsContext = createContext({
     news: []
