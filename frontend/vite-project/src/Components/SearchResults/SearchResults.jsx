@@ -5,7 +5,6 @@ import { NewsContext } from "../../context/NewsContext";
 
 const New = lazy(() => import('../New/New'))
 
-// const URL = import.meta.env.VITE_REACT_APP_LOCAL_URL
 
 const SearchResults = () => {
     const { query } = useParams();
