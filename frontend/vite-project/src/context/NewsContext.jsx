@@ -12,6 +12,7 @@ export const NewsContext = createContext({
 
 export const NewsProvider = ({ children }) => {
     const [news, setNews] = useState([]);
+    const [error, setError] = useState(null)
 
     const fetchNews = async () => {
         try {
@@ -27,9 +28,14 @@ export const NewsProvider = ({ children }) => {
                 const data = await response.json();
                 setNews(data)
                 return data
+            } else{
+                const text = await response.text();
+                throw new Error(`Error ${response.status} ${text}`)
             }
         } catch (error) {
-            console.log("error", error)
+            console.log("error", error);
+            setError(error.message);
+            throw error;
         }
 
 
@@ -137,7 +143,7 @@ export const NewsProvider = ({ children }) => {
 
 
     return (
-        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById, updateNews }}>
+        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById, updateNews, error }}>
             {children}
         </NewsContext.Provider>
     )
