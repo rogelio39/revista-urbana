@@ -29,7 +29,7 @@ function App() {
                 <Route path='/add-news' element={<AddEditNews />} />
                 <Route path='/search/:query' element={<SearchResults/>}/>
                 <Route path='/newById/:id' element={<NewsById/>}/>
-                <Route path='login' element={<Login/>}/>
+                <Route path='/login' element={<Login/>}/>
               </Routes>
             </Suspense>
           </AuthProvider>
