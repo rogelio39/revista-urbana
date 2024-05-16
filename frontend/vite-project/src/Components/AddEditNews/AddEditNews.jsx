@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect, lazy } from "react";
 import { NewsContext } from "../../context/NewsContext";
 import getCookiesByName from "../../utils/utils";
 
-const URL = import.meta.env.VITE_REACT_APP_WEB_URL;
+const URL = import.meta.env.VITE_REACT_APP_WEB_URL || import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 
 const New = lazy(() => import('../New/New'))

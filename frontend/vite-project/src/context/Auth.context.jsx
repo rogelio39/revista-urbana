@@ -3,7 +3,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 
 
-const URL = import.meta.env.VITE_REACT_APP_WEB_URL;
+const URL = import.meta.env.VITE_REACT_APP_WEB_URL || import.meta.env.VITE_REACT_APP_LOCAL_URL;
 
 
 
@@ -11,6 +11,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState({});
+    const [authenticated, setIsAuthenticated] = useState(false)
 
     const register = async(data) => {
 
@@ -50,6 +51,7 @@ export const AuthProvider = ({ children }) => {
                 const data = await response.json();
                 if (data) {
                     setUserData(data.user);
+                    setIsAuthenticated(true);
                     document.cookie = `jwtCookie=${data.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                     localStorage.setItem('user', JSON.stringify(data.user))
                 }
@@ -63,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ userData, register, login }}>
+        <AuthContext.Provider value={{ userData, register, login, authenticated }}>
             {children}
         </AuthContext.Provider>
     )

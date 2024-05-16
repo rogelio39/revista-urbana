@@ -1,10 +1,18 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../context/Auth.context"
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, authenticated } = useContext(AuthContext);
     const formRef = useRef(null);
     const [loading, setLoading] = useState(false);
+    const [showLogin, setShowLogin] = useState(false)
+
+
+    useEffect(() => {
+        if (authenticated) {
+            setShowLogin(true);
+        }
+    }, [])
 
 
     const handleLogin = async (e) => {
@@ -27,19 +35,23 @@ const Login = () => {
     }
     return (
         <div className="flex justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl">
-            <form className="flex justify-start items-center p-5" ref={formRef} onSubmit={handleLogin}>
-                <div>
-                    <label className="m-2" htmlFor="email">EMAIL:</label>
-                    <input  type="text" id="email" name='email' required />
-                </div>
-                <div>
-                    <label className="m-2" htmlFor="password">PASSWORD:</label>
-                    <input type="password" id='password' name="password" required />
-                </div>
+            {
+                showLogin ? (<div>Ya estas logueado</div>) :
+                    (<form className="flex justify-start items-center p-5" ref={formRef} onSubmit={handleLogin}>
+                        <div>
+                            <label className="m-2" htmlFor="email">EMAIL:</label>
+                            <input type="text" id="email" name='email' required />
+                        </div>
+                        <div>
+                            <label className="m-2" htmlFor="password">PASSWORD:</label>
+                            <input type="password" id='password' name="password" required />
+                        </div>
 
-                <button className="bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESSION</button>
+                        <button className="bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESSION</button>
 
-            </form>
+                    </form>)
+            }
+
         </div>
     )
 }
