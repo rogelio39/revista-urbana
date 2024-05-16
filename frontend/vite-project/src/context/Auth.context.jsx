@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
                 if (data) {
                     setUserData(data.user);
                     localStorage.setItem('user', JSON.stringify(data.user))
-                    localStorage.setItem('token', data.token)
+                    localStorage.setItem('jwtCookie', data.token)
                 }
             }
 
