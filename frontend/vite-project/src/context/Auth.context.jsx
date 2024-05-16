@@ -50,8 +50,8 @@ export const AuthProvider = ({ children }) => {
                 const data = await response.json();
                 if (data) {
                     setUserData(data.user);
+                    document.cookie = `jwtCookie=${data.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                     localStorage.setItem('user', JSON.stringify(data.user))
-                    localStorage.setItem('jwtCookie', data.token)
                 }
             }
 

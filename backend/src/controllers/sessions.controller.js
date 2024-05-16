@@ -23,7 +23,7 @@ export const login = async (req, res) => {
     const token = generateToken(req.user);
 
     res.cookie('jwtCookie', token, {
-        maxAge: 432000
+        maxAge: 4320000
     })
 
     res.status(200).send({ message: "usuario logueado con exito", user: req.user, token: token});
