@@ -43,9 +43,9 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10'>
+            <div className='mb-10 ' >
                 <h1 className='text-center mb-5 text-xl'>TODAS LAS NOTAS</h1>
-                <div className='flex flex-wrap   justify-start gap-5 items-center'>
+                <div className='flex flex-wrap  justify-start gap-5 items-center'>
                     {
                         allNews.map(news => (
                             <div key={news._id}>
@@ -56,7 +56,7 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='mb-10'>
+            <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>POLITICA</h1>
                 <div className='flex justify-start gap-5 items-center'>
                     {
@@ -70,7 +70,7 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='mb-10'>
+            <div className='mb-10  '>
                 <h1 className='text-center mb-5 text-xl'>SALUD</h1>
                 <div className='flex justify-start gap-5 items-center'>
                     {

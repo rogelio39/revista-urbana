@@ -34,7 +34,7 @@ const New = ({ data }) => {
         <div>
             {
                 individualNews && (
-                    <div className={`shadow-xl flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
+                    <div className={`shadow-md shadow-black flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
                         <h1 className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
                         <img className='rounded mb-5' src={thumbnailUrl} alt="imagen" />
                         <h2 className='font-bold'>{individualNews.subtitle}</h2>

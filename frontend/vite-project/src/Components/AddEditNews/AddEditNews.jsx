@@ -141,16 +141,16 @@ const AddEditNews = () => {
 
 
     return (
-        <div className="flex-col gap-5">
-            <div className="m-3 rounded bg-red-300 p-6 my-4 flex flex-wraps items-center justify-center">
-                <form ref={formRef} className={!newsCreated ? `shadow-lg rounded p-6 bg-red-100 flex-col items-center` : 'hidden'} onSubmit={handleSubmit}>
+        <div className="text-sm sm:text-xl gap-5">
+            <div className="flex flex-col bg-red-200 m-3 rounded p-6 my-4  sm:flex-row flex-wraps items-center justify-center">
+                <form ref={formRef} className={!newsCreated ? ` sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-red-100 flex-col items-center` : 'hidden'} onSubmit={handleSubmit}>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
                         <label htmlFor="title">Título:</label>
                         <input className="px-2 py-1 rounded-lg border border-blue-300 focus-ring-1" type="text" id="title" name="title" required />
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <label htmlFor="subtitles">Subtítulos:</label>
                         {subtitles.map((subtitle, index) => (
@@ -162,7 +162,7 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addSubtitle}>Agregar Subtítulo</button>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <label htmlFor="category">Categorias:</label>
                         {categorys.map((category, index) => (
@@ -174,7 +174,7 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <select name="font" value={font} onChange={handleChangeFont}>
                             <option value="font-sanzs">Font-sanzs</option>
@@ -183,7 +183,7 @@ const AddEditNews = () => {
                         </select>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
                         <label htmlFor="texts">Textos:</label>
                         {texts.map((text, index) => (
                             <div key={index}>
@@ -193,7 +193,7 @@ const AddEditNews = () => {
                                     name={`text`}
                                     onChange={(event) => handleTextChange(index, event)}
                                     rows="24"
-                                    cols="80"
+                                    cols="40"
                                     value={text} // Renderizar el valor del textarea si es un string simple
                                 />
                             </div>
@@ -205,16 +205,12 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 m-3 w-24 flex items-center justify-center gap-5" type="submit">{newsCreated ? 'cargando' : (isCreating ? 'crear' : 'actualizar')}</button>
                     }
                 </form>
-
-
-
-
                 
-                <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
+                <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
                 <div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex-col items-center justify-center gap-5">
-                        <form className="flex items-center gap-2" encType="multipart/form-data">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                        <form className="flex flex-col sm:flex-row items-center gap-2" encType="multipart/form-data">
                             <label htmlFor="newsImage">Imagen de portada:</label>
                             <input type="file" id="newsImage" name="newsImage" accept="image/*" multiple required />
                             <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button">SUBIR IMAGEN</button>

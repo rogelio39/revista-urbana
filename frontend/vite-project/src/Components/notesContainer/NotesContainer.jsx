@@ -13,7 +13,7 @@ const NotesContainer = ({ data }) => {
     }
     return (
         <Link to={`/newById/${data._id}`}>
-            <div className='hover:shadow-xl  shadow-md flex-column h-96 overflow-hidden w-72 m-1 justify-between items-center' id={data._id}>
+            <div className='hover:shadow-2xl  shadow-xl  flex-column h-96 overflow-hidden w-72 m-1 justify-between items-center' id={data._id}>
                 <img className='rounded mb-5 h-56' src={thumbnailUrl} alt="imagen" />
                 <h1 className='mb-5 text-xl font-bold'>{data.title}</h1>
             </div>

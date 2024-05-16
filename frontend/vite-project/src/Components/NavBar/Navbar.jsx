@@ -33,27 +33,35 @@ const Navbar = () => {
 
 
     return (
-        <div className="bg-red-200 flex justify-between shadow-xl p-4 sm:bg-fuchsia-800 md:bg-blue-600 lg:bg-black">
-            <h1 onClick={goToMain} className=" text-red-600 cursor-pointer text-4xl font-bold">REVISTA URBANA</h1>
+        <div className="flex bg- justify-between shadow-xl  p-4">
+            <div>
+            <h1 onClick={goToMain} className=" text-red-700 cursor-pointer text-4xl font-bold">REVISTA</h1>
+            <h1 onClick={goToMain} className=" text-blue-800 cursor-pointer text-4xl font-bold">URBANA</h1>
+            </div>
             <ul className="flex items-center gap-5">
                 <li>
-                    <form className="flex gap-1" onSubmit={handleSearch}>
+                    <form className="flex gap-2 shadow-md" onSubmit={handleSearch}>
                         <input 
-                        className="p-1"
+                        className="p-1 bg-black bg-opacity-90 rounded text-white"
                         type="text"
                         value={searchQuery}
                         placeholder="Buscar noticias"
                         onChange={(e) => setSearchQuery(e.target.value)}
                         />
 
-                        <button className="p-2 shadow-lg bg-blue-200 hover:bg-blue-500 hover:text-white rounded" type="submit">Buscar</button>
+                        <button className="p-2 shadow-lg bg-black hover:bg-blue-500 text-white rounded" type="submit">Buscar</button>
                     </form>
                 </li>
-                <li><button onClick={goToLogin} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
-                <li><button onClick={goToHealthy} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
-                <li><button onClick={goToPolitics} className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
-                <li><button className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">ESPECTACULO</button></li>
-                <li><button className="hover:text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-blue-200 shadow-lg shrink-0 focus:ring-1">DESTACADOS</button></li>
+                <li><button onClick={goToLogin} className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
+                <li><button onClick={goToHealthy} className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
+                <li><button onClick={goToPolitics} className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">ESPECTACULO</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">DESTACADOS</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">SOCIEDAD</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">CULTURA</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">MUNDO</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">ECONOMIA</button></li>
+                <li><button className="text-white hover:bg-blue-500 rounded p-2 text-1xl  bg-black shadow-lg shrink-0 focus:ring-1">---</button></li>
             </ul>
 
         </div>
