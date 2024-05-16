@@ -16,7 +16,8 @@ import __dirname from './path.js';
 const app = express();
 const PORT = 4000;
 
-const whiteList = [process.env.WEB_PORT];
+const URL = process.env.MODE == 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
+const whiteList = [URL];
 
 
 const corsOptions = {
