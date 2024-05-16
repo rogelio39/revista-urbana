@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import React from 'react'
 
-const URL = import.meta.env.VITE_REACT_APP_WEB_URL || import.meta.env.VITE_REACT_APP_LOCAL_URL;
+
+const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
+
 
 const NewsById = () => {
     const { id } = useParams();

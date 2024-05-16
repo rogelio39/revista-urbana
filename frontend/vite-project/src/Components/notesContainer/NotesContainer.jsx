@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-const URL = import.meta.env.VITE_REACT_APP_WEB_URL;
+
+const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
+
 
 const NotesContainer = ({ data }) => {
 

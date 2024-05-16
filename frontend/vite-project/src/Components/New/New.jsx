@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
-const URL = import.meta.env.VITE_REACT_APP_WEB_URL || import.meta.env.VITE_REACT_APP_LOCAL_URL;
+
+const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
+
 
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
