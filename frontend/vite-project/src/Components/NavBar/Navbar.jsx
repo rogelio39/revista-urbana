@@ -33,8 +33,8 @@ const Navbar = () => {
 
 
     return (
-        <div className="flex justify-between shadow-xl p-4 bg-red-100">
-            <h1 onClick={goToMain} className="text-red-600 cursor-pointer text-4xl font-bold">REVISTA URBANA</h1>
+        <div className="bg-red-200 flex justify-between shadow-xl p-4 sm:bg-fuchsia-800 md:bg-blue-600 lg:bg-black">
+            <h1 onClick={goToMain} className=" text-red-600 cursor-pointer text-4xl font-bold">REVISTA URBANA</h1>
             <ul className="flex items-center gap-5">
                 <li>
                     <form className="flex gap-1" onSubmit={handleSearch}>

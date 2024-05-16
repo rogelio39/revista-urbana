@@ -34,7 +34,7 @@ const Login = () => {
         return <div>Cargando...</div>
     }
     return (
-        <div className="flex justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl">
+        <div className="sm:flex flex-col flex justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl">
             {
                 showLogin ? (<div>Ya estas logueado</div>) :
                     (<form className="flex justify-start items-center p-5" ref={formRef} onSubmit={handleLogin}>
