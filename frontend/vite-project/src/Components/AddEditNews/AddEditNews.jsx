@@ -230,18 +230,7 @@ const AddEditNews = () => {
                         </form>
                     </div>
                 </div>
-
-
-                <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
-                <div>
-
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 hover:shadow-red-md shadow-md bg-red-100 rounded m-3 p-1 flex-col items-center justify-center gap-5">
-                        <form className="flex items-center gap-2" encType="multipart/form-data">
-                            <label htmlFor="newsImage">Imagen de portada:</label>
-                            <input type="file" id="newsImage" name="newsImage" accept="image/*" multiple required />
-                            <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button">SUBIR IMAGEN</button>
-                        </form>
-                    </div>
+                
                     <div className="flex items-center justify-center">
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
                             {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
