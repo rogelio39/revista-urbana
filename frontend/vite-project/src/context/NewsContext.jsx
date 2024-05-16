@@ -120,7 +120,7 @@ export const NewsProvider = ({ children }) => {
         try {
             const token = getCookiesByName('jwtCookie');
             if (formData && token) {
-                const response = await fetch(`http://localhost:4000/api/news/uploadImage/${idProd}`, {
+                const response = await fetch(`${URL}/api/news/uploadImage/${idProd}`, {
                     method: 'POST',
                     body: formData,
                     headers: {
