@@ -13,15 +13,19 @@ const News = () => {
     const [healthyNews, setHealthyNews] = useState('')
 
     useEffect(() => {
-        const getTheNews = async () => {
-            const data = await fetchNews();
-            if (data) {
-                setAllNews(data);
-                setLoading(false);
-                const lastNew = data.slice(-1)[0];
-                const getHealthyNews = data.filter(news => news.category === 'salud');
-                setHealthyNews(getHealthyNews);
-                setGetLastNew(lastNew);
+        const getTheNews = () => {
+            try {
+                const data = fetchNews();
+                if (data) {
+                    setAllNews(data);
+                    setLoading(false);
+                    const lastNew = data.slice(-1)[0];
+                    const getHealthyNews = data.filter(news => news.category === 'salud');
+                    setHealthyNews(getHealthyNews);
+                    setGetLastNew(lastNew);
+                }
+            } catch (error) {
+                console.log("error", error)
             }
         }
 

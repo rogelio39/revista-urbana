@@ -5,12 +5,18 @@ import getCookiesByName from "../utils/utils";
 const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
-export const NewsContext = createContext({
-    news: []
+const NewsContext = createContext({
+    news: [],
+    error: null,
+    fetchNews: () =>  {},
+    fetchNewsById: () => {},
+    createNews: () => {},
+    updateNews: () => {},
+    uploadImage: () => {}
 });
 
 
-export const NewsProvider = ({ children }) => {
+const NewsProvider = ({ children }) => {
     const [news, setNews] = useState([]);
     const [error, setError] = useState(null)
 
@@ -156,3 +162,5 @@ NewsProvider.propTypes = {
     children: PropTypes.node.isRequired
 }
 
+
+export {NewsContext, NewsProvider};

@@ -1,5 +1,6 @@
 import { newsModels } from "../models/news.models.js";
-
+import {s3Client, endpoint} from '../libs/s3Client.js';
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 
 export const getNews = async(req, res) => {
     try{
@@ -60,9 +61,9 @@ export const createNews = async(req, res) => {
 export const uploadImage = async(req, res) => {
 
     const {id} = req.params
-    const files = req.files;
+    const file = req.files;
 
-    if(!files || files.length === 0){
+    if(!file || file.length === 0){
         return res.status(400).send({message: "no se encontraron archivos"})
     }
 
@@ -72,17 +73,29 @@ export const uploadImage = async(req, res) => {
             return res.status(400).send({message:"no se encontro noticia" })
         }
 
-        const updatedThumnbails = files.map(file => ({
-            name: file.filename,
-            reference: file.path
-        }))
+        const fileExtension = file.name.split('.').pop();
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
+        const bucketParams = {
+            Bucket: "https://revista-urbana.nyc3.digitaloceanspaces.com",
+            Key: `${file.filename}`,
+            Body: buffer,
+            ACL: 'public-read'
+
+        }
+
+        const result = await s3Client.send(new PutObjectCommand(bucketParams))
+        console.log("result", result);
+
+        const urlOcean = `${endpoint}/${bucketParams.Bucket}/${bucketParams.Key}`
     
         if(!news.thumbnail){
             news.thumbnail = [];
         }
     
     
-        news.thumbnail.push(...updatedThumnbails);
+        news.thumbnail.push(urlOcean);
         await news.save();
         res.status(200).json({message:"imagen creada exitosamente" });
 
@@ -110,3 +123,39 @@ export const updateNews = async(req, res) => {
         res.status(500).send({message: "error del servidor", error: error});
     }
 }
+
+
+// export const uploadImage = async(req, res) => {
+
+//     const {id} = req.params
+//     const files = req.files;
+
+//     if(!files || files.length === 0){
+//         return res.status(400).send({message: "no se encontraron archivos"})
+//     }
+
+//     try{
+//         const news = await newsModels.findById(id);
+//         if(!news){
+//             return res.status(400).send({message:"no se encontro noticia" })
+//         }
+
+//         const updatedThumnbails = files.map(file => ({
+//             name: file.filename,
+//             reference: file.path
+//         }))
+    
+//         if(!news.thumbnail){
+//             news.thumbnail = [];
+//         }
+    
+    
+//         news.thumbnail.push(...updatedThumnbails);
+//         await news.save();
+//         res.status(200).json({message:"imagen creada exitosamente" });
+
+//     }catch(error){
+//         res.status(500).send({error: error})
+//     }
+
+// }

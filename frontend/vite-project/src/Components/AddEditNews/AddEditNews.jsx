@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect, lazy } from "react";
 import { NewsContext } from "../../context/NewsContext";
 import getCookiesByName from "../../utils/utils";
 
-const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
+const url = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
 const New = lazy(() => import('../New/New'))
@@ -28,15 +28,19 @@ const AddEditNews = () => {
     //estados para guardar objetos de noticia creada y de noticia actualizada
     const [updatedNews, setUpdatedNews] = useState({})
     const [lastNew, setLastNew] = useState({})
-
-
+    const [file, setFile] = useState(null);
 
     useEffect(() => {
         const getTheNews = async () => {
-            const data = await fetchNews();
-            if (data) {
-                const lstNew = data.slice(-1)[0];
-                setLastNew(lstNew);
+            try {
+                const data = await fetchNews();
+                if (data) {
+                    const lstNew = data.slice(-1)[0];
+                    setLastNew(lstNew);
+                }
+
+            } catch (error) {
+                console.log("error", error)
             }
         }
 
@@ -96,9 +100,6 @@ const AddEditNews = () => {
 
     }
 
-
-
-
     // Other event handlers and helper functions
 
     const handleSubtitleChange = (event, index) => {
@@ -136,8 +137,6 @@ const AddEditNews = () => {
     const addCategory = () => {
         setCategorys([...categorys]);
     }
-
-
 
 
     return (
@@ -205,39 +204,53 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 m-3 w-24 flex items-center justify-center gap-5" type="submit">{newsCreated ? 'cargando' : (isCreating ? 'crear' : 'actualizar')}</button>
                     }
                 </form>
-                
+
                 <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
                 <div>
+                    <div className="flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
+                        <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                            <form className="flex flex-col sm:flex-row items-center gap-2 " encType="multipart/form-data">
+                                <label htmlFor="newsImage">Imagen de portada:</label>
+                                <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" name="newsImage" accept="image/*" multiple required />
+                                {
+                                    !imageUpload && (
+                                        <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button">SUBIR IMAGEN</button>
+                                    )
+                                }
+                            </form>
+                        </div>
+                        <div className="p-4 flex justify-center">
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
-                        <form className="flex flex-col sm:flex-row items-center gap-2" encType="multipart/form-data">
-                            <label htmlFor="newsImage">Imagen de portada:</label>
-                            <input type="file" id="newsImage" name="newsImage" accept="image/*" multiple required />
-                            <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button">SUBIR IMAGEN</button>
-                        </form>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
-                            {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
-                        </button>
+                            {
+                                file && (
+                                    <img className="w-1/2" src={URL.createObjectURL(file)} />
+                                )
+                            }
+                        </div>
+                        <div className="flex items-center justify-center mt-2">
+                            <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
+                                {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
+                            </button>
+                        </div>
+
                     </div>
 
                 </div>
             </div>
             <div>
                 {
-                    newsCreated && imageUpload ? 
-                    <div className="m-4 p-4">
-                        <h1 className="bg-red-200 text-center font-bold text-xl">Noticia `{lastNew.title}` actualizada correctamente</h1>
-                        <New data={lastNew} /> 
-                    </div>
-                    : <p className="hidden"></p>},
+                    newsCreated && imageUpload ?
+                        <div className="m-4 p-4">
+                            <h1 className="bg-red-200 text-center font-bold text-xl">Noticia `{lastNew.title}` actualizada correctamente</h1>
+                            <New data={lastNew} />
+                        </div>
+                        : <p className="hidden"></p>},
             </div>
             <div>
                 {
                     newsUpdated && imageUpload && updatedNews.thumbnail.length > 0 ? <div className="flex-column m-10 p-5 justify-center items-center">
                         <h1 className='mb-5 text-xl font-bold'>{updatedNews.title}</h1>
-                        <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${URL}/uploads/news/${updatedNews.thumbnail[0].name}`} alt="imagen" />
+                        <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${url}/uploads/news/${updatedNews.thumbnail[0].name}`} alt="imagen" />
                         <h2 className='font-bold'>{updatedNews.subtitle}</h2>
                         <p>{updatedNews.text}</p>
                     </div> : <p className="hidden"></p>
