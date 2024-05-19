@@ -13,9 +13,9 @@ const News = () => {
     const [healthyNews, setHealthyNews] = useState('')
 
     useEffect(() => {
-        const getTheNews = () => {
+        const getTheNews = async() => {
             try {
-                const data = fetchNews();
+                const data = await fetchNews();
                 if (data) {
                     setAllNews(data);
                     setLoading(false);

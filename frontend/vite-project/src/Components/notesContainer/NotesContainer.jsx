@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 
-const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
 const NotesContainer = ({ data }) => {
@@ -9,7 +8,7 @@ const NotesContainer = ({ data }) => {
     let thumbnailUrl = ''
 
     if (data) {
-        thumbnailUrl = data.thumbnail && data.thumbnail.length > 0 ? `${URL}/uploads/news/${data.thumbnail[0].name}` : '';
+        thumbnailUrl = data.thumbnail && data.thumbnail.length > 0 ? `${data.thumbnail[0]}` : '';
     }
     return (
         <Link to={`/newById/${data._id}`}>

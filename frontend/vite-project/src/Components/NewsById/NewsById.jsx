@@ -4,8 +4,6 @@ import { NewsContext } from "../../context/NewsContext";
 import React from 'react'
 
 
-const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
-
 
 const NewsById = () => {
     const { id } = useParams();
@@ -46,7 +44,7 @@ const NewsById = () => {
     let thumbnailUrl = ''
 
     if (newData && newData.thumbnail && newData.thumbnail.length > 0) {
-        thumbnailUrl = `${URL}/uploads/news/${newData.thumbnail[0].name}`
+        thumbnailUrl = `${newData.thumbnail[0]}`
     }
 
 

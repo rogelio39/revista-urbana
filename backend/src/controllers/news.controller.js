@@ -58,53 +58,55 @@ export const createNews = async(req, res) => {
     }
 }
 
-export const uploadImage = async(req, res) => {
+export const uploadImage = async (req, res) => {
+    const { id } = req.params;
+    const files = req.files;
 
-    const {id} = req.params
-    const file = req.files;
+    console.log("files", files);
 
-    if(!file || file.length === 0){
-        return res.status(400).send({message: "no se encontraron archivos"})
+    if (!files || files.length === 0) {
+        return res.status(400).send({ message: "No se encontraron archivos" });
     }
 
-    try{
+    try {
         const news = await newsModels.findById(id);
-        if(!news){
-            return res.status(400).send({message:"no se encontro noticia" })
+        if (!news) {
+            return res.status(400).send({ message: "No se encontró noticia" });
         }
 
-        const fileExtension = file.name.split('.').pop();
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        const file = files[0];
+        const buffer = file.buffer;
+
+        console.log("buffer", buffer);
 
         const bucketParams = {
-            Bucket: "https://revista-urbana.nyc3.digitaloceanspaces.com",
-            Key: `${file.filename}`,
+            Bucket: "revista-urbana", // Solo el nombre del bucket
+            Key: `${file.originalname}`, // O usa un nombre único si es necesario
             Body: buffer,
-            ACL: 'public-read'
+            ACL: 'public-read',
+            ContentType: file.mimetype
+        };
 
-        }
+        console.log("bucketParams", bucketParams);
 
-        const result = await s3Client.send(new PutObjectCommand(bucketParams))
+        const result = await s3Client.send(new PutObjectCommand(bucketParams));
         console.log("result", result);
 
-        const urlOcean = `${endpoint}/${bucketParams.Bucket}/${bucketParams.Key}`
-    
-        if(!news.thumbnail){
+        const urlOcean = `${endpoint}/${bucketParams.Bucket}/${bucketParams.Key}`;
+        console.log("url", urlOcean);
+
+        if (!news.thumbnail) {
             news.thumbnail = [];
         }
-    
-    
+
         news.thumbnail.push(urlOcean);
         await news.save();
-        res.status(200).json({message:"imagen creada exitosamente" });
-
-    }catch(error){
-        res.status(500).send({error: error})
+        res.status(200).json({ message: "Imagen creada exitosamente" });
+    } catch (error) {
+        console.error("Error en uploadImage", error);
+        res.status(500).send({ error: error.message });
     }
-
-}
-
+};
 
 export const updateNews = async(req, res) => {
     const {title, subtitle, category, font, text} = req.body;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { getNews, getNewById, createNews, uploadImage, updateNews } from "../controllers/news.controller.js";
 import { passportError, authorization } from "../config/passportError.js";
-import { upload } from "../config/multer.js";
+import upload  from "../config/multer.js";
 
 const newsRouter = Router();
 

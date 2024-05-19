@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect, lazy } from "react";
 import { NewsContext } from "../../context/NewsContext";
 import getCookiesByName from "../../utils/utils";
 
-const url = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
+
 
 
 const New = lazy(() => import('../New/New'))
@@ -250,7 +250,7 @@ const AddEditNews = () => {
                 {
                     newsUpdated && imageUpload && updatedNews.thumbnail.length > 0 ? <div className="flex-column m-10 p-5 justify-center items-center">
                         <h1 className='mb-5 text-xl font-bold'>{updatedNews.title}</h1>
-                        <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${url}/uploads/news/${updatedNews.thumbnail[0].name}`} alt="imagen" />
+                        <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${updatedNews.thumbnail[0]}`} alt="imagen" />
                         <h2 className='font-bold'>{updatedNews.subtitle}</h2>
                         <p>{updatedNews.text}</p>
                     </div> : <p className="hidden"></p>

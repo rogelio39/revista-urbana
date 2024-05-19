@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
 
-const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
 const New = ({ data }) => {
@@ -23,7 +22,7 @@ const New = ({ data }) => {
 
 
     if (data) {
-        thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${URL}/uploads/news/${individualNews.thumbnail[0].name}` : '';
+        thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${individualNews.thumbnail[0]}` : '';
     }
 
 
