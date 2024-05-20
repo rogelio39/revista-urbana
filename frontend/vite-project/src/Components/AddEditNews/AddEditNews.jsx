@@ -88,7 +88,7 @@ const AddEditNews = () => {
             formData.append('newsImage', fileInput.files[0]); // Obtener el archivo de la entrada de archivos
             if (formData) {
                 const uploadSucces = await uploadImage(idNews, formData);
-                if (uploadSucces == "imagen creada exitosamente") {
+                if (uploadSucces == "Imagen creada exitosamente") {
                     console.log(uploadSucces)
                     setImageUpload(true);
                 }

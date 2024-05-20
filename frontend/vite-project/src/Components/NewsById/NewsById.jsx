@@ -34,10 +34,7 @@ const NewsById = () => {
 
         getNewById();
 
-        setTimeout(() => {
-            console.log("ghumb en by id", thumbnailUrl)
-        }, 2000)
-    
+
 
 
     }, [id])

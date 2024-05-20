@@ -26,9 +26,6 @@ const New = ({ data }) => {
     }
     
 
-    setTimeout(() => {
-        console.log("thumbnaik", thumbnailUrl)
-    }, 3000)
 
 
 
