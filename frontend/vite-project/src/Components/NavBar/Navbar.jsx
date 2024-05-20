@@ -60,25 +60,25 @@ const Navbar = () => {
 
     return (
         <div className="flex bg- justify-between items-center shadow-xl  p-4">
-            <div>
-                <h1 onClick={goToMain} className=" text-red-700 cursor-pointer text-4xl font-bold">REVISTA</h1>
-                <h1 onClick={goToMain} className=" text-blue-800 cursor-pointer text-4xl font-bold">URBANA</h1>
+            <div className="m-2">
+                <h1 onClick={goToMain} className=" text-red-700 cursor-pointer text-1xl font-bold sm:text-2xl md:text-3xl xl:text-4xl">REVISTA</h1>
+                <h1 onClick={goToMain} className=" text-blue-800 cursor-pointer text-1xl font-bold sm:text-2xl md:text-3xl xl:text-4xl">URBANA</h1>
             </div>
             <div>
-                <form className="flex gap-2 shadow-md" onSubmit={handleSearch}>
+                <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
                     <input
-                        className="p-1 bg-black bg-opacity-90 rounded text-white"
+                        className="  w-28 bg-black text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-36"
                         type="text"
                         value={searchQuery}
                         placeholder="Buscar noticias"
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
 
-                    <button className="p-2 shadow-lg bg-black hover:bg-blue-500 text-white rounded" type="submit">Buscar</button>
+                    <button className="text-sm p-1 shadow-lg bg-black hover:bg-blue-500 text-white rounded sm:text-lg" type="submit">Buscar</button>
                 </form>
             </div>
             <div className="relative menu-container">
-                <div onClick={openMenu} className=" flex flex-col gap-1 cursor-pointer"  aria-expanded={menuOpen} aria-label="Toggle menu">
+                <div onClick={openMenu} className="flex flex-col gap-1 cursor-pointer"  aria-expanded={menuOpen} aria-label="Toggle menu">
                     <span className="w-8 h-1  bg-black"></span>
                     <span className="w-8 h-1  bg-black"></span>
                     <span className="w-8 h-1  bg-black"></span>

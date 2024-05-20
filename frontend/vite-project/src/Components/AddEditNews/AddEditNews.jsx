@@ -182,12 +182,12 @@ const AddEditNews = () => {
                         </select>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="texts">Textos:</label>
                         {texts.map((text, index) => (
                             <div key={index}>
                                 <textarea
-                                    className="whitespace-pre-line px-2 py-1 rounded-lg border border-blue-300 focus-ring-1"
+                                    className="w-60 whitespace-pre-line px-2 py-1 rounded-lg border border-blue-300 focus-ring-1"
                                     id={`text-${index}`}
                                     name={`text`}
                                     onChange={(event) => handleTextChange(index, event)}
@@ -207,14 +207,14 @@ const AddEditNews = () => {
 
                 <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
                 <div>
-                    <div className="flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
-                        <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="mt-2 flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
+                        <div className="w-72 hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col items-center justify-start gap-5 sm:flex-row sm:w-auto">
                             <form className="flex flex-col sm:flex-row items-center gap-2 " encType="multipart/form-data">
                                 <label htmlFor="newsImage">Imagen de portada:</label>
-                                <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" name="newsImage" accept="image/*" multiple required />
+                                <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" className="w-64" name="newsImage" accept="image/*" multiple required />
                                 {
                                     !imageUpload && (
-                                        <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button">SUBIR IMAGEN</button>
+                                        <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 sm:text-xl" type="button">SUBIR IMAGEN</button>
                                     )
                                 }
                             </form>
@@ -228,7 +228,7 @@ const AddEditNews = () => {
                             }
                         </div>
                         <div className="flex items-center justify-center mt-2">
-                            <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
+                            <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
                                 {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
                             </button>
                         </div>

@@ -10,7 +10,6 @@ const News = () => {
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState(null);
     const [getLastNew, setGetLastNew] = useState(null)
-    const [healthyNews, setHealthyNews] = useState('')
 
     useEffect(() => {
         const getTheNews = async() => {
@@ -20,8 +19,6 @@ const News = () => {
                     setAllNews(data);
                     setLoading(false);
                     const lastNew = data.slice(-1)[0];
-                    const getHealthyNews = data.filter(news => news.category === 'salud');
-                    setHealthyNews(getHealthyNews);
                     setGetLastNew(lastNew);
                 }
             } catch (error) {
@@ -74,18 +71,132 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='mb-10  '>
+            <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>SALUD</h1>
                 <div className='flex justify-start gap-5 items-center'>
                     {
-                        healthyNews.map(news => (
-                            <div key={news._id}>
-                                <NotesContainer data={news} />
-                            </div>
+                        allNews.map(news => (
+                            news.category === 'salud' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
                         ))
                     }
                 </div>
             </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>NOTAS COLOR</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'notas color' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>DEPORTES</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'deportes' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>ESPECTACULO</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'espectaculo' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>SOCIEDAD</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'sociedad' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>CULTURA</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'cultura' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>MUNDO</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'mundo' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>DESTACADOS</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'destacados' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div className='mb-10 '>
+                <h1 className='text-center mb-5 text-xl'>ECONOMIA</h1>
+                <div className='flex justify-start gap-5 items-center'>
+                    {
+                        allNews.map(news => (
+                            news.category === 'economia' ?
+                                <div key={news._id}>
+                                    <NotesContainer data={news} />
+                                </div> : ''
+                        ))
+                    }
+                </div>
+            </div>
+
 
 
         </div>

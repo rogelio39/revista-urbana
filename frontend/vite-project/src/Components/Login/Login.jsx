@@ -34,20 +34,20 @@ const Login = () => {
         return <div>Cargando...</div>
     }
     return (
-        <div className="sm:flex flex-col flex justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl">
+        <div className="flex flex-col justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl sm:flex-row">
             {
                 showLogin ? (<div>Ya estas logueado</div>) :
-                    (<form className="flex justify-start items-center p-5" ref={formRef} onSubmit={handleLogin}>
-                        <div>
+                    (<form className="flex flex-col justify-center items-center p-5 gap-5 sm:flex-row" ref={formRef} onSubmit={handleLogin}>
+                        <div className="w-full sm:w-auto">
                             <label className="m-2" htmlFor="email">EMAIL:</label>
-                            <input type="text" id="email" name='email' required />
+                            <input  className='w-full sm:w-auto' type="text" id="email" name='email' required />
                         </div>
-                        <div>
+                        <div className="w-full md:w-auto">
                             <label className="m-2" htmlFor="password">PASSWORD:</label>
-                            <input type="password" id='password' name="password" required />
+                            <input className="w-full sm:w-auto" type="password" id='password' name="password" required />
                         </div>
 
-                        <button className="bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESSION</button>
+                        <button className=" bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESION</button>
 
                     </form>)
             }
