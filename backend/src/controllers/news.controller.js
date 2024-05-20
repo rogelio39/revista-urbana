@@ -62,7 +62,6 @@ export const uploadImage = async (req, res) => {
     const { id } = req.params;
     const files = req.files;
 
-    console.log("files", files);
 
     if (!files || files.length === 0) {
         return res.status(400).send({ message: "No se encontraron archivos" });
@@ -77,7 +76,6 @@ export const uploadImage = async (req, res) => {
         const file = files[0];
         const buffer = file.buffer;
 
-        console.log("buffer", buffer);
 
         const bucketParams = {
             Bucket: "revista-urbana", // Solo el nombre del bucket
@@ -87,13 +85,11 @@ export const uploadImage = async (req, res) => {
             ContentType: file.mimetype
         };
 
-        console.log("bucketParams", bucketParams);
 
         const result = await s3Client.send(new PutObjectCommand(bucketParams));
-        console.log("result", result);
 
         const urlOcean = `${endpoint}/${bucketParams.Bucket}/${bucketParams.Key}`;
-        console.log("url", urlOcean);
+
 
         if (!news.thumbnail) {
             news.thumbnail = [];

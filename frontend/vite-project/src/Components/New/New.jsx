@@ -24,7 +24,11 @@ const New = ({ data }) => {
     if (data) {
         thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${individualNews.thumbnail[0]}` : '';
     }
+    
 
+    setTimeout(() => {
+        console.log("thumbnaik", thumbnailUrl)
+    }, 3000)
 
 
 

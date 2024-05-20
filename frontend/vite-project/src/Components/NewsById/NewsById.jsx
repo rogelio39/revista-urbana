@@ -20,7 +20,6 @@ const NewsById = () => {
                     const parts = newById.text.split('**');
                     setNewData(newById);
                     if (parts) {
-                        console.log("parts en newbyid", parts)
                         setNewsText(parts);
                     }
                 } else {
@@ -35,6 +34,11 @@ const NewsById = () => {
 
         getNewById();
 
+        setTimeout(() => {
+            console.log("ghumb en by id", thumbnailUrl)
+        }, 2000)
+    
+
 
     }, [id])
 
@@ -46,7 +50,6 @@ const NewsById = () => {
     if (newData && newData.thumbnail && newData.thumbnail.length > 0) {
         thumbnailUrl = `${newData.thumbnail[0]}`
     }
-
 
 
     return (

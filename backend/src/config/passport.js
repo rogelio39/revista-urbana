@@ -21,7 +21,6 @@ const initializePassport = () => {
 
         const [bearer, token] = req.headers.authorization.split(' ')
         if (bearer == 'Bearer' && token) {
-            console.log("token", token)
             return token
         } else {
             console.log("encabezado mal formado")
@@ -35,7 +34,6 @@ const initializePassport = () => {
 
         async (payload, done) => {
             try {
-                console.log("payload", payload);
                 return done(null, payload);
 
             } catch (error) {
@@ -54,7 +52,6 @@ const initializePassport = () => {
             try {
                 const user = await usersModels.findOne({ email: username })
                 if (user) {
-                    console.log("user en register passport", user)
                     return done(null, false, { message: 'usuario ya registrado.' })
                 }
 
