@@ -41,6 +41,7 @@ try {
             secret: process.env.SESSION_SECRET,
             ttl: 60
         }),
+        secret: process.env.SECRET_SESSION,
         resave: false,
         saveUninitialized: false
     }))
@@ -57,7 +58,9 @@ app.use('/api', router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL,{
+    serverSelectionTimeoutMS: 1200000 
+})
 .then(() => {
     console.log("DB is connected");
 })

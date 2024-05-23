@@ -5,7 +5,6 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
 
-
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'))
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
 const Login = lazy(() => import('./Components/Login/Login'))
@@ -26,6 +25,7 @@ function App() {
               <Routes>
                 <Route path='*'/>
                 <Route path='/' element={<MainSection/>} />
+                {/* <Route path='/news/:query' element={<NotesContainer />} /> */}
                 <Route path='/add-news' element={<AddEditNews />} />
                 <Route path='/search/:query' element={<SearchResults/>}/>
                 <Route path='/newById/:id' element={<NewsById/>}/>

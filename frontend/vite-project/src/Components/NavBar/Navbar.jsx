@@ -54,9 +54,11 @@ const Navbar = () => {
 
     const openMenu = () => {
         setMenuOpen(!menuOpen)
-        console.log(menuOpen)
     }
 
+    const goToSports = () => {
+        navigate('/news/deportes')
+    }
 
     return (
         <div className="flex bg- justify-between items-center shadow-xl  p-4">
@@ -94,6 +96,7 @@ const Navbar = () => {
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SOCIEDAD</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">CULTURA</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">MUNDO</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToSports} className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">ECONOMIA</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
                         </ul>

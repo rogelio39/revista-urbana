@@ -46,7 +46,7 @@ const News = () => {
 
             <div className='mb-10 ' >
                 <h1 className='text-center mb-5 text-xl'>TODAS LAS NOTAS</h1>
-                <div className='flex flex-wrap  justify-start gap-5 items-center'>
+                <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             <div key={news._id}>
@@ -59,7 +59,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>POLITICA</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'politica' ?
@@ -73,7 +73,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>SALUD</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'salud' ?
@@ -87,7 +87,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>NOTAS COLOR</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'notas color' ?
@@ -101,7 +101,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>DEPORTES</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'deportes' ?
@@ -115,7 +115,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>ESPECTACULO</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'espectaculo' ?
@@ -129,7 +129,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>SOCIEDAD</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'sociedad' ?
@@ -143,7 +143,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>CULTURA</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'cultura' ?
@@ -157,7 +157,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>MUNDO</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'mundo' ?
@@ -171,7 +171,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>DESTACADOS</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'destacados' ?
@@ -185,7 +185,7 @@ const News = () => {
 
             <div className='mb-10 '>
                 <h1 className='text-center mb-5 text-xl'>ECONOMIA</h1>
-                <div className='flex justify-start gap-5 items-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
                             news.category === 'economia' ?
