@@ -18,7 +18,7 @@ const SearchResults = () => {
 
 
     useEffect(() => {
-        const getNewsById = async () => {
+        const getNewsByQuery = async () => {
             try {
                 const newsSearch = await fetchNews();
                 if (!newsSearch) {
@@ -53,7 +53,7 @@ const SearchResults = () => {
                 setErrorMessage('Error al cargar noticias');
             }
         }
-        getNewsById();
+        getNewsByQuery();
 
     }, [query, loading])
 

@@ -29,15 +29,6 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const goToHealthy = () => {
-        navigate('/news/salud')
-    }
-
-    const goToPolitics = () => {
-        navigate('/news/politica')
-    }
-
-
     const handleSearch = (e) => {
         e.preventDefault();
 
@@ -57,8 +48,45 @@ const Navbar = () => {
     }
 
     const goToSports = () => {
-        navigate('/news/deportes')
+        navigate(`/newsByCategory/deportes`)
     }
+
+    const goToHealthy = () => {
+        navigate('/newsByCategory/salud')
+    }
+
+    const goToPolitics = () => {
+        navigate('/newsByCategory/politica')
+    }
+
+    const goToShow = () => {
+        navigate('/newsByCategory/espectaculo')
+    }
+
+    const goToDestacados = () => {
+        navigate('/newsByCategory/destacados')
+    }
+
+    const goToSociety = () => {
+        navigate('/newsByCategory/sociedad')
+    }
+
+    const goToCulture = () => {
+        navigate('/newsByCategory/cultura')
+    }
+
+    const goToWorld = () => {
+        navigate('/newsByCategory/mundo')
+    }
+
+    const goToEconomy = () => {
+        navigate('/newsByCategory/economia')
+    }
+
+    const goToColorNotes = () => {
+        navigate('/newsByCategory/notas%20color')
+    }
+
 
     return (
         <div className="flex bg- justify-between items-center shadow-xl  p-4">
@@ -91,13 +119,14 @@ const Navbar = () => {
                             <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">ESPECTACULO</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DESTACADOS</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SOCIEDAD</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">CULTURA</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">MUNDO</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToSociety}>SOCIEDAD</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToCulture}>CULTURA</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToSports} className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">ECONOMIA</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
+                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
                             <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
                         </ul>
                     )
