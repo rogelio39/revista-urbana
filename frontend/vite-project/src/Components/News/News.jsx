@@ -46,7 +46,7 @@ const News = () => {
 
             <div className='mb-10 ' >
                 <h1 className='text-center mb-5 text-xl'>TODAS LAS NOTAS</h1>
-                <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row'>
+                <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row flex-wrap'>
                     {
                         allNews.map(news => (
                             <div key={news._id}>
@@ -208,10 +208,3 @@ const News = () => {
 export default News
 
 
-
-
-/* 
-Estilos para consultar, div contenedor del mainsection
-p-10 flex justify-between gap-5
-
-*/

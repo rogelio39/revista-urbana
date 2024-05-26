@@ -1,53 +1,34 @@
-import { useState, useRef, useContext, useEffect, lazy } from "react";
+import { useState, useRef, useContext, lazy } from "react";
 import { NewsContext } from "../../context/NewsContext";
 import getCookiesByName from "../../utils/utils";
 
-
-
-
-const New = lazy(() => import('../New/New'))
-
+const AddImage = lazy(() => import('../AddImage/AddImage'));
 
 
 const AddEditNews = () => {
-    const [isCreating, setIsCreating] = useState(true);
     //propiedades de la noticia o atributos
     const [subtitles, setSubtitles] = useState(['']);
     const [categorys, setCategorys] = useState(['']);
     const [font, setFont] = useState('');
     const [texts, setTexts] = useState(['']);
     //metodos de context para crear, actualizar y subir imagenes
-    const { createNews, updateNews, uploadImage, fetchNews } = useContext(NewsContext);
+    const { createNews, updateNews } = useContext(NewsContext);
     //variables de estado para el id de las noticias, las noticias, el formulario, etc.
     const formRef = useRef(null);
     const [idNews, setIdNews] = useState();
     //estados para saber si la noticia fue creada, si fue actualizada, si la imagen fue subida
     const [newsCreated, setNewsCreated] = useState(false);
-    const [newsUpdated, setNewsUpdated] = useState(false)
-    const [imageUpload, setImageUpload] = useState(false)
     //estados para guardar objetos de noticia creada y de noticia actualizada
-    const [updatedNews, setUpdatedNews] = useState({})
-    const [lastNew, setLastNew] = useState({})
-    const [file, setFile] = useState(null);
-
-    useEffect(() => {
-        const getTheNews = async () => {
-            try {
-                const data = await fetchNews();
-                if (data) {
-                    const lstNew = data.slice(-1)[0];
-                    setLastNew(lstNew);
-                }
-
-            } catch (error) {
-                console.log("error", error)
-            }
-        }
-
-        getTheNews();
-    }, [imageUpload])
+    const [isCreating, setIsCreating] = useState(true);
+    const [updatedNews, setUpdatedNews] = useState({});
+    const [newsUpdated, setNewsUpdated] = useState(false);
 
 
+
+
+
+
+    //Funcion para manejar creacion o actualizacion de noticia
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -80,25 +61,6 @@ const AddEditNews = () => {
         }
     };
 
-    const handleSubmitImage = async (e) => {
-        e.preventDefault();
-        try {
-            const formData = new FormData();
-            const fileInput = document.getElementById('newsImage');
-            formData.append('newsImage', fileInput.files[0]); // Obtener el archivo de la entrada de archivos
-            if (formData) {
-                const uploadSucces = await uploadImage(idNews, formData);
-                if (uploadSucces == "Imagen creada exitosamente") {
-                    console.log(uploadSucces)
-                    setImageUpload(true);
-                }
-
-            }
-        } catch (error) {
-            console.log("Error", error);
-        }
-
-    }
 
     // Other event handlers and helper functions
 
@@ -204,51 +166,19 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 m-3 w-24 flex items-center justify-center gap-5" type="submit">{newsCreated ? 'cargando' : (isCreating ? 'crear' : 'actualizar')}</button>
                     }
                 </form>
-
                 <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
-                <div>
-                    <div className="mt-2 flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
-                        <div className="w-72 hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col items-center justify-start gap-5 sm:flex-row sm:w-auto">
-                            <form className="flex flex-col sm:flex-row items-center gap-2 " encType="multipart/form-data">
-                                <label htmlFor="newsImage">Imagen de portada:</label>
-                                <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" className="w-64" name="newsImage" accept="image/*" multiple required />
-                                {
-                                    !imageUpload && (
-                                        <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 sm:text-xl" type="button">SUBIR IMAGEN</button>
-                                    )
-                                }
-                            </form>
-                        </div>
-                        <div className="p-4 flex justify-center">
-
-                            {
-                                file && (
-                                    <img className="w-1/2" src={URL.createObjectURL(file)} />
-                                )
-                            }
-                        </div>
-                        <div className="flex items-center justify-center mt-2">
-                            <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
-                                {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
-                            </button>
-                        </div>
-
-                    </div>
-
+                <div className="flex items-center justify-center mt-2">
+                    <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
+                        {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
+                    </button>
                 </div>
             </div>
+            {
+                idNews && ( <AddImage idNews={idNews} />)
+            }
             <div>
                 {
-                    newsCreated && imageUpload ?
-                        <div className="m-4 p-4">
-                            <h1 className="bg-red-200 text-center font-bold text-xl">Noticia `{lastNew.title}` actualizada correctamente</h1>
-                            <New data={lastNew} />
-                        </div>
-                        : <p className="hidden"></p>},
-            </div>
-            <div>
-                {
-                    newsUpdated && imageUpload && updatedNews.thumbnail.length > 0 ? <div className="flex-column m-10 p-5 justify-center items-center">
+                    newsUpdated && updatedNews.thumbnail.length > 0 ? <div className="flex-column m-10 p-5 justify-center items-center">
                         <h1 className='mb-5 text-xl font-bold'>{updatedNews.title}</h1>
                         <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${updatedNews.thumbnail[0]}`} alt="imagen" />
                         <h2 className='font-bold'>{updatedNews.subtitle}</h2>
@@ -256,7 +186,6 @@ const AddEditNews = () => {
                     </div> : <p className="hidden"></p>
                 }
             </div>
-
         </div>
     )
 }
