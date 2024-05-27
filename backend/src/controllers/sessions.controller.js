@@ -21,6 +21,7 @@ export const login = async (req, res) => {
     }
 
     const token = generateToken(req.user);
+    
 
 
     res.cookie('jwtCookie', token, {

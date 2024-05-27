@@ -11,6 +11,7 @@ const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
 const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
+const  Profile = lazy(() => import('./Components/Profile/Profile'))
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/newsByCategory/:query' element={<NewsByCategory/>}/>
                 <Route path='/newById/:id' element={<NewsById/>}/>
                 <Route path='/login' element={<Login/>}/>
+                <Route path='/profile' element={<Profile/>}/>
               </Routes>
             </Suspense>
           </AuthProvider>

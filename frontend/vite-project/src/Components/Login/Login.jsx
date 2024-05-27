@@ -1,11 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../context/Auth.context"
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
     const { login, authenticated } = useContext(AuthContext);
     const formRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [showLogin, setShowLogin] = useState(false)
+    const navigate = useNavigate()
+
 
 
     useEffect(() => {
@@ -24,7 +27,8 @@ const Login = () => {
             setLoading(true)
             setTimeout(() => {
                 setLoading(false);
-                setShowLogin(true)
+                setShowLogin(true);
+                navigate('/profile')
 
             }, 2000)
         }
