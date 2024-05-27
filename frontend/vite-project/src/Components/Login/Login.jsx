@@ -14,9 +14,6 @@ const Login = () => {
             }
     }, [])
 
-
-    console.log("showlogin", showLogin)
-    console.log("autheti", authenticated)
     const handleLogin = async (e) => {
         e.preventDefault();
 

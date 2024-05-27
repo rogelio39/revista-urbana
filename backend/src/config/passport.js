@@ -34,7 +34,10 @@ const initializePassport = () => {
 
         async (payload, done) => {
             try {
-                return done(null, payload);
+                const user = {
+                    rol : payload.user.rol
+                }
+                return done(null, user);
 
             } catch (error) {
                 return done(error);
@@ -85,7 +88,11 @@ const initializePassport = () => {
             }
 
             if(validatePassword(password, user.password)){
-                return done(null, user)
+                const userData = {
+                    _id : user._id,
+                    rol: user.rol
+                }
+                return done(null, userData)
             }else{
                 console.log("contraseña invalida");
                 return done(null, false);

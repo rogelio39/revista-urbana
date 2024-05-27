@@ -23,8 +23,8 @@ export const authorization = (roles) => {
             return res.status(401).send("no existe sesion activa. Usuario no autorizado");
         }
 
-        const userRole = req.user.user.rol
-        console.log(userRole)
+        const userRole = req.user.rol
+
 
         if(!roles.includes(userRole)){
             return res.status(401).send("no tienes permisos para realizar esta accion");
