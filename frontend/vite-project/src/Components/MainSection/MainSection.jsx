@@ -2,7 +2,7 @@ import News from "../News/News"
 
 const MainSection = () => {
     return (
-        <div>
+        <div className="bg-cyan-950 bg-opacity-90">
             <News/>
         </div>
     )

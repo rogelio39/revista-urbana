@@ -37,7 +37,7 @@ const News = () => {
         <div className='p-10 flex flex-col'>
 
             <div className='border-b mb-10 border-gray-400 flex flex-wrap justify-between items-center  p-1'>
-                <h1 className=''>ULTIMAS NOTICIAS</h1>
+                <h1 className='text-white'>ULTIMAS NOTICIAS</h1>
                 <div key={getLastNew._id} >
                     <New data={getLastNew} />
                 </div>
@@ -45,7 +45,7 @@ const News = () => {
 
 
             <div className='mb-10 ' >
-                <h1 className='text-center mb-5 text-xl'>TODAS LAS NOTAS</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>TODAS LAS NOTAS</h1>
                 <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row flex-wrap'>
                     {
                         allNews.map(news => (
@@ -58,7 +58,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>POLITICA</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>POLITICA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -72,7 +72,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>SALUD</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>SALUD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -86,7 +86,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>NOTAS COLOR</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>NOTAS COLOR</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -100,7 +100,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>DEPORTES</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>DEPORTES</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -114,7 +114,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>ESPECTACULO</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>ESPECTACULO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -128,7 +128,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>SOCIEDAD</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>SOCIEDAD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -142,7 +142,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>CULTURA</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>CULTURA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -156,7 +156,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>MUNDO</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>MUNDO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -170,7 +170,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>DESTACADOS</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>DESTACADOS</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (
@@ -184,7 +184,7 @@ const News = () => {
             </div>
 
             <div className='mb-10 '>
-                <h1 className='text-center mb-5 text-xl'>ECONOMIA</h1>
+                <h1 className='text-center text-white mb-5 text-xl'>ECONOMIA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.map(news => (

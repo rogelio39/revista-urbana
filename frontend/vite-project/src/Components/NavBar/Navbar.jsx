@@ -89,15 +89,14 @@ const Navbar = () => {
 
 
     return (
-        <div className="flex bg- justify-between items-center shadow-xl  p-4">
-            <div className="m-2">
-                <h1 onClick={goToMain} className=" text-red-700 cursor-pointer text-1xl font-bold sm:text-2xl md:text-3xl xl:text-4xl">REVISTA</h1>
-                <h1 onClick={goToMain} className=" text-blue-800 cursor-pointer text-1xl font-bold sm:text-2xl md:text-3xl xl:text-4xl">URBANA</h1>
+        <div className="flex justify-between items-center bg-cyan-800  shadow-xl p-4">
+            <div onClick={goToMain} className="m-2 bg-white rounded-full">
+                <img className="w-28" src="../../logo-bg.png" alt="LOGO" />
             </div>
             <div>
                 <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
                     <input
-                        className="  w-28 bg-black text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-36"
+                        className="bg-black text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-96"
                         type="text"
                         value={searchQuery}
                         placeholder="Buscar noticias"
