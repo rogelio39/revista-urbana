@@ -24,10 +24,6 @@ const AddEditNews = () => {
     const [newsUpdated, setNewsUpdated] = useState(false);
 
 
-
-
-
-
     //Funcion para manejar creacion o actualizacion de noticia
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +31,7 @@ const AddEditNews = () => {
             const dataForm = new FormData(formRef.current);
             let data = Object.fromEntries(dataForm);
             const token = getCookiesByName('jwtCookie');
-
+            console.log("data en addnews", data)
             const textWithBold = texts.map(text => text.replace(/<<(.*?)>>/g, '**$1**'));
             const textWithBoldString = textWithBold.join('\n');
             data.text = textWithBoldString;
@@ -134,6 +130,10 @@ const AddEditNews = () => {
                         ))}
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                            <label htmlFor="pieDeImagen">Agregar pie de imagen</label>
+                            <input type="text" name="pieDeImagen" id='pieDeImagen' />
+                        </div>
 
                     <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
@@ -160,6 +160,7 @@ const AddEditNews = () => {
                             </div>
                         ))}
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addText}>Agregar Texto</button>
+
                     </div>
 
                     {
@@ -174,7 +175,7 @@ const AddEditNews = () => {
                 </div>
             </div>
             {
-                idNews && ( <AddImage idNews={idNews} />)
+                idNews && (<AddImage idNews={idNews} />)
             }
             <div>
                 {

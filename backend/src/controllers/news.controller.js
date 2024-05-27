@@ -34,10 +34,10 @@ export const getNewById = async(req, res) => {
 
 
 export const createNews = async(req, res) => {
-    const {title, subtitle, category, font, text} = req.body;
+    const {title, subtitle, category, font, text, pieDeImagen} = req.body;
 
     try{
-        const news = await newsModels.create({title, subtitle, category, font, text});
+        const news = await newsModels.create({title, subtitle, category, font, pieDeImagen, text});
 
         if(!news){
             return res.status(400).send({message: "no se creo noticia"})
@@ -105,11 +105,11 @@ export const uploadImage = async (req, res) => {
 };
 
 export const updateNews = async(req, res) => {
-    const {title, subtitle, category, font, text} = req.body;
+    const {title, subtitle, category, font, text, pieDeImagen} = req.body;
     const {id} = req.params
 
     try{
-        const updatedNews = await newsModels.findByIdAndUpdate( id,  {title, subtitle, category, font, text}, {new : true});
+        const updatedNews = await newsModels.findByIdAndUpdate( id,  {title, subtitle, category, font, text, pieDeImagen}, {new : true});
 
         if(!updatedNews){
             return res.status(400).send({message: "no se creo noticia"})

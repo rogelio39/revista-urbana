@@ -22,6 +22,9 @@ const newsSchema = new Schema({
         type: String,
         required: true
     },
+    pieDeImagen : {
+        type: String,
+    },
     thumbnail: []
 })
 

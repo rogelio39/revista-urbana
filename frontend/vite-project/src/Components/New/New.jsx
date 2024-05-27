@@ -29,15 +29,15 @@ const New = ({ data }) => {
 
 
 
-
     return (
         <div>
             {
                 individualNews && (
                     <div className={`shadow-md bg-neutral-50  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
                         <h1 className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
-                        <div>
-                            <img className='rounded mb-5' src={thumbnailUrl} alt="imagen" />
+                        <div className='mb-5 flex flex-col justify-center items-center'>
+                            <img src={thumbnailUrl} alt="imagen"/>
+                            <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
                         </div>
                         <h2 className='font-bold'>{individualNews.subtitle}</h2>
                         <p>
