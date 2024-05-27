@@ -8,11 +8,12 @@ const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_
 
 
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+
+const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState({});
-    const [authenticated, setIsAuthenticated] = useState(false)
+    const [authenticated, setAuthenticated] = useState(false)
 
     const register = async(data) => {
 
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
                 const data = await response.json();
                 if (data) {
                     setUserData(data.user);
-                    setIsAuthenticated(true);
+                    setAuthenticated(true);
                     document.cookie = `jwtCookie=${data.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
                     localStorage.setItem('user', JSON.stringify(data.user))
                 }
@@ -77,3 +78,5 @@ export const AuthProvider = ({ children }) => {
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired
 }
+
+export {AuthContext, AuthProvider}

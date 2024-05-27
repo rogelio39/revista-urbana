@@ -9,12 +9,14 @@ const Login = () => {
 
 
     useEffect(() => {
-        if (authenticated) {
-            setShowLogin(true);
-        }
+            if (authenticated) {
+                setShowLogin(true);
+            }
     }, [])
 
 
+    console.log("showlogin", showLogin)
+    console.log("autheti", authenticated)
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -25,6 +27,8 @@ const Login = () => {
             setLoading(true)
             setTimeout(() => {
                 setLoading(false);
+                setShowLogin(true)
+
             }, 2000)
         }
 
@@ -40,11 +44,11 @@ const Login = () => {
                     (<form className="flex flex-col justify-center items-center p-5 gap-5 sm:flex-row" ref={formRef} onSubmit={handleLogin}>
                         <div className="w-full sm:w-auto">
                             <label className="m-2" htmlFor="email">EMAIL:</label>
-                            <input  className='w-full sm:w-auto' type="text" id="email" name='email' required />
+                            <input  className='w-full sm:w-auto' autoComplete="ejemplo@mail.com" type="text" id="email" name='email' required />
                         </div>
                         <div className="w-full md:w-auto">
                             <label className="m-2" htmlFor="password">PASSWORD:</label>
-                            <input className="w-full sm:w-auto" type="password" id='password' name="password" required />
+                            <input className="w-full sm:w-auto" autoComplete="12345"  type="password" id='password' name="password" required />
                         </div>
 
                         <button className=" bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESION</button>
