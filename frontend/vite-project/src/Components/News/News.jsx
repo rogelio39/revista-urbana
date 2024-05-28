@@ -12,7 +12,7 @@ const News = () => {
     const [getLastNew, setGetLastNew] = useState(null)
 
     useEffect(() => {
-        const getTheNews = async() => {
+        const getTheNews = async () => {
             try {
                 const data = await fetchNews();
                 if (data) {

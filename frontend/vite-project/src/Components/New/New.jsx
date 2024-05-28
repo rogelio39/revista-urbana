@@ -7,8 +7,12 @@ import './New.css'
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
+
+    console.log("data", data)
+
+
     useEffect(() => {
-        if (data) {
+        if (data && data.text) {
             const parts = data.text.split('**');
             setIndividualNews(data);
             if (parts) {
@@ -21,8 +25,10 @@ const New = ({ data }) => {
     let thumbnailUrl = ''
 
 
-    if (data) {
+    if (individualNews) {
         thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${individualNews.thumbnail[0]}` : '';
+    } else {
+        return null
     }
 
 
@@ -30,17 +36,17 @@ const New = ({ data }) => {
 
 
     return (
-        <div>
+        <article itemScope itemType="https://schema.org/NewsArticle">
             {
                 individualNews && (
                     <div className={`shadow-md bg-neutral-50  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
-                        <h1 className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
+                        <h1 itemProp = 'headline' className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
                         <div className='mb-5 flex flex-col justify-center items-center'>
-                            <img src={thumbnailUrl} alt="imagen"/>
+                            <img src={thumbnailUrl} alt="imagen" />
                             <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
                         </div>
                         <h2 className='font-bold'>{individualNews.subtitle}</h2>
-                        <p>
+                        <p itemProp='articleBody'>
                             {
                                 newsText.map((text, index) => (
                                     index % 2 === 1 ?
@@ -57,12 +63,22 @@ const New = ({ data }) => {
                                 )
                             }
                         </p>
+                        <div>
+                            ETIQUETAS:
+                            <ul className='flex'>
+                                {
+                                    individualNews.tags && (individualNews.tags.map((tag, k) => (
+                                        <li itemProp='keywords' className='p-1 bg-blue-200 m-2 rounded hover:shadow-slate-800 cursor-pointer hover:shadow-md hover:bg-blue-400 hover:text-white  ' key={k}>{tag}</li>
+                                    )))
+                                }
+                            </ul>
+                        </div>
                         <p>VER VIDEO</p>
                     </div>
                 )
 
             }
-        </div>
+        </article>
     )
 }
 

@@ -11,6 +11,8 @@ const AddEditNews = () => {
     const [categorys, setCategorys] = useState(['']);
     const [font, setFont] = useState('');
     const [texts, setTexts] = useState(['']);
+    const [tags, setTags] = useState([]);
+    const [currentTag, setCurrentTag] = useState('')
     //metodos de context para crear, actualizar y subir imagenes
     const { createNews, updateNews } = useContext(NewsContext);
     //variables de estado para el id de las noticias, las noticias, el formulario, etc.
@@ -31,10 +33,10 @@ const AddEditNews = () => {
             const dataForm = new FormData(formRef.current);
             let data = Object.fromEntries(dataForm);
             const token = getCookiesByName('jwtCookie');
-            console.log("data en addnews", data)
             const textWithBold = texts.map(text => text.replace(/<<(.*?)>>/g, '**$1**'));
             const textWithBoldString = textWithBold.join('\n');
             data.text = textWithBoldString;
+            data.tags = tags;
 
             if (token) {
                 if (isCreating) {
@@ -83,6 +85,11 @@ const AddEditNews = () => {
         setTexts(newText);
     }
 
+    const handleTags = (event) => {
+        setCurrentTag(event.target.value);
+        console.log("event en event", event.target.value)
+    }
+
 
     const addSubtitle = () => {
         setSubtitles([...subtitles]);
@@ -94,6 +101,15 @@ const AddEditNews = () => {
 
     const addCategory = () => {
         setCategorys([...categorys]);
+    }
+
+    const addTags = () => {
+
+        if(currentTag.trim() != ''){
+            setTags([...tags, currentTag.trim()]);
+            setCurrentTag('');
+        }
+        console.log("Tags", tags)
     }
 
 
@@ -131,9 +147,9 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
                     <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
-                            <label htmlFor="pieDeImagen">Agregar pie de imagen</label>
-                            <input type="text" name="pieDeImagen" id='pieDeImagen' />
-                        </div>
+                        <label htmlFor="pieDeImagen">Agregar pie de imagen</label>
+                        <input type="text" name="pieDeImagen" id='pieDeImagen' />
+                    </div>
 
                     <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
@@ -160,6 +176,13 @@ const AddEditNews = () => {
                             </div>
                         ))}
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addText}>Agregar Texto</button>
+
+                    </div>
+
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                        <label htmlFor="tags">Tags:</label>
+                        <input onChange={handleTags} type="text" id='tags' name="tags" />
+                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addTags}>Agregar Tag</button>
 
                     </div>
 

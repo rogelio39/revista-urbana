@@ -25,6 +25,7 @@ const newsSchema = new Schema({
     pieDeImagen : {
         type: String,
     },
+    tags : [],
     thumbnail: []
 })
 

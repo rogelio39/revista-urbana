@@ -121,7 +121,6 @@ export const uploadImageData = async (idProd, formData) => {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log("data", data.message)
                 return data.message
             } else {
                 console.log("Error al subir la imagen");

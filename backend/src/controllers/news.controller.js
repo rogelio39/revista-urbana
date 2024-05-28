@@ -34,10 +34,10 @@ export const getNewById = async(req, res) => {
 
 
 export const createNews = async(req, res) => {
-    const {title, subtitle, category, font, text, pieDeImagen} = req.body;
+    const {title, subtitle, category, font, text, pieDeImagen, tags} = req.body;
 
     try{
-        const news = await newsModels.create({title, subtitle, category, font, pieDeImagen, text});
+        const news = await newsModels.create({title, subtitle, category, font, pieDeImagen, text, tags});
 
         if(!news){
             return res.status(400).send({message: "no se creo noticia"})
@@ -105,11 +105,31 @@ export const uploadImage = async (req, res) => {
 };
 
 export const updateNews = async(req, res) => {
-    const {title, subtitle, category, font, text, pieDeImagen} = req.body;
-    const {id} = req.params
+    const {title, subtitle, category, font, text, pieDeImagen, tags} = req.body;
+    const {id} = req.params;
 
+    const updatedFields = {}
+
+    
+    if(title !== undefined){
+        updatedFields.title = title
+    }if(subtitle !== undefined){
+        updatedFields.subtitle = subtitle
+    }
+    if(category !== undefined){
+        updatedFields.category = category
+    }
+    if(font !== undefined){
+        updatedFields.font = font
+    }
+    if(pieDeImagen !== undefined){
+        updatedFields.pieDeImagen = pieDeImagen
+    }
+    if(tags !== undefined){
+        updatedFields.tags = tags
+    }
     try{
-        const updatedNews = await newsModels.findByIdAndUpdate( id,  {title, subtitle, category, font, text, pieDeImagen}, {new : true});
+        const updatedNews = await newsModels.findByIdAndUpdate( id, updatedFields, {new : true});
 
         if(!updatedNews){
             return res.status(400).send({message: "no se creo noticia"})
