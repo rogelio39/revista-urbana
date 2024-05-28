@@ -9,8 +9,7 @@ import 'dotenv/config';
 import initializePassport from './config/passport.js';
 import router from './routes/index.routes.js';
 import __dirname from './path.js';
-
-
+import compression from 'express-compression';
 
 
 const app = express();
@@ -54,6 +53,7 @@ app.use(cors(corsOptions));
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(compression());
 app.use('/api', router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
