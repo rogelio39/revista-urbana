@@ -41,7 +41,7 @@ const New = ({ data }) => {
                     <div className={`shadow-md bg-neutral-50  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
                         <h1 itemProp = 'headline' className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
                         <div className='mb-5 flex flex-col justify-center items-center'>
-                            <img src={thumbnailUrl} alt="imagen" />
+                            <img src={thumbnailUrl} className='max-w-sm sm:max-w-2xl' alt={individualNews.title} />
                             <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
                         </div>
                         <h2 className='font-bold'>{individualNews.subtitle}</h2>

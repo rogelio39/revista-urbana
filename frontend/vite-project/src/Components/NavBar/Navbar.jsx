@@ -107,26 +107,26 @@ const Navbar = () => {
                 </form>
             </div>
             <div className="relative menu-container">
-                <div onClick={openMenu} className="flex flex-col gap-1 cursor-pointer"  aria-expanded={menuOpen} aria-label="Toggle menu">
+                <button   aria-expanded={menuOpen} aria-haspopup="true" aria-label="Toggle menu" onClick={openMenu} className="flex flex-col gap-1 cursor-pointer">
                     <span className="w-8 h-1  bg-black"></span>
                     <span className="w-8 h-1  bg-black"></span>
                     <span className="w-8 h-1  bg-black"></span>
-                </div>
+                </button>
                 {
                     menuOpen && (
-                        <ul className="absolute mt-2 w-48 right-0 flex flex-col items-start gap-5 bg-black transition duration-300 ease-in-out">
-                            <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToSociety}>SOCIEDAD</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToCulture}>CULTURA</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button onClick={goToSports} className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
-                            <li className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
+                        <ul className="absolute mt-2 w-48 right-0 flex flex-col items-start gap-5 bg-black transition duration-300 ease-in-out" role='menu'>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToSociety}>SOCIEDAD</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToCulture}>CULTURA</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button onClick={goToSports} className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
+                            <li role='menu-item' className="w-full hover:bg-blue-500 bg-black"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
                         </ul>
                     )
                 }

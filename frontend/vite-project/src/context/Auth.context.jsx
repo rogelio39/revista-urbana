@@ -1,11 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 import PropTypes from 'prop-types'
-
-
-const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
-
-
+import { registerUser, loginUser, logoutUser } from "../config/authContext.config";
 
 
 const AuthContext = createContext();
@@ -16,81 +12,18 @@ const AuthProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(false)
 
     const register = async(data) => {
-
-        try {
-            const response = await fetch(`${URL}/api/session/register`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-
-            if (response.ok) {
-                const responseData = await response.json()
-                return responseData;
-            }
-        } catch (error) {
-            console.log("error", error)
-        }
-
+        await registerUser(data)
     }
 
+    
     const login = async(data) => {
-
-        try {
-            const response = await fetch(`${URL}/api/session/login`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-
-            if (response.ok) {
-                const responseData = await response.json();
-                if (responseData) {
-                    setUser(responseData.user);
-                    setAuthenticated(true);
-                    document.cookie = `jwtCookie=${responseData.token}; expires=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()}; path=/;`;
-                    localStorage.setItem('user', JSON.stringify(responseData.user))
-                }
-            }
-
-        } catch (error) {
-            console.log("error", error);
-        }
+        await loginUser(data, setUser, setAuthenticated)
     }
 
     
-    const logout = async() => {
-        try {
-            const response = await fetch(`${URL}/api/session/logout`, {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-            })
-
-            if (response.ok) {
-                const responseData = await response.json();
-                if (responseData) {
-                    setUser();
-                    setAuthenticated(false);
-                    localStorage.removeItem('jwtCookie');
-                    localStorage.removeItem('user');
-                }
-            }
-
-        } catch (error) {
-            console.log("error", error);
-        }
+    const logout = async(data) => {
+        await logoutUser(data)
     }
-
-    
 
 
 
