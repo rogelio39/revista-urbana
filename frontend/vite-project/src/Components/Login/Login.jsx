@@ -1,18 +1,21 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../context/Auth.context"
 import { useNavigate } from 'react-router-dom';
+import getCookiesByName from "../../utils/utils";
 
 const Login = () => {
-    const { login, authenticated } = useContext(AuthContext);
+    const { login, logout } = useContext(AuthContext);
     const formRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [showLogin, setShowLogin] = useState(false)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
 
 
 
     useEffect(() => {
-        if (authenticated) {
+        const token = getCookiesByName('jwtCookie')
+        if (token) {
             setShowLogin(true);
         }
     }, [])
@@ -32,13 +35,21 @@ const Login = () => {
 
     }
 
+    const closeSession = async() => {
+        await logout();
+        navigate('/')
+    }
+
     if (loading) {
         return <div>Cargando...</div>
     }
     return (
         <div className="flex flex-col justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl sm:flex-row">
             {
-                showLogin ? (<div>Ya estas logueado</div>) :
+                showLogin ? (<div className="flex flex-col justify-center items-center"><h3>Ya estas logueado</h3>
+                <button onClick={closeSession} className="m-2 p-2 rounded bg-red-300 hover:bg-white hover:text-red-500">CERRAR SESION</button>
+
+                </div>) :
                     (<form className="flex flex-col justify-center items-center p-5 gap-5 sm:flex-row" ref={formRef} onSubmit={handleLogin}>
                         <div className="w-full sm:w-auto">
                             <label className="m-2" htmlFor="email">EMAIL:</label>

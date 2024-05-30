@@ -64,10 +64,38 @@ const AuthProvider = ({ children }) => {
         }
     }
 
+    
+    const logout = async() => {
+        try {
+            const response = await fetch(`${URL}/api/session/logout`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+            })
+
+            if (response.ok) {
+                const responseData = await response.json();
+                if (responseData) {
+                    setUser();
+                    setAuthenticated(false);
+                    localStorage.removeItem('jwtCookie');
+                    localStorage.removeItem('user');
+                }
+            }
+
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+
+    
+
 
 
     return (
-        <AuthContext.Provider value={{ user, register, login, authenticated }}>
+        <AuthContext.Provider value={{ user, register, login, logout, authenticated }}>
             {children}
         </AuthContext.Provider>
     )

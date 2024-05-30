@@ -30,3 +30,15 @@ export const login = async (req, res) => {
 
     res.status(200).send({ message: "usuario logueado con exito", user: req.user.rol, token: token});
 }
+
+
+
+export const logout = async (req, res) => {
+    try {
+        // sino, va esto:
+        res.clearCookie('jwtCookie');
+        res.status(200).send({ resultado: 'usuario deslogueado' })
+    } catch (error) {
+        res.status(400).send({ error: `error en logout ${error}` });
+    }
+}
