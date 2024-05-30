@@ -1,6 +1,7 @@
 import { useState, useRef, useContext, lazy } from "react";
 import { NewsContext } from "../../context/NewsContext";
 import getCookiesByName from "../../utils/utils";
+import New from "../New/New";
 
 const AddImage = lazy(() => import('../AddImage/AddImage'));
 
@@ -14,7 +15,7 @@ const AddEditNews = () => {
     const [tags, setTags] = useState([]);
     const [currentTag, setCurrentTag] = useState('')
     //metodos de context para crear, actualizar y subir imagenes
-    const { createNews, updateNews } = useContext(NewsContext);
+    const { createNews, updateNews, delNews} = useContext(NewsContext);
     //variables de estado para el id de las noticias, las noticias, el formulario, etc.
     const formRef = useRef(null);
     const [idNews, setIdNews] = useState();
@@ -87,7 +88,6 @@ const AddEditNews = () => {
 
     const handleTags = (event) => {
         setCurrentTag(event.target.value);
-        console.log("event en event", event.target.value)
     }
 
 
@@ -109,14 +109,20 @@ const AddEditNews = () => {
             setTags([...tags, currentTag.trim()]);
             setCurrentTag('');
         }
-        console.log("Tags", tags)
+    }
+
+    const deleteNew = async() => {
+        if(idNews){
+            console.log("idnews", idNews);
+            await delNews(idNews)
+        }
     }
 
 
     return (
         <div className="text-sm sm:text-xl gap-5">
             <div className="flex flex-col bg-red-200 m-3 rounded p-6 my-4  sm:flex-row flex-wraps items-center justify-center">
-                <form ref={formRef} className={!newsCreated ? ` sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-red-100 flex-col items-center` : 'hidden'} onSubmit={handleSubmit}>
+                <form ref={formRef} className={` sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-red-100 flex-col items-center`} onSubmit={handleSubmit}>
 
                     <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
                         <label htmlFor="title">Título:</label>
@@ -146,6 +152,7 @@ const AddEditNews = () => {
                         ))}
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
+
                     <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="pieDeImagen">Agregar pie de imagen</label>
                         <input type="text" name="pieDeImagen" id='pieDeImagen' />
@@ -185,12 +192,14 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addTags}>Agregar Tag</button>
 
                     </div>
+                    <div className="flex justify-center items-center">
+                        <button className=" hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 w-24 mb-2" type="submit">{isCreating ? 'crear' : 'actualizar'}</button>
+                    </div>
 
-                    {
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 m-3 w-24 flex items-center justify-center gap-5" type="submit">{newsCreated ? 'cargando' : (isCreating ? 'crear' : 'actualizar')}</button>
-                    }
                 </form>
-                <div className={newsCreated ? 'shadow-lg rounded p-6 bg-red-100 flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
+                
+                <div className={newsCreated ? 'm-2 shadow-lg rounded p-6 bg-green-500  flex flex-col items-center' : 'hidden'}>NOTICA CARGADA CORECTAMENTE</div>
+                <button onClick={deleteNew} className={newsCreated ? 'm-2 p-2 shadow-md bg-red-500 rounded' : 'hidden'}>Eliminar noticia</button>
                 <div className="flex items-center justify-center mt-2">
                     <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
                         {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
@@ -201,13 +210,12 @@ const AddEditNews = () => {
                 idNews && (<AddImage idNews={idNews} />)
             }
             <div>
+                <h2 className="text-center bg-blue-800 text-white">NOTICIA ACTUALIZADA</h2>
                 {
-                    newsUpdated && updatedNews.thumbnail.length > 0 ? <div className="flex-column m-10 p-5 justify-center items-center">
-                        <h1 className='mb-5 text-xl font-bold'>{updatedNews.title}</h1>
-                        <img className='rounded mb-5' src={updatedNews.thumbnail.length > 0`${updatedNews.thumbnail[0]}`} alt="imagen" />
-                        <h2 className='font-bold'>{updatedNews.subtitle}</h2>
-                        <p>{updatedNews.text}</p>
-                    </div> : <p className="hidden"></p>
+                    newsUpdated && updatedNews.thumbnail.length > 0 ? 
+                    <New data={updatedNews}/>
+                    
+                    : <p className="hidden"></p>
                 }
             </div>
         </div>

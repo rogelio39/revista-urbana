@@ -112,21 +112,25 @@ export const updateNews = async(req, res) => {
 
     
     if(title !== undefined){
-        updatedFields.title = title
-    }if(subtitle !== undefined){
-        updatedFields.subtitle = subtitle
+        updatedFields.title = title;
+    }
+    if(subtitle !== undefined){
+        updatedFields.subtitle = subtitle;
     }
     if(category !== undefined){
-        updatedFields.category = category
+        updatedFields.category = category;
     }
     if(font !== undefined){
-        updatedFields.font = font
+        updatedFields.font = font;
+    }
+    if(text !== undefined){
+        updatedFields.text = text;
     }
     if(pieDeImagen !== undefined){
-        updatedFields.pieDeImagen = pieDeImagen
+        updatedFields.pieDeImagen = pieDeImagen;
     }
     if(tags !== undefined){
-        updatedFields.tags = tags
+        updatedFields.tags = tags;
     }
     try{
         const updatedNews = await newsModels.findByIdAndUpdate( id, updatedFields, {new : true});
@@ -142,6 +146,21 @@ export const updateNews = async(req, res) => {
     }
 }
 
+export const deleteNews = async(req, res) => {
+    const {id} = req.params;
+    try{
+        const delNews = await newsModels.findByIdAndDelete( id, {new : true});
+
+        if(!delNews){
+            return res.status(400).send({message: "no se elimino noticia"})
+        }
+
+        res.status(200).send(delNews);
+
+    }catch(error){
+        res.status(500).send({message: "error del servidor", error: error});
+    }
+}
 
 // export const uploadImage = async(req, res) => {
 

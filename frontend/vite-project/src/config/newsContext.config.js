@@ -81,9 +81,10 @@ export const createNewsData = async (data, token, setNews) => {
 
 export const updateNewsData = async (id, data, token, setNews) => {
 
+
     try {
         const response = await fetch(`${URL}/api/news/updateNews/${id}`, {
-            method: 'POST',
+            method: 'PUT',
             credentials: 'include',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -130,6 +131,35 @@ export const uploadImageData = async (idProd, formData) => {
         console.log("Error", error);
     }
 }
+
+
+export const deleteNews = async (idNew) => {
+    try {
+        const token = getCookiesByName('jwtCookie');
+        if (idNew && token) {
+            const response = await fetch(`${URL}/api/news/${idNew}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                const errorData = await response.json();
+                console.error("Error al eliminar noticia:", errorData.message);
+                throw new Error(`Error ${response.status}: ${errorData.message}`);
+            }
+        } else {
+            throw new Error("ID de noticia o token no proporcionado");
+        }
+    } catch (error) {
+        console.error("Error al eliminar noticia:", error.message);
+        throw error;
+    }
+};
 
 
 

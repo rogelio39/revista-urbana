@@ -57,7 +57,7 @@ const AddImage = ({idNews}) => {
                         <label htmlFor="newsImage">Imagen de portada:</label>
                         <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" className="w-64" name="newsImage" accept="image/*" multiple required />
                         {
-                            !imageUpload && (
+                            (
                                 <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 sm:text-xl" type="button">SUBIR IMAGEN</button>
                             )
                         }
@@ -77,7 +77,7 @@ const AddImage = ({idNews}) => {
                 {
                     imageUpload ?
                         <div className="m-4 p-4">
-                            <h1 className="bg-red-200 text-center font-bold text-xl">Noticia `{lastNew.title}` actualizada correctamente</h1>
+                            <h1 className="bg-blue-400 text-white text-center font-bold text-xl">Imagen agregada correctamente. La noticia esta asi:</h1>
                             <New data={lastNew} />
                         </div>
                         : <p className="hidden"></p>},

@@ -8,7 +8,6 @@ const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
 
-    console.log("data", data)
 
 
     useEffect(() => {
