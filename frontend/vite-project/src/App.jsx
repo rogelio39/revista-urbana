@@ -11,7 +11,12 @@ const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
 const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
-const  Profile = lazy(() => import('./Components/Profile/Profile'))
+const Profile = lazy(() => import('./Components/Profile/Profile'))
+
+const AdSenseScript = () => (
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5685964602459573"
+    crossOrigin="anonymous"></script>
+);
 
 
 function App() {
@@ -22,17 +27,18 @@ function App() {
       <NewsProvider>
         <BrowserRouter>
           <AuthProvider>
+            <AdSenseScript/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
-                <Route path='*'/>
-                <Route path='/' element={<MainSection/>} />
+                <Route path='*' />
+                <Route path='/' element={<MainSection />} />
                 <Route path='/add-news' element={<AddEditNews />} />
-                <Route path='/search/:query' element={<SearchResults/>}/>
-                <Route path='/newsByCategory/:query' element={<NewsByCategory/>}/>
-                <Route path='/newById/:id' element={<NewsById/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/search/:query' element={<SearchResults />} />
+                <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
+                <Route path='/newById/:id' element={<NewsById />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/profile' element={<Profile />} />
               </Routes>
             </Suspense>
           </AuthProvider>
