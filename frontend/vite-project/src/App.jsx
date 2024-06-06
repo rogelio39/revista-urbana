@@ -12,12 +12,7 @@ const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
 const Profile = lazy(() => import('./Components/Profile/Profile'))
-
-const AdSenseScript = () => (
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5685964602459573"
-    crossOrigin="anonymous"></script>
-);
-
+const AddSense = lazy(() => import('./Components/AddSense/AddSense'))
 
 function App() {
 
@@ -27,7 +22,7 @@ function App() {
       <NewsProvider>
         <BrowserRouter>
           <AuthProvider>
-            <AdSenseScript/>
+            <AddSense/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
