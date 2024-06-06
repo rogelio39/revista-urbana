@@ -10,13 +10,12 @@ import initializePassport from './config/passport.js';
 import router from './routes/index.routes.js';
 import __dirname from './path.js';
 import compression from 'express-compression';
-import cluster from 'cluster';
-import { cpus } from 'os';
+
 
 const app = express();
 const PORT = 4000;
 
-const numerosDeProcesadores = cpus().length;
+
 
 
 const URL = process.env.MODE == 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
@@ -73,33 +72,10 @@ mongoose.connect(process.env.MONGO_URL, {
     })
 
 
+app.use('/api', router);
+app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
+app.listen(PORT, () => {
+    console.log(`Listening on port  ${PORT}`);
+})
 
-if (cluster.isPrimary) {
-    for (let i = 0; i < numerosDeProcesadores; i++) {
-        const worker = cluster.fork();
-
-        worker.on('online', () => {
-            console.log(`worker online primary ${worker.process.pid}`)
-        });
-    }
-
-    cluster.on('exit', (worker, code, signal) => {
-
-        const newWorker = cluster.fork();
-        newWorker.on('online', () => {
-            console.log(`Worker online secondary ${newWorker}`);
-        })
-    })
-
-} else {
-
-
-    app.use('/api', router);
-    app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
-
-    app.listen(PORT, () => {
-        console.log(`Listening on port  ${PORT}`);
-    })
-
-}
