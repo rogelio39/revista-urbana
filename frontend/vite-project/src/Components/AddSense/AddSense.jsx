@@ -9,7 +9,7 @@ const AddSense = () => {
     }, [])
     return (
         <div>
-            <h1>hola soy un adds</h1>
+            <h1>hola soy un adds{adds}</h1>
             {
                 adds && MODE === 'PROD' && (<script async src={adds}
                     crossOrigin="anonymous"></script>)
