@@ -8,7 +8,6 @@ const News = () => {
     const { fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState(null);
-    const [getLastNew, setGetLastNew] = useState(null)
 
     useEffect(() => {
         const getTheNews = async () => {
@@ -17,8 +16,6 @@ const News = () => {
                 if (data) {
                     setAllNews(data);
                     setLoading(false);
-                    const lastNew = data.slice(-1)[0];
-                    setGetLastNew(lastNew);
                 }
             } catch (error) {
                 console.log("error", error)
@@ -37,9 +34,15 @@ const News = () => {
 
             <div className='border-b mb-10 border-gray-400 flex flex-wrap justify-between items-center  p-1'>
                 <h1 className='text-white'>ULTIMAS NOTICIAS</h1>
-                <div key={getLastNew._id} >
-                    <New data={getLastNew} />
-                </div>
+                {
+                    allNews.length > 0 && (
+
+                        <div key={allNews._id} >
+                            <New data={allNews[allNews.length -1 ]} />
+                        </div>
+
+                    )
+                }
             </div>
 
 
@@ -47,7 +50,7 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>TODAS LAS NOTAS</h1>
                 <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row flex-wrap'>
                     {
-                        allNews.map(news => (
+                        allNews.slice(-4).map(news => (
                             <div key={news._id}>
                                 <NotesContainer data={news} />
                             </div>
@@ -63,7 +66,7 @@ const News = () => {
                         allNews.map(news => (
                             news.category === 'politica' ?
                                 <div key={news._id}>
-                                    <NotesContainer data={news} />
+                                    <NotesContainer data={news.slice(-4)} />
                                 </div> : ''
                         ))
                     }
@@ -74,11 +77,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>SALUD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'salud' ?
+                        allNews.filter(news => news.category === 'salud').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div> 
                         ))
                     }
                 </div>
@@ -88,11 +90,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>NOTAS COLOR</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'notas color' ?
+                        allNews.filter(news => news.category === 'notas color').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div> 
                         ))
                     }
                 </div>
@@ -102,11 +103,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>DEPORTES</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'deportes' ?
+                        allNews.filter(news => news.category === 'deportes').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div> 
                         ))
                     }
                 </div>
@@ -116,11 +116,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>ESPECTACULO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'espectaculo' ?
+                        allNews.filter(news => news.category === 'espectaculo').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div>
                         ))
                     }
                 </div>
@@ -130,11 +129,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>SOCIEDAD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'sociedad' ?
+                        allNews.filter(news => news.category === 'sociedad').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div>
                         ))
                     }
                 </div>
@@ -144,11 +142,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>CULTURA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'cultura' ?
+                        allNews.filter(news => news.category === 'cultura').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div>
                         ))
                     }
                 </div>
@@ -158,11 +155,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>MUNDO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'mundo' ?
+                        allNews.filter(news => news.category === 'mundo').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div>
                         ))
                     }
                 </div>
@@ -172,11 +168,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>DESTACADOS</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'destacados' ?
+                        allNews.filter(news => news.category === 'destacados').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div>
                         ))
                     }
                 </div>
@@ -186,11 +181,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>ECONOMIA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'economia' ?
+                        allNews.filter(news => news.category === 'economia').slice(-4).map(news => (
                                 <div key={news._id}>
                                     <NotesContainer data={news} />
-                                </div> : ''
+                                </div> 
                         ))
                     }
                 </div>
