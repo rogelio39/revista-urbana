@@ -1,7 +1,6 @@
 import getCookiesByName from "../utils/utils";
 
-const URL = import.meta.env.VITE_REACT_APP_MODE == 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
-
+const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
 
@@ -20,12 +19,12 @@ export const fetchNewsData = async (setNews, setError) => {
             const data = await response.json();
             setNews(data)
             return data
-        } else{
+        } else {
             const text = await response.text();
             throw new Error(`Error ${response.status} ${text}`)
         }
     } catch (error) {
-        console.log("error", error);
+        console.log("error", error.message);
         setError(error.message);
         throw error;
     }
@@ -90,7 +89,7 @@ export const updateNewsData = async (id, data, token, setNews) => {
                 'Authorization': `Bearer ${token}`,
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(data) 
+            body: JSON.stringify(data)
         });
 
         const datos = await response.json();
@@ -164,4 +163,4 @@ export const deleteNews = async (idNew) => {
 
 
 
-export {URL};
+export { URL };

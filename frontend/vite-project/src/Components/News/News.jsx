@@ -2,7 +2,6 @@ import New from '../New/New'
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
-// import HealthyNews from '../HealthyNews/HealthyNews';
 
 
 const News = () => {

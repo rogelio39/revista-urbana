@@ -13,14 +13,13 @@ import compression from 'express-compression';
 
 
 const app = express();
-const PORT = 4000;
+const PORT = 8080;
 
 
 
 
-const URL = process.env.MODE == 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
+const URL = process.env.MODE === 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
 const whiteList = [URL];
-
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -70,6 +69,11 @@ mongoose.connect(process.env.MONGO_URL, {
         console.log("error en conexion a DB", error)
         process.exit(1);
     })
+
+
+app.get('/test', (req, res) => {
+    res.send('Servidor funcionando');
+});
 
 
 app.use('/api', router);
