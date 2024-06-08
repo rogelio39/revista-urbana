@@ -10,13 +10,13 @@ import initializePassport from './config/passport.js';
 import router from './routes/index.routes.js';
 import __dirname from './path.js';
 import compression from 'express-compression';
-
+import apicache from 'apicache'
 
 const app = express();
 const PORT = 8080;
 
 
-
+const cache = apicache.middleware;
 
 const URL = process.env.MODE === 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
 const whiteList = [URL];
@@ -55,7 +55,11 @@ app.use(cors(corsOptions));
 initializePassport();
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(compression());
+app.use(compression({
+    brotli: { enabled: true, zlib: {} },
+    threshold: 1024,
+    zlib: { level: 6 }
+}));
 
 
 

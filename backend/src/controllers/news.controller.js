@@ -1,6 +1,9 @@
 import { newsModels } from "../models/news.models.js";
 import {s3Client, endpoint} from '../libs/s3Client.js';
 import { PutObjectCommand } from "@aws-sdk/client-s3";
+import {v4 as uuidv4} from 'uuid';
+import sharp from 'sharp'
+
 
 export const getNews = async(req, res) => {
     try{
@@ -76,13 +79,21 @@ export const uploadImage = async (req, res) => {
         const file = files[0];
         const buffer = file.buffer;
 
+        
+        const uniqueFileName = `${uuidv4()}-${file.originalname}`
+
+        const optimizedBuffer = await sharp(buffer)
+        .resize(800)
+        .toFormat('webp')
+        .toBuffer();
 
         const bucketParams = {
             Bucket: "revista-urbana", // Solo el nombre del bucket
-            Key: `${file.originalname}`, // O usa un nombre único si es necesario
-            Body: buffer,
+            Key: uniqueFileName, // O usa un nombre único si es necesario
+            Body: optimizedBuffer,
             ACL: 'public-read',
-            ContentType: file.mimetype
+            ContentType: 'image/webp',
+            
         };
 
 
