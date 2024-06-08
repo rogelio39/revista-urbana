@@ -15,8 +15,8 @@ import apicache from 'apicache'
 const app = express();
 const PORT = 8080;
 
-
 const cache = apicache.middleware;
+
 
 const URL = process.env.MODE === 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
 const whiteList = [URL];
@@ -80,7 +80,7 @@ app.get('/test', (req, res) => {
 });
 
 
-app.use('/api', router);
+app.use('/api', cache('1 hour'), router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
 app.listen(PORT, () => {
