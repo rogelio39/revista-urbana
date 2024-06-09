@@ -13,12 +13,20 @@ const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
 const Profile = lazy(() => import('./Components/Profile/Profile'))
-const AddSense = lazy(() => import('./Components/AddSense/AddSense'))
 
 function App() {
 
   useEffect(() => {
     document.title = "REVISTA URBANA"; 
+    const script = document.createElement("script");
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5685964602459573";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
+
+    return () => {
+        document.head.removeChild(script);
+    };
   }, []);
 
 
@@ -27,7 +35,6 @@ function App() {
       <NewsProvider>
         <BrowserRouter>
           <AuthProvider>
-            <AddSense/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
