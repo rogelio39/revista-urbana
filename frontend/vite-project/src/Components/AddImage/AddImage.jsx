@@ -50,7 +50,7 @@ const AddImage = ({idNews}) => {
     }
 
     return (
-        <div>
+        <>
             <div className="mt-2 flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
                 <div className="w-72 hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col items-center justify-start gap-5 sm:flex-row sm:w-auto">
                     <form className="flex flex-col sm:flex-row items-center gap-2 " encType="multipart/form-data">
@@ -83,7 +83,7 @@ const AddImage = ({idNews}) => {
                         </div>
                         : <p className="hidden"></p>},
             </div>
-        </div>
+        </>
 
     )
 }

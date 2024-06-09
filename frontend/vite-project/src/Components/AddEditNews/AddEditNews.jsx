@@ -217,7 +217,7 @@ const AddEditNews = () => {
             {
                 idNews && (<AddImage idNews={idNews} />)
             }
-            <div>
+            <>
                 <h2 className="text-center bg-blue-800 text-white">NOTICIA ACTUALIZADA</h2>
                 {
                     newsUpdated && updatedNews.thumbnail.length > 0 ?
@@ -225,7 +225,7 @@ const AddEditNews = () => {
 
                         : <p className="hidden"></p>
                 }
-            </div>
+            </>
         </div>
     )
 }

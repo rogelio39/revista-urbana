@@ -62,7 +62,7 @@ const SearchResults = () => {
     }
 
     return (
-        <div>
+        <>
             {
                 error ? (<p>{errorMessage}</p>) :
                     (<>
@@ -74,7 +74,7 @@ const SearchResults = () => {
                     </>)
             }
 
-        </div>
+        </>
     )
 }
 

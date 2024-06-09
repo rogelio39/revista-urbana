@@ -33,7 +33,7 @@ const NewsByCategory = () => {
 
 
     return (
-        <div>
+        <>
             {
                 newsFiltered && (newsFiltered.map(news => (
                     <div key={news._id}>
@@ -45,7 +45,7 @@ const NewsByCategory = () => {
 
                 )
             }
-        </div>
+        </>
     )
 }
 

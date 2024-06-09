@@ -87,13 +87,14 @@ const Navbar = () => {
         navigate('/newsByCategory/notas%20color')
     }
 
+    const logoWidth = 28
 
     return (
         <div className="flex justify-between items-center bg-cyan-800  shadow-xl p-4">
             <div onClick={goToMain} className="m-2 bg-white rounded-full">
-                <img className="w-28" src="../../logo-bg.png" alt="LOGO" />
+                <img width={logoWidth} className="w-28" src="../../logo-bg.png" alt="LOGO" />
             </div>
-            <div>
+            <>
                 <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
                     <input
                         className="bg-black text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-96"
@@ -105,7 +106,7 @@ const Navbar = () => {
 
                     <button className="text-sm p-1 shadow-lg bg-black hover:bg-blue-500 text-white rounded sm:text-lg" type="submit">Buscar</button>
                 </form>
-            </div>
+            </>
             <div className="relative menu-container m-2">
                 <button   aria-expanded={menuOpen} aria-haspopup="true" aria-label="Toggle menu" onClick={openMenu} className="flex flex-col gap-1 cursor-pointer">
                     <span className="w-8 h-1  bg-black"></span>
