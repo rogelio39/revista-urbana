@@ -5,6 +5,7 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
+import { useEffect } from 'react';
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'))
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
@@ -15,6 +16,10 @@ const Profile = lazy(() => import('./Components/Profile/Profile'))
 const AddSense = lazy(() => import('./Components/AddSense/AddSense'))
 
 function App() {
+
+  useEffect(() => {
+    document.title = "REVISTA URBANA"; 
+  }, []);
 
 
   return (
