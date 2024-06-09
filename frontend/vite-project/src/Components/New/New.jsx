@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
-
+import 'lazysizes'
 
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
@@ -31,6 +31,9 @@ const New = ({ data }) => {
     }
 
 
+    const imgWidth = 800
+    const imgHeight = 600 
+
 
 
 
@@ -41,7 +44,11 @@ const New = ({ data }) => {
                     <div className={`shadow-md bg-neutral-50  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
                         <h1 itemProp = 'headline' className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
                         <div className='mb-5 flex flex-col justify-center items-center'>
-                            <img src={thumbnailUrl} className='max-w-sm w-[800px] h-[400px] sm:max-w-2xl' alt={individualNews.title} />
+                            <img data-src={thumbnailUrl} 
+                            width={imgWidth} 
+                            height={imgHeight} 
+                            className='lazyload' 
+                            alt={individualNews.title} />
                             <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
                         </div>
                         <h2 className='font-bold'>{individualNews.subtitle}</h2>
