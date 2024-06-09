@@ -12,7 +12,7 @@ const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
 const Profile = lazy(() => import('./Components/Profile/Profile'))
-
+const AddSense = lazy(() => import('./Components/AddSense/AddSense'))
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
       <NewsProvider>
         <BrowserRouter>
           <AuthProvider>
+            <AddSense/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
