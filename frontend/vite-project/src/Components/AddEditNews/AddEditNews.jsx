@@ -115,7 +115,6 @@ const AddEditNews = () => {
 
     const deleteNew = async () => {
         if (idNews) {
-            console.log("idnews", idNews);
             const deleteNew = await delNews(idNews);
             if (deleteNew) {
                 setNewDelete(true)

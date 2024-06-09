@@ -10,12 +10,10 @@ import initializePassport from './config/passport.js';
 import router from './routes/index.routes.js';
 import __dirname from './path.js';
 import compression from 'express-compression';
-import apicache from 'apicache'
 
 const app = express();
 const PORT = 8080;
 
-const cache = apicache.middleware;
 
 
 const URL = process.env.MODE === 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
@@ -76,7 +74,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 
 
-app.use('/api', cache('1 hour'), router);
+app.use('/api', router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
 
 app.listen(PORT, () => {

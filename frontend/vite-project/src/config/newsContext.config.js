@@ -17,7 +17,6 @@ export const fetchNewsData = async (setNews, setError) => {
 
         if (response.ok) {
             const data = await response.json();
-            console.log("data datos en contexto", data)
             setNews(data)
             return data
         } else {
