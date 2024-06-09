@@ -7,13 +7,14 @@ import NotesContainer from '../notesContainer/NotesContainer';
 const News = () => {
     const { fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
-    const [allNews, setAllNews] = useState(null);
+    const [allNews, setAllNews] = useState([]);
 
     useEffect(() => {
         const getTheNews = async () => {
             try {
                 const data = await fetchNews();
                 if (data) {
+                    console.log("data", data)
                     setAllNews(data);
                     setLoading(false);
                 }
@@ -24,6 +25,7 @@ const News = () => {
 
         getTheNews();
     }, [])
+
 
 
     if (loading) {

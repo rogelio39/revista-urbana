@@ -9,7 +9,7 @@ export const getNews = async(req, res) => {
     try{
         const news = await newsModels.find();
         if(news){
-            res.status(200).send(news)
+            res.status(200).json(news)
         }else{
             res.status(400).send({message: "error al traer noticias"})
         }

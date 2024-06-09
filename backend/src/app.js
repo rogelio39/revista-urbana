@@ -75,10 +75,6 @@ mongoose.connect(process.env.MONGO_URL, {
     })
 
 
-app.get('/test', (req, res) => {
-    res.send('Servidor funcionando');
-});
-
 
 app.use('/api', cache('1 hour'), router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
