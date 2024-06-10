@@ -35,7 +35,7 @@ const ImageLCP = () => {
 
         getNews()
 
-    }, [fetchNews])
+    }, [])
 
 
 
