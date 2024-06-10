@@ -54,7 +54,7 @@ const New = ({ data }) => {
                                         width={imgWidthForDesktop}
                                         height={imgHeightForDesktop}
                                         loading='lazy'
-                                        className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 sm:w-[800px]'
+                                        className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 sm:w-[800px] sm:h-[600]'
                                         alt={individualNews.title}
                                         itemProp='image' />
                                     <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
