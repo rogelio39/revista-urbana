@@ -25,10 +25,21 @@ const newsSchema = new Schema({
     pieDeImagen : {
         type: String,
     },
-    tags : [],
-    thumbnail: []
+    tags : [String],
+    thumbnail: [String],
+    datePublished: {
+        type : Date,
+        default : Date.now
+    }
 })
 
 newsSchema.plugin(paginate);
+
+newsSchema.pre('save', function(next) {
+    if(!this.datePublished){
+        this.datePublished = new Date()
+    }
+    next()
+})
 
 export const newsModels = model('news', newsSchema)
