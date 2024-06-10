@@ -9,7 +9,6 @@ const AdSense = () => {
         script.async = true;
         script.crossOrigin = "anonymous";
         document.head.appendChild(script);
-
         return () => {
             document.head.removeChild(script);
         };
