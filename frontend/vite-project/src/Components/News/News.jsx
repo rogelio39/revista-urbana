@@ -14,7 +14,6 @@ const News = () => {
             try {
                 const data = await fetchNews();
                 if (data) {
-                    console.log("data", data)
                     setAllNews(data);
                     setLoading(false);
                 }

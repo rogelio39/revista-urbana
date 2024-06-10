@@ -37,8 +37,6 @@ const NewsById = () => {
 
 
 
-
-
     return (
         <div className='flex-column m-10 p-5 justify-center items-center '>
             {

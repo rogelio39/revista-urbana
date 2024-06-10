@@ -50,3 +50,4 @@ const NewsByCategory = () => {
 }
 
 export default NewsByCategory
+

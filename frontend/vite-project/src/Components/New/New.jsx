@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
-import 'lazysizes'
 
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
@@ -21,6 +20,8 @@ const New = ({ data }) => {
         }
     }, [data])
 
+
+    
     let thumbnailUrl = ''
 
 
@@ -31,8 +32,9 @@ const New = ({ data }) => {
     }
 
 
-    const imgWidthForDesktop = 800
-    const imgHeightForDesktop = 600
+
+    const imgWidthForDesktop = 640
+    const imgHeightForDesktop = 640
 
 
 
@@ -48,10 +50,11 @@ const New = ({ data }) => {
                         <main>
                             <article>
                                 <div className='mb-5 flex flex-col justify-center items-center'>
-                                    <img data-src={thumbnailUrl}
+                                    <img src={thumbnailUrl}
                                         width={imgWidthForDesktop}
                                         height={imgHeightForDesktop}
-                                        className='lazyload'
+                                        loading='lazy'
+                                        className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 sm:w-[800px]'
                                         alt={individualNews.title}
                                         itemProp='image' />
                                     <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
@@ -91,6 +94,17 @@ const New = ({ data }) => {
                                     <p className='bg-blue-200 w-auto    p-1 rounded  text-center hover:bg-blue-400   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
                                 </footer>
                                 <p>VER VIDEO</p>
+
+
+
+
+                                {
+                                    individualNews.datePublished ? (
+                                        <time dateTime={individualNews.datePublished}>
+                                            Fecha de publicación: {individualNews.datePublished.split('T')[0]}
+                                        </time>
+                                    ) : <></>
+                                }
 
                             </article>
 

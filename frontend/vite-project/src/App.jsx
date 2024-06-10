@@ -5,29 +5,18 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
-import { useEffect } from 'react';
+import AdSense from './Components/adSense/AdSense';
+
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'))
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
 const Login = lazy(() => import('./Components/Login/Login'))
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
-const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
 const Profile = lazy(() => import('./Components/Profile/Profile'))
+const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
 
 function App() {
 
-  useEffect(() => {
-    document.title = "REVISTA URBANA"; 
-    const script = document.createElement("script");
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5685964602459573";
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    document.head.appendChild(script);
-
-    return () => {
-        document.head.removeChild(script);
-    };
-  }, []);
 
 
   return (
@@ -35,6 +24,7 @@ function App() {
       <NewsProvider>
         <BrowserRouter>
           <AuthProvider>
+            <AdSense/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>

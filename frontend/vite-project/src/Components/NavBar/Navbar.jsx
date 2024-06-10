@@ -99,6 +99,8 @@ const Navbar = () => {
                     <input
                         className="bg-black text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-96"
                         type="text"
+                        name="search"
+                        id="search"
                         value={searchQuery}
                         placeholder="Buscar noticias"
                         onChange={(e) => setSearchQuery(e.target.value)}
