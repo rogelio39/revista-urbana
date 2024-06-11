@@ -25,12 +25,12 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <ImageLCP/>
-            <AdSense/>
             <Navbar />
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
                 <Route path='*' />
                 <Route path='/' element={<MainSection />} />
+                <AdSense/>
                 <Route path='/add-news' element={<AddEditNews />} />
                 <Route path='/search/:query' element={<SearchResults />} />
                 <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
