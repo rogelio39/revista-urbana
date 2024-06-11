@@ -113,14 +113,14 @@ const Navbar = () => {
 
             {
                 menuOpen && (
-                    <div className="left-0 bg-slate-900 p-10 mt-10 absolute w-full flex flex-wrap gap-20  items-center transition duration-300 ease-in-out">
-                        <ul role='menu'>
+                    <div className="left-0 top-0 bg-slate-900 p-10  absolute w-full flex flex-wrap gap-20  items-center transition duration-300 ease-in-out">
+                        <ul  role='menu'>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
                         </ul>
-                        <ul role="menu">
+                        <ul  role="menu">
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToSociety}>SOCIEDAD</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToCulture}>CULTURA</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
@@ -128,8 +128,8 @@ const Navbar = () => {
 
                         </ul>
 
-                        <ul role="menu">
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
+                        <ul  role="menu">
+                        <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
@@ -141,9 +141,9 @@ const Navbar = () => {
             }
             <div className="relative menu-container m-2">
                 <button aria-expanded={menuOpen} aria-haspopup="true" aria-label="Toggle menu" onClick={openMenu} className="flex flex-col gap-1 cursor-pointer">
-                    <span className="w-8 h-1  bg-slate-900"></span>
-                    <span className="w-8 h-1  bg-slate-900"></span>
-                    <span className="w-8 h-1  bg-slate-900"></span>
+                    <span className={!menuOpen ? `w-8 h-1  bg-slate-900` : 'w-8 h-1  bg-slate-200'}></span>
+                    <span className={!menuOpen ? `w-8 h-1  bg-slate-900` : 'w-8 h-1  bg-slate-200'}></span>
+                    <span className={!menuOpen ? `w-8 h-1  bg-slate-900` : 'w-8 h-1  bg-slate-200'}></span>
                 </button>
 
             </div>
