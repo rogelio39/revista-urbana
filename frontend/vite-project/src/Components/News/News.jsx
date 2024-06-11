@@ -31,15 +31,15 @@ const News = () => {
         return <div>Cargando...</div>
     }
     return (
-        <div className='p-10 flex flex-col'>
+        <div className='p-10 flex flex-col items-center'>
 
-            <div className='border-b mb-10 border-gray-400 flex flex-wrap justify-between items-center  p-1'>
-                <h1 className='text-white'>ULTIMAS NOTICIAS</h1>
+            <div className='border-b-2 mb-10 border-gray-900  text-center  w-full max-w-screen-lg flex flex-wrap justify-between items-center  p-1'>
                 {
                     allNews.length > 0 && (
 
                         <div key={allNews._id} >
-                            <New data={allNews[allNews.length -1 ]} />
+                            <h1 className='text-black text-1xl sm:text-2xl'>ULTIMAS NOTICIAS</h1>
+                            <New data={allNews[allNews.length - 1]} />
                         </div>
 
                     )
@@ -79,9 +79,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'salud').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div> 
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -92,9 +92,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'notas color').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div> 
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -105,9 +105,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'deportes').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div> 
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -118,9 +118,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'espectaculo').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div>
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -131,9 +131,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'sociedad').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div>
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -144,9 +144,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'cultura').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div>
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -157,9 +157,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'mundo').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div>
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -170,9 +170,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'destacados').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div>
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
@@ -183,9 +183,9 @@ const News = () => {
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
                         allNews.filter(news => news.category === 'economia').slice(-4).map(news => (
-                                <div key={news._id}>
-                                    <NotesContainer data={news} />
-                                </div> 
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>

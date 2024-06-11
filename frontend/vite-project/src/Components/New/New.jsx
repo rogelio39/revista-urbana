@@ -43,9 +43,9 @@ const New = ({ data }) => {
         <article itemScope itemType="https://schema.org/NewsArticle">
             {
                 individualNews && (
-                    <div className={`shadow-md bg-neutral-50  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
+                    <div className={`shadow-md bg-slate-200 text-justify  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 ${individualNews.font}`}>
                         <header>
-                            <h1 itemProp='headline' className='mb-5 text-xl font-bold'>{individualNews.title}</h1>
+                            <h1 itemProp='headline' className='mb-5 sm:text-xl font-bold'>{individualNews.title}</h1>
                         </header>
                         <main>
                             <article>
@@ -90,7 +90,7 @@ const New = ({ data }) => {
                                             }
                                         </ul>
                                     </section>
-                                    <p className='bg-blue-200 w-auto    p-1 rounded  text-center hover:bg-blue-400   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
+                                    <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
                                 </footer>
                                 <p>VER VIDEO</p>
 

@@ -5,7 +5,7 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Auth.context';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
-import AdSense from './Components/adSense/AdSense';
+// import AdSense from './Components/adSense/AdSense';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'))
@@ -25,8 +25,8 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <ImageLCP/>
-            <Navbar />
-            <AdSense/>
+            <Navbar /> 
+            {/* <AdSense/> */}
             <Suspense fallback={<div>Cargando...</div>}>
               <Routes>
                 <Route path='*' />

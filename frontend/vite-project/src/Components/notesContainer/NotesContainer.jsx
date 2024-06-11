@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const NotesContainer = ({ data }) => {
 
     const imgWidth = 290
-    const imgHeight = 290
+    const imgHeight = 160
+
 
 
     let thumbnailUrl = ''
@@ -19,11 +20,11 @@ const NotesContainer = ({ data }) => {
 
 
     return (
-        <div className='bg-white rounded flex justify-center items-center'>
+        <div className='bg-slate-200 text-center rounded flex justify-center items-center '>
             <Link to={`/newById/${data._id}`}>
-                <div  className='hover:shadow-white hover:shadow-2xl  shadow-white shadow-md h-96  flex-column overflow-hidden w-72 justify-between items-center' id={data._id}>
-                    <img width={imgWidth} height={imgHeight} className='rounded mb-5' loading='lazy' src={thumbnailUrl} alt={data.title} />
-                    <h1 className='m-3 mb-5 text-xl font-bold'>{data.title}</h1>
+                <div  className='hover:shadow-slate-600 hover:shadow-2xl  h-[25rem] shadow-slate-500 shadow-md  flex-column overflow-hidden justify-between items-center sm:w-96' id={data._id}>
+                    <img width={imgWidth} height={imgHeight} className='rounded mb-5 object-cover w-full h-52' loading='lazy' src={thumbnailUrl} alt={data.title} />
+                    <h1 className='m-3 mb-5 sm:text-xl font-bold'>{data.title}</h1>
                 </div>
             </Link>
         </div>
