@@ -33,7 +33,7 @@ const News = () => {
     return (
         <div className='p-10 flex flex-col items-center'>
 
-            <div className='border-b-2 mb-10 border-gray-900  text-center  w-full max-w-screen-lg flex flex-wrap justify-between items-center  p-1'>
+            <div className='mt-48 border-b-2 mb-10 border-gray-900  text-center  w-full max-w-screen-lg flex flex-wrap justify-between items-center  p-1'>
                 {
                     allNews.length > 0 && (
 
