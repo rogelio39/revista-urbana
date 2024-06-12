@@ -8,12 +8,14 @@ import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 // import AdSense from './Components/adSense/AdSense';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 
-const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'))
-const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'))
-const Login = lazy(() => import('./Components/Login/Login'))
+
+const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
+const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'));
+const Login = lazy(() => import('./Components/Login/Login'));
 const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
-const Profile = lazy(() => import('./Components/Profile/Profile'))
-const NewsById = lazy(() => import('./Components/NewsById/NewsById'))
+const Profile = lazy(() => import('./Components/Profile/Profile'));
+const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
+const Footer = lazy(() => import('./Components/Footer/Footer'));
 
 function App() {
 
@@ -39,6 +41,7 @@ function App() {
                 <Route path='/profile' element={<Profile />} />
               </Routes>
             </Suspense>
+            <Footer/>
           </AuthProvider>
         </BrowserRouter>
       </NewsProvider>
