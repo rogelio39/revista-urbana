@@ -38,7 +38,7 @@ const News = () => {
                     allNews.length > 0 && (
 
                         <div key={allNews._id} >
-                            <h1 className='text-black text-1xl sm:text-2xl'>ULTIMAS NOTICIAS</h1>
+                            <h1 className='text-slate-900 text-1xl sm:text-2xl'>ULTIMAS NOTICIAS</h1>
                             <New data={allNews[allNews.length - 1]} />
                         </div>
 
