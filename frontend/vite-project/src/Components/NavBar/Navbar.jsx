@@ -92,7 +92,7 @@ const Navbar = () => {
     return (
         <div className="fixed top-0 w-full bg-opacity-90 flex justify-between items-center bg-slate-500  shadow-xl p-4">
             <div onClick={goToMain} className="m-2 bg-white rounded-full">
-                <img width={logoWidth} className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24" src="../../logo-bg.png" alt="LOGO" />
+                <img width={logoWidth} className="w-6 h-6 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-24 lg:h-24" src="../../logo-bg.png" alt="LOGO" />
             </div>
             <>
                 <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
