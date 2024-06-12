@@ -44,7 +44,7 @@ const Login = () => {
         return <div>Cargando...</div>
     }
     return (
-        <div className="flex flex-col justify-center items-center m-4 rounded bg-blue-200 opacity-100 shadow-xl sm:flex-row">
+        <div className="flex flex-col justify-center items-center m-4 mt-40 rounded bg-blue-200 opacity-100 shadow-xl sm:flex-row">
             {
                 showLogin ? (<div className="flex flex-col justify-center items-center"><h3>Ya estas logueado</h3>
                 <button onClick={closeSession} className="m-2 p-2 rounded bg-red-300 hover:bg-white hover:text-red-500">CERRAR SESION</button>

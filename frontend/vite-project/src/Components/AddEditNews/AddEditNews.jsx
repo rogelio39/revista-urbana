@@ -124,7 +124,7 @@ const AddEditNews = () => {
 
 
     return (
-        <div className="text-sm sm:text-xl gap-5">
+        <div className="text-sm sm:text-xl gap-5 mt-40">
             <div className="flex flex-col bg-red-200 m-3 rounded p-6 my-4  sm:flex-row flex-wraps items-center justify-center">
                 <form ref={formRef} className={`m-2 sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-red-100 flex-col items-center`} onSubmit={handleSubmit}>
 
