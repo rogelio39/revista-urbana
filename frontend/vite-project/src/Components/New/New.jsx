@@ -41,7 +41,7 @@ const New = ({ data }) => {
 
 
     return (
-        <article itemScope itemType="https://schema.org/NewsArticle">
+        <article className='w-full max-w-screen-lg' itemScope itemType="https://schema.org/NewsArticle">
             {
                 individualNews && (
                     <>
