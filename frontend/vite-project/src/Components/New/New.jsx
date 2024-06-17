@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
-import Comments from '../Comments/Comments';
+
 
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
@@ -111,7 +111,6 @@ const New = ({ data }) => {
 
                             </main>
                         </div>
-                    <Comments news_id={individualNews._id}/>
 
                     </>
 
