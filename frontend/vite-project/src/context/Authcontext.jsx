@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
 
     
     const logout = async(data) => {
-        await logoutUser(data)
+        await logoutUser(setUser, setAuthenticated, data)
     }
 
 

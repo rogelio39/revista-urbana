@@ -171,7 +171,35 @@ export const deleteNews = async(req, res) => {
     }catch(error){
         res.status(500).send({message: "error del servidor", error: error});
     }
+
+    
 }
+
+
+export const updateNewsDatePublished = async(req, res) => {
+
+    try{
+
+        const newsWithoutDate = await newsModels.find({datePublished: {$exists : false}})
+
+        if(newsWithoutDate.length === 0){
+            res.status(404).json({message: "No hay noticias para actualizar"})
+        }
+
+        for (const news of newsWithoutDate){
+            news.datePublished = news.createdAt  || new Date('2024-05-06');
+            await news.save();
+        }
+
+        res.status(200).send({ message: "Noticias actualizadas exitosamente." });
+
+    }catch(error) {
+        console.log("error al actualizar ruta");
+        res.status(500).send({message: "error del servidor,", error: error})
+    }
+}
+
+// Función para actualizar las noticias sin `datePublished`
 
 // export const uploadImage = async(req, res) => {
 

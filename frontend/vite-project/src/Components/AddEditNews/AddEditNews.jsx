@@ -47,6 +47,7 @@ const AddEditNews = () => {
                         setIdNews(response._id);
                         setNewsCreated(true);
                         setNewDelete(false)
+                        resetForm();
                     }
                 } else {
                     const newsUpdated = await updateNews(idNews, data, token);
@@ -60,6 +61,17 @@ const AddEditNews = () => {
         } catch (error) {
             console.log("error", error)
         }
+    };
+
+
+    const resetForm = () => {
+        formRef.current.reset();
+        setSubtitles(['']);
+        setCategorys(['']);
+        setTexts(['']);
+        setTags([]);
+        setFont('font-sanzs');
+        setCurrentTag('');
     };
 
 

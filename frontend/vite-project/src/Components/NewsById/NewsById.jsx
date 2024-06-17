@@ -38,7 +38,7 @@ const NewsById = () => {
 
 
     return (
-        <div className='flex-column m-10 p-5 justify-center items-center '>
+        <div className='max-w-screen-lg flex m-auto p-5 justify-center items-center'>
             {
                 newData  ?  (
                     <New data={newData}/>

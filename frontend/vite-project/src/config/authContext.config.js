@@ -2,7 +2,7 @@
 const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
-export const registerUser = async(data) => {
+export const registerUser = async (data) => {
 
     try {
         const response = await fetch(`${URL}/api/session/register`, {
@@ -24,7 +24,7 @@ export const registerUser = async(data) => {
 
 }
 
-export const loginUser = async(data, setUser, setAuthenticated) => {
+export const loginUser = async (data, setUser, setAuthenticated) => {
 
     try {
         const response = await fetch(`${URL}/api/session/login`, {
@@ -52,7 +52,7 @@ export const loginUser = async(data, setUser, setAuthenticated) => {
 }
 
 
-export const logoutUser = async(setUser, setAuthenticated) => {
+export const logoutUser = async (setUser, setAuthenticated) => {
     try {
         const response = await fetch(`${URL}/api/session/logout`, {
             method: 'GET',
@@ -63,14 +63,12 @@ export const logoutUser = async(setUser, setAuthenticated) => {
         })
 
         if (response.ok) {
-            const responseData = await response.json();
-            if (responseData) {
-                setUser();
-                setAuthenticated(false);
-                localStorage.removeItem('jwtCookie');
-                localStorage.removeItem('user');
-            }
+            setUser('');
+            setAuthenticated(false);
+            localStorage.removeItem('jwtCookie');
+            localStorage.removeItem('user');
         }
+
 
     } catch (error) {
         console.log("error", error);

@@ -3,10 +3,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
-import { AuthProvider } from './context/Auth.context';
+import { AuthProvider } from './context/Authcontext';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 // import AdSense from './Components/adSense/AdSense';
 import ImageLCP from './Components/imageLCP/ImageLCP';
+import { CommentProvider } from './context/CommentsContext';
 
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
@@ -23,28 +24,30 @@ function App() {
 
   return (
     <>
-      <NewsProvider>
-        <BrowserRouter>
-          <AuthProvider>
-            <ImageLCP/>
-            <Navbar /> 
-            {/* <AdSense/> */}
-            <Suspense fallback={<div>Cargando...</div>}>
-              <Routes>
-                <Route path='*' />
-                <Route path='/' element={<MainSection />} />
-                <Route path='/add-news' element={<AddEditNews />} />
-                <Route path='/search/:query' element={<SearchResults />} />
-                <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
-                <Route path='/newById/:id' element={<NewsById />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/profile' element={<Profile />} />
-              </Routes>
-            </Suspense>
-            <Footer/>
-          </AuthProvider>
-        </BrowserRouter>
-      </NewsProvider>
+      <CommentProvider>
+        <NewsProvider>
+          <BrowserRouter>
+            <AuthProvider>
+              <ImageLCP />
+              <Navbar />
+              {/* <AdSense/> */}
+              <Suspense fallback={<div>Cargando...</div>}>
+                <Routes>
+                  <Route path='*' />
+                  <Route path='/' element={<MainSection />} />
+                  <Route path='/add-news' element={<AddEditNews />} />
+                  <Route path='/search/:query' element={<SearchResults />} />
+                  <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
+                  <Route path='/newById/:id' element={<NewsById />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/profile' element={<Profile />} />
+                </Routes>
+              </Suspense>
+              <Footer />
+            </AuthProvider>
+          </BrowserRouter>
+        </NewsProvider>
+      </CommentProvider>
     </>
   )
 }

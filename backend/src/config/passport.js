@@ -35,6 +35,7 @@ const initializePassport = () => {
         async (payload, done) => {
             try {
                 const user = {
+                    _id : payload._id,
                     rol : payload.user.rol
                 }
                 return done(null, user);

@@ -62,19 +62,19 @@ const SearchResults = () => {
     }
 
     return (
-        <>
+        <div className='max-w-screen-lg flex m-auto p-5 justify-center items-center'>
             {
                 error ? (<p>{errorMessage}</p>) :
                     (<>
                         {
                             newsBySearch.map(newBySearch => (
-                                    <New key={newBySearch._id} data={newBySearch} />
+                                <New key={newBySearch._id} data={newBySearch} />
                             ))
                         }
                     </>)
             }
 
-        </>
+        </div>
     )
 }
 
