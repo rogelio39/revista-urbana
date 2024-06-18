@@ -17,7 +17,6 @@ const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
-const AddsContainer = lazy(() => import('./Components/addsContainer/AddsContainer'))
 function App() {
 
 
@@ -30,7 +29,6 @@ function App() {
             <AuthProvider>
               <ImageLCP />
               <Navbar />
-              <AddsContainer/>
               <Suspense fallback={<div>Cargando...</div>}>
                 <Routes>
                   <Route path='*' />
