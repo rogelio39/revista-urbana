@@ -5,9 +5,9 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Authcontext';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
-import AdSense from './Components/adSense/AdSense';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 import { CommentProvider } from './context/CommentsContext';
+
 
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
@@ -17,7 +17,7 @@ const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
-
+const AddsContainer = lazy(() => import('./Components/addsContainer/AddsContainer'))
 function App() {
 
 
@@ -30,7 +30,7 @@ function App() {
             <AuthProvider>
               <ImageLCP />
               <Navbar />
-              <AdSense/>
+              <AddsContainer/>
               <Suspense fallback={<div>Cargando...</div>}>
                 <Routes>
                   <Route path='*' />
