@@ -28,7 +28,6 @@ const New = ({ data }) => {
 
     if (individualNews) {
         thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${individualNews.thumbnail[0]}` : '';
-        console.log("url",individualNews)
     } else {
         return null
     }
