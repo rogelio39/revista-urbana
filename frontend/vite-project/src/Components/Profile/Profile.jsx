@@ -10,7 +10,6 @@ const Profile = () => {
         const getUserData = () => {
             const user = localStorage.getItem('user');
             setUserData(JSON.parse(user));
-            console.log("user", userData)
         }
         getUserData();
     }, [])

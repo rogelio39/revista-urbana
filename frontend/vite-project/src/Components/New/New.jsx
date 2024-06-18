@@ -28,6 +28,7 @@ const New = ({ data }) => {
 
     if (individualNews) {
         thumbnailUrl = individualNews.thumbnail && individualNews.thumbnail.length > 0 ? `${individualNews.thumbnail[0]}` : '';
+        console.log("url",individualNews)
     } else {
         return null
     }
@@ -95,13 +96,12 @@ const New = ({ data }) => {
                                         <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
                                     </footer>
                                     <p>VER VIDEO</p>
-
-
-
-
+                                    
+                                    <iframe className='m-auto' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>hola</iframe>
+                                    
                                     {
                                         individualNews.datePublished ? (
-                                            <time dateTime={individualNews.datePublished}>
+                                            <time className='font-bold' dateTime={individualNews.datePublished}>
                                                 Fecha de publicación: {individualNews.datePublished.split('T')[0]}
                                             </time>
                                         ) : <></>

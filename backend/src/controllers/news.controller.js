@@ -37,10 +37,10 @@ export const getNewById = async(req, res) => {
 
 
 export const createNews = async(req, res) => {
-    const {title, subtitle, category, font, text, pieDeImagen, tags} = req.body;
+    const {title, subtitle, category, font, text, pieDeImagen, tags, url} = req.body;
 
     try{
-        const news = await newsModels.create({title, subtitle, category, font, pieDeImagen, text, tags});
+        const news = await newsModels.create({title, subtitle, category, font, pieDeImagen, text, tags, url});
 
         if(!news){
             return res.status(400).send({message: "no se creo noticia"})
@@ -116,7 +116,7 @@ export const uploadImage = async (req, res) => {
 };
 
 export const updateNews = async(req, res) => {
-    const {title, subtitle, category, font, text, pieDeImagen, tags} = req.body;
+    const {title, subtitle, category, font, text, pieDeImagen, tags, url} = req.body;
     const {id} = req.params;
 
     const updatedFields = {}
@@ -142,6 +142,9 @@ export const updateNews = async(req, res) => {
     }
     if(tags !== undefined){
         updatedFields.tags = tags;
+    }
+    if(url !== undefined){
+        updatedFields.url = url;
     }
     try{
         const updatedNews = await newsModels.findByIdAndUpdate( id, updatedFields, {new : true});

@@ -14,6 +14,8 @@ const AddEditNews = () => {
     const [texts, setTexts] = useState(['']);
     const [tags, setTags] = useState([]);
     const [currentTag, setCurrentTag] = useState('')
+    const [url, setUrl] = useState('');
+    const [currentUrl, setCurrentUrl] = useState('')
     //metodos de context para crear, actualizar y subir imagenes
     const { createNews, updateNews, delNews } = useContext(NewsContext);
     //variables de estado para el id de las noticias, las noticias, el formulario, etc.
@@ -39,6 +41,9 @@ const AddEditNews = () => {
             const textWithBoldString = textWithBold.join('\n');
             data.text = textWithBoldString;
             data.tags = tags;
+            data.url = url;
+            console.log("url", url)
+            console.log("Data", data.url)
 
             if (token) {
                 if (isCreating) {
@@ -70,8 +75,10 @@ const AddEditNews = () => {
         setCategorys(['']);
         setTexts(['']);
         setTags([]);
+        setUrl('');
         setFont('font-sanzs');
         setCurrentTag('');
+        setCurrentUrl('');
     };
 
 
@@ -123,8 +130,19 @@ const AddEditNews = () => {
             setTags([...tags, currentTag.trim()]);
             setCurrentTag('');
         }
+
     }
 
+    const handleUrl = (e) => {
+
+        setCurrentUrl(e.target.value)
+    }
+
+    const addUrl = () => {
+        console.log("url", currentUrl)
+        setUrl(currentUrl)
+        setCurrentUrl('');
+    }
     const deleteNew = async () => {
         if (idNews) {
             const deleteNew = await delNews(idNews);
@@ -208,6 +226,12 @@ const AddEditNews = () => {
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addTags}>Agregar Tag</button>
 
                     </div>
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                        <label htmlFor="url">Url de youtube:</label>
+                        <input onChange={handleUrl} type="text" id='url' name="url" />
+                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addUrl}>Agregar Url</button>
+
+                    </div>
                     <div className="flex justify-center items-center">
                         <button className=" hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 w-24 mb-2" type="submit">{isCreating ? 'crear' : 'actualizar'}</button>
                     </div>
@@ -215,7 +239,7 @@ const AddEditNews = () => {
                 </form>
 
                 <div className="flex flex-col justify-center items-center">
-                    <div className={newsCreated ? 'm-2 shadow-lg rounded p-6 bg-green-500  flex flex-col items-center sm:hover:bg-white sm:hover:text-green-500 sm:hover:shadow-2xl sm:hover:shadow-green-500' : 'hidden'}>{ newsCreated &&!newDelete ? 'NOTICA CARGADA CORECTAMENTE' : 'NOTICIA ELIMINADA CORRECTAMENTE'}</div>
+                    <div className={newsCreated ? 'm-2 shadow-lg rounded p-6 bg-green-500  flex flex-col items-center sm:hover:bg-white sm:hover:text-green-500 sm:hover:shadow-2xl sm:hover:shadow-green-500' : 'hidden'}>{newsCreated && !newDelete ? 'NOTICA CARGADA CORECTAMENTE' : 'NOTICIA ELIMINADA CORRECTAMENTE'}</div>
 
                     <button onClick={deleteNew} className={newsCreated ? 'm-2 p-2 shadow-md bg-red-500 rounded sm:hover:bg-white sm:hover:shadow-xl sm:hover:text-red-500 sm:hover:shadow-red-500' : 'hidden'}>Eliminar noticia</button>
                     <div className="flex items-center justify-center mt-2">

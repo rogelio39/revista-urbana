@@ -27,6 +27,9 @@ const newsSchema = new Schema({
     },
     tags : [String],
     thumbnail: [String],
+    url : {
+        type: String
+    },
     datePublished: {
         type : Date,
         default : Date.now
