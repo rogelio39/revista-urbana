@@ -5,7 +5,7 @@ import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Authcontext';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
-// import AdSense from './Components/adSense/AdSense';
+import AdSense from './Components/adSense/AdSense';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 import { CommentProvider } from './context/CommentsContext';
 
@@ -30,7 +30,7 @@ function App() {
             <AuthProvider>
               <ImageLCP />
               <Navbar />
-              {/* <AdSense/> */}
+              <AdSense/>
               <Suspense fallback={<div>Cargando...</div>}>
                 <Routes>
                   <Route path='*' />

@@ -1,3 +1,27 @@
+import { useEffect } from "react";
+
+const AdSense = () => {
+    useEffect(() => {
+        document.title = "REVISTA URBANA";
+    }, []);
+
+    return null
+};
+
+export default AdSense;
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { useEffect } from "react";
 
 // const AdSense = () => {
