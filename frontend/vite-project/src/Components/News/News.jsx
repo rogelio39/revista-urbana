@@ -64,11 +64,10 @@ const News = () => {
                 <h1 className='text-center text-white mb-5 text-xl'>POLITICA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
-                        allNews.map(news => (
-                            news.category === 'politica' ?
-                                <div key={news._id}>
-                                    <NotesContainer data={news.slice(-4)} />
-                                </div> : ''
+                        allNews.filter(news => news.category === 'politica').slice(-4).map(news => (
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
                         ))
                     }
                 </div>
