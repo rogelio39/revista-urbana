@@ -94,10 +94,16 @@ const New = ({ data }) => {
                                         </section>
                                         <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
                                     </footer>
-                                    <p>VER VIDEO</p>
-                                    
-                                    <iframe className='m-auto' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>hola</iframe>
-                                    
+                                    {
+                                        individualNews.url != undefined && individualNews.url.length > 0 && (
+                                            <div className='flex flex-col'>
+                                                <>Ver video</>
+                                                <iframe className='m-auto' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                            </div>
+                                        )
+                                    }
+
+
                                     {
                                         individualNews.datePublished ? (
                                             <time className='font-bold' dateTime={individualNews.datePublished}>
@@ -110,14 +116,14 @@ const New = ({ data }) => {
 
                             </main>
                         </div>
-                    <Comments news_id={individualNews._id}/>
+                        <Comments news_id={individualNews._id} />
 
                     </>
 
 
                 )
             }
-        </article>
+        </article >
     )
 }
 
