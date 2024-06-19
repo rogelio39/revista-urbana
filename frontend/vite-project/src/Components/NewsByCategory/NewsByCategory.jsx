@@ -33,7 +33,7 @@ const NewsByCategory = () => {
 
 
     return (
-        <>
+        <div className="max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center">
             {
                 newsFiltered && (newsFiltered.map(news => (
                     <div key={news._id}>
@@ -45,7 +45,7 @@ const NewsByCategory = () => {
 
                 )
             }
-        </>
+        </div>
     )
 }
 

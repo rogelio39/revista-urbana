@@ -55,7 +55,7 @@ const New = ({ data }) => {
                                         <img src={thumbnailUrl}
                                             width={imgWidthForDesktop}
                                             height={imgHeightForDesktop}
-                                            className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 w-[500px] h-[300px] sm:w-[800px] sm:h-[600]'
+                                            className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 w-[600px] h-[400px] sm:w-[800px] sm:h-[600]'
                                             alt={individualNews.title}
                                             itemProp='image' />
                                         <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
@@ -96,9 +96,9 @@ const New = ({ data }) => {
                                     </footer>
                                     {
                                         individualNews.url != undefined && individualNews.url.length > 0 && (
-                                            <div className='flex flex-col'>
+                                            <div className=' flex flex-col'>
                                                 <>Ver video</>
-                                                <iframe className='m-auto' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                                <iframe className='m-auto w-full max-w-screen-lg' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                                             </div>
                                         )
                                     }
