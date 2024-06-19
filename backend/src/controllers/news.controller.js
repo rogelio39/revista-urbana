@@ -146,6 +146,7 @@ export const updateNews = async(req, res) => {
     if(url !== undefined){
         updatedFields.url = url;
     }
+    
     try{
         const updatedNews = await newsModels.findByIdAndUpdate( id, updatedFields, {new : true});
 

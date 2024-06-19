@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
-import Comments from "../Comments/Comments";
+
 const NewsByCategory = () => {
     const { query } = useParams();
     const { fetchNews } = useContext(NewsContext);
@@ -33,12 +33,11 @@ const NewsByCategory = () => {
 
 
     return (
-        <div className="mt-10 flex flex-col">
+        <>
             {
                 newsFiltered && (newsFiltered.map(news => (
-                    <div className="m-auto" key={news._id}>
+                    <div key={news._id}>
                         <New data={news} />
-                        <Comments news_id={news._id}/>
                     </div>
 
 
@@ -46,7 +45,7 @@ const NewsByCategory = () => {
 
                 )
             }
-        </div>
+        </>
     )
 }
 
