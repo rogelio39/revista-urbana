@@ -34,8 +34,8 @@ const New = ({ data }) => {
 
 
 
-    const imgWidthForDesktop = 600
-    const imgHeightForDesktop = 400
+    const imgWidthForDesktop = 300
+    const imgHeightForDesktop = 300
 
 
 
@@ -55,7 +55,7 @@ const New = ({ data }) => {
                                         <img src={thumbnailUrl}
                                             width={imgWidthForDesktop}
                                             height={imgHeightForDesktop}
-                                            className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 w-[600px] h-[400px] sm:w-[800px] sm:h-[600]'
+                                            className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 w-[250px] h-[250px] sm:w-[800px] sm:h-[600]'
                                             alt={individualNews.title}
                                             itemProp='image' />
                                         <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
@@ -84,7 +84,7 @@ const New = ({ data }) => {
                                     <footer>
                                         <section itemProp='keywords' >
                                             ETIQUETAS:
-                                            <ul className='flex'>
+                                            <ul className='flex flex-wrap'>
                                                 {
                                                     individualNews.tags && (individualNews.tags.map((tag, k) => (
                                                         <li className='p-1 bg-blue-200 m-2 rounded hover:shadow-slate-800 cursor-pointer hover:shadow-md hover:bg-blue-400 hover:text-white  ' key={k}>{tag}</li>
