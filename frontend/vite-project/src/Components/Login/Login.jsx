@@ -37,6 +37,7 @@ const Login = () => {
 
     const closeSession = async() => {
         await logout();
+        setShowLogin(false);
         navigate('/')
     }
 
