@@ -2,6 +2,7 @@ import New from '../New/New'
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
+import Publicidades from '../Publicidades/Publicidades';
 
 
 const News = () => {
@@ -34,12 +35,11 @@ const News = () => {
     return (
         <div className='p-10 flex flex-col items-center'>
 
-            <div className='w-[150px] h-[500px] text-2xl flex justify-center items-center bg-red-600 right-0 fixed bottom-30 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 0</div>
-
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 1--</div>
+            <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' />
 
 
-            <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-between items-center  p-1'>
+            <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
+            <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' />
                 {
                     allNews.length > 0 && (
 
@@ -52,8 +52,6 @@ const News = () => {
                 }
             </div>
 
-
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 2--</div>
 
 
 
@@ -70,7 +68,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 3--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>POLITICA</h1>
@@ -85,7 +82,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 4--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>SALUD</h1>
@@ -100,7 +96,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 5--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>NOTAS COLOR</h1>
@@ -115,7 +110,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 6--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>DEPORTES</h1>
@@ -130,7 +124,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 7--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>ESPECTACULO</h1>
@@ -145,7 +138,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 8--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>SOCIEDAD</h1>
@@ -160,7 +152,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 9--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>CULTURA</h1>
@@ -176,7 +167,6 @@ const News = () => {
             </div>
 
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 10--</div>
 
 
             <div className='mb-10 '>
@@ -192,7 +182,7 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 11--</div>
+    
 
 
             <div className='mb-10 '>
@@ -208,8 +198,7 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 12--</div>
-
+        
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>ECONOMIA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
@@ -223,7 +212,6 @@ const News = () => {
                 </div>
             </div>
 
-            <div className='w-[900px] h-[200px] text-2xl bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA 13--</div>
 
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>NOTICIAS BANDEÑAS</h1>
