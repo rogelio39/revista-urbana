@@ -190,6 +190,19 @@ const News = () => {
                 </div>
             </div>
 
+            <div className='mb-10 '>
+                <h1 className='text-center text-white mb-5 text-xl'>NOTICIAS BANDEÑAS</h1>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
+                    {
+                        allNews.filter(news => news.category === 'noticias bandeñas').slice(-4).map(news => (
+                            <div key={news._id}>
+                                <NotesContainer data={news} />
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
 
 
         </div>
