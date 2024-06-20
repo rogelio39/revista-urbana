@@ -95,7 +95,7 @@ const Navbar = () => {
         navigate('/newsByCategory/noticias%20bandeñas')
     }
 
-    const logoWidth = 28
+    const logoWidth = 12
 
     return (
         <div className="fixed top-0 w-full bg-opacity-90 flex justify-between items-center bg-slate-500  shadow-xl p-4">
@@ -105,7 +105,7 @@ const Navbar = () => {
             <>
                 <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
                     <input
-                        className="bg-slate-900 text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-96"
+                        className="bg-slate-900 w-28 text-sm bg-opacity-90 rounded text-white text-center  sm:text-lg sm:w-44 md:w-56 lg:w-80"
                         type="text"
                         name="search"
                         id="search"
