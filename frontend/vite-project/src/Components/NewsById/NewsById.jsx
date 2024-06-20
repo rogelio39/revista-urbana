@@ -18,7 +18,7 @@ const NewsById = () => {
                 const newById = await fetchNewsById(id);
                 if (newById) {
                     setNewData(newById);
-                
+
                 } else {
                     setError('La noticia no se encontro');
                 }
@@ -38,15 +38,19 @@ const NewsById = () => {
 
 
     return (
-        <div className='w-full max-w-screen-lg flex m-auto p-5 justify-center items-center'>
-            {
-                newData  ?  (
-                    <New data={newData}/>
-                    ) : (<p>{error}</p>) 
+        <div className="flex flex-col justify-center items-center mt-40">
+            <div className='w-[900px] h-[200px] text-2xl flex justify-center items-center bg-red-600 text-center'>PUBLICITA TU NEGOCIO AQUI --CATEGORIA1--</div>
+            <div className='w-full max-w-screen-lg flex m-auto p-5 justify-center items-center'>
+                {
+                    newData ? (
+                        <New data={newData} />
+                    ) : (<p>{error}</p>)
 
-            }
+                }
 
+            </div>
         </div>
+
 
     )
 }
