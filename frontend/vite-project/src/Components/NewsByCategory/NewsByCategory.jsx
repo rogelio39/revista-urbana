@@ -16,6 +16,7 @@ const NewsByCategory = () => {
             if (allNews) {
                 const newsByCategory = allNews.filter(news => news.category == query);
                 if (newsByCategory) {
+                    newsByCategory.sort((a,b) => new Date(b.datePublished) - new Date(a.datePublished))
                     setNewsFiltered(newsByCategory);
                     setLoading(false)
                 }

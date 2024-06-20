@@ -55,7 +55,7 @@ const New = ({ data }) => {
                                         <img src={thumbnailUrl}
                                             width={imgWidthForDesktop}
                                             height={imgHeightForDesktop}
-                                            className='bg-contain bg-center bg-no-repeat aspect-w-16 aspect-h-9 w-[250px] h-[250px] sm:w-[800px] sm:h-[600]'
+                                            className='bg-contain bg-center  bg-no-repeat aspect-w-16 aspect-h-9 w-[250px] h-[250px] sm:w-[800px] sm:h-[600]'
                                             alt={individualNews.title}
                                             itemProp='image' />
                                         <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
