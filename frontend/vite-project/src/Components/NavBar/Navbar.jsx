@@ -121,8 +121,8 @@ const Navbar = () => {
 
             {
                 menuOpen && (
-                    <div className="left-0 top-0 bg-slate-900 p-10  absolute w-full flex flex-wrap gap-20  items-center transition duration-300 ease-in-out">
-                        <ul role='menu'>
+                    <div className=" left-0 top-0 bg-slate-900 p-10  absolute w-full flex flex-wrap gap-20  items-center transition duration-300 ease-in-out">
+                        <ul role='z-0 menu'>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
@@ -140,7 +140,6 @@ const Navbar = () => {
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">---</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToPoliciales}>POLICIALES</button></li>
                         </ul>
                         <ul role="menu">
