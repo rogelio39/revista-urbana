@@ -2,7 +2,7 @@ import New from '../New/New'
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
-import Publicidades from '../Publicidades/Publicidades';
+// import Publicidades from '../Publicidades/Publicidades';
 
 
 const News = () => {
@@ -35,11 +35,12 @@ const News = () => {
     return (
         <div className='p-10 flex flex-col items-center'>
 
-            <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' />
+            {/* <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' /> */}
 
 
             <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
-            <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' />
+            {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
+            
                 {
                     allNews.length > 0 && (
 
