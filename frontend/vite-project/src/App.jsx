@@ -2,7 +2,7 @@ import Navbar from './Components/NavBar/Navbar'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NewsProvider } from './context/NewsContext';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Authcontext';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import ImageLCP from './Components/imageLCP/ImageLCP';
@@ -18,14 +18,6 @@ const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
 function App() {
-
-
-  useEffect(() => {
-
-    document.title = "REVISTA URBANA";
-
-  }, [])
-
 
 
   return (
