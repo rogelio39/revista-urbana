@@ -1,2 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /add-news/
+Disallow: /login/
+Sitemap: https://revista-urbana.com/sitemap.xml
