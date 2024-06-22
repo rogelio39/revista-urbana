@@ -43,19 +43,51 @@ const News = () => {
                 {
                     allNews.length > 0 && (
 
-                        <article key={allNews._id} className='w-full max-w-screen-md bg-slate-200' itemScope itemType="https://schema.org/NewsArticle">
-                            <img width={300}
+                        <article
+                            key={allNews._id}
+                            className='w-full max-w-screen-md bg-slate-200'
+                            itemScope
+                            itemType="https://schema.org/NewsArticle"
+                        >
+                            {/* Imagen del artículo con texto alternativo descriptivo */}
+                            <img
+                                width={300}
                                 height={300}
                                 className='w-auto'
-                                alt={allNews[allNews.length - 1].title}
+                                alt={`Imagen del artículo: ${allNews[allNews.length - 1].title}`}
                                 itemProp='image'
-                                src={allNews[allNews.length - 1].thumbnail} />
-                            <h1 className='bg-slate-300 font-bold text-xl mb-2'>{allNews[allNews.length - 1].title}</h1>
-                            <h1 className='font-bold'>{allNews[allNews.length - 1].subtitle}</h1>
-                            <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2' >
-                                <Link to={`/newById/${allNews[allNews.length - 1]._id}`}>VER MAS</Link>
+                                src={allNews[allNews.length - 1].thumbnail}
+                            />
+
+                            {/* Título del artículo */}
+                            <h1
+                                itemProp="headline"
+                                className='bg-slate-300 font-bold text-xl mb-2'
+                            >
+                                {allNews[allNews.length - 1].title}
+                            </h1>
+
+                            {/* Subtítulo del artículo */}
+                            <h2
+                                itemProp="alternativeHeadline"
+                                className='font-bold'
+                            >
+                                {allNews[allNews.length - 1].subtitle}
+                            </h2>
+
+                            {/* Enlace para ver más detalles */}
+                            <div
+                                className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2'
+                            >
+                                <Link
+                                    to={`/newById/${allNews[allNews.length - 1]._id}`}
+                                    aria-label={`Leer más sobre: ${allNews[allNews.length - 1].title}`}
+                                >
+                                    Leer más
+                                </Link>
                             </div>
                         </article>
+
 
                     )
                 }

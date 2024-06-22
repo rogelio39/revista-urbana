@@ -69,7 +69,7 @@ const New = ({ data }) => {
                                                 width={imgWidthForDesktop}
                                                 height={imgHeightForDesktop}
                                                 className='w-auto'
-                                                alt={individualNews.title}
+                                                alt={`Imagen del artículo:${individualNews.title}`}
                                                 itemProp='image' />
                                             <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>
                                         </div>
