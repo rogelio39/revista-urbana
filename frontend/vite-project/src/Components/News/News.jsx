@@ -1,9 +1,8 @@
-import New from '../New/New'
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
 // import Publicidades from '../Publicidades/Publicidades';
-
+import { Link } from 'react-router-dom';
 
 const News = () => {
     const { fetchNews } = useContext(NewsContext);
@@ -39,15 +38,24 @@ const News = () => {
 
 
             <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
-            {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
-            
+                {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
+
                 {
                     allNews.length > 0 && (
 
-                        <div key={allNews._id} >
-                            <h1 className='text-slate-900 text-1xl sm:text-2xl'>ULTIMAS NOTICIAS</h1>
-                            <New data={allNews[allNews.length - 1]} />
-                        </div>
+                        <article key={allNews._id} className='w-full max-w-screen-md bg-slate-200' itemScope itemType="https://schema.org/NewsArticle">
+                            <img width={300}
+                                height={300}
+                                className='w-auto'
+                                alt={allNews[allNews.length - 1].title}
+                                itemProp='image'
+                                src={allNews[allNews.length - 1].thumbnail} />
+                            <h1 className='bg-slate-300 font-bold text-xl mb-2'>{allNews[allNews.length - 1].title}</h1>
+                            <h1 className='font-bold'>{allNews[allNews.length - 1].subtitle}</h1>
+                            <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2' >
+                                <Link to={`/newById/${allNews[allNews.length - 1]._id}`}>VER MAS</Link>
+                            </div>
+                        </article>
 
                     )
                 }
@@ -183,7 +191,7 @@ const News = () => {
                 </div>
             </div>
 
-    
+
 
 
             <div className='mb-10 '>
@@ -199,7 +207,7 @@ const News = () => {
                 </div>
             </div>
 
-        
+
             <div className='mb-10 '>
                 <h1 className='text-center text-white mb-5 text-xl'>ECONOMIA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
@@ -229,7 +237,7 @@ const News = () => {
 
 
 
-        </div>
+        </div >
     )
 }
 

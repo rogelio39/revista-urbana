@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
-import { Helmet } from "react-helmet-async";
 
 
 const NewsById = () => {
@@ -40,15 +39,6 @@ const NewsById = () => {
 
     return (
         <div className="flex flex-col justify-center items-center mt-40">
-
-            <Helmet>
-                <title>REVISTA URBANA - Noticias</title>
-                <meta name="description" content="Bienvenido a la página de noticias individual de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
-                <meta property="og:title" content="REVISTA URBANA - Noticias individuales" />
-                <meta property="og:description" content="Explora las noticias y tendencias más recientes de la cultura urbana." />
-                <meta property="og:image" content="https://revista-urbana.com/logo-bg.png" />
-            </Helmet>
-
             <div className='w-full max-w-screen-lg flex m-auto p-5 justify-center items-center'>
                 {
                     newData ? (
