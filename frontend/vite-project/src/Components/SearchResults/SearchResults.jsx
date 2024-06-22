@@ -4,7 +4,7 @@ import { NewsContext } from "../../context/NewsContext";
 // import React from "react";
 
 const New = lazy(() => import('../New/New'))
-
+import { Helmet } from "react-helmet-async";
 
 const SearchResults = () => {
     const { query } = useParams();
@@ -63,7 +63,14 @@ const SearchResults = () => {
 
     return (
         <div className="flex flex-col justify-center items-center mt-40">
-            <div className='max-w-screen-lg flex m-auto p-5 justify-center items-center'>
+            <Helmet>
+                <title>REVISTA URBANA - Search</title>
+                <meta name="description" content="Bienvenido a la página de buscador de noticias de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
+                <meta property="og:title" content="REVISTA URBANA - Search" />
+                <meta property="og:description" content="Explora las noticias y tendencias más recientes de la cultura urbana." />
+                <meta property="og:image" content="https://revista-urbana.com/logo-bg.png" />
+            </Helmet>
+            <div className='max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center'>
                 {
                     error ? (<p>{errorMessage}</p>) :
                         (<>

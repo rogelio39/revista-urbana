@@ -7,6 +7,7 @@ import { AuthProvider } from './context/Authcontext';
 import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 import { CommentProvider } from './context/CommentsContext';
+import {HelmetProvider} from 'react-helmet-async'
 
 
 
@@ -21,7 +22,7 @@ function App() {
 
 
   return (
-    <>
+    <HelmetProvider>
       <CommentProvider>
         <NewsProvider>
           <BrowserRouter>
@@ -45,7 +46,7 @@ function App() {
           </BrowserRouter>
         </NewsProvider>
       </CommentProvider>
-    </>
+    </HelmetProvider>
   )
 }
 
