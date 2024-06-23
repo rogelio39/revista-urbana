@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 
 const NotesContainer = ({ data }) => {
 
@@ -21,14 +20,6 @@ const NotesContainer = ({ data }) => {
 
     return (
         <>
-            <Helmet>
-                <title>REVISTA URBANA - {data.title}</title>
-                <meta name="description" content="Bienvenido a la página categorias de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
-                <meta property="og:title" content={`Revista urbana ${data.title}`} />
-                <meta property="og:description" content={data.subtitle} />
-                <meta property="og:image" content={thumbnailUrl} />
-            </Helmet>
-
             <div className='bg-slate-200 text-center rounded flex justify-center items-center '>
                 <Link  aria-label={`Leer más sobre: ${data.title}`} to={`/newById/${data._id}`}>
                     <div className='hover:shadow-slate-600 hover:shadow-2xl  h-[25rem] shadow-slate-500 shadow-md  flex-column overflow-hidden justify-between items-center sm:w-96' id={`Imagen del artículo:${data._id}`}>
