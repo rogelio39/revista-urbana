@@ -109,7 +109,22 @@
 </url>
 
 <url>
-	<loc>https://revista-urbana.com/newsByCategory/noticias%20bandeñas</loc>
+	<loc>https://revista-urbana.com/newsByCategory/noticias bandeñas</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+
+<url>
+	<loc>http://revista-urbana.com/</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>http://www.revista-urbana.com/</loc>
 	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.8</priority>
