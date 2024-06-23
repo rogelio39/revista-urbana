@@ -22,7 +22,7 @@ const ImageLCP = () => {
                             link.fetchPriority = "high";
                             link.as = "image";
                             link.href = setImg;
-                            link.type = "image/jpg";
+                            link.type = "image/wepb";
                             document.head.appendChild(link);
                         }
                     }
