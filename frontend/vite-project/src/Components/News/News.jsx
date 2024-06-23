@@ -110,7 +110,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>POLITICA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -124,7 +124,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>SALUD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -138,7 +138,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>NOTAS COLOR</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -152,7 +152,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>DEPORTES</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -166,7 +166,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>ESPECTACULO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -180,7 +180,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>SOCIEDAD</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -194,7 +194,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>CULTURA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -210,7 +210,7 @@ const News = () => {
 
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>MUNDO</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -226,7 +226,7 @@ const News = () => {
 
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>DESTACADOS</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -240,7 +240,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>ECONOMIA</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {
@@ -254,7 +254,7 @@ const News = () => {
             </div>
 
 
-            <div className='mb-10 '>
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>NOTICIAS BANDEÑAS</h1>
                 <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row'>
                     {

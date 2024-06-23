@@ -11,7 +11,7 @@ const Footer = () => {
 
 
     return (
-        <div className="p-2 h-28 flex justify-center items-center bg-slate-600" >
+        <div height={200} width={1000} className="p-2 fixed bottom-0 w-full h-16 flex justify-center items-center bg-slate-600" >
             <div className="flex justify-center items-center gap-2">
                 <h1 className="text-white text-sm sm:text-xl">Contacto</h1>
                 <a target="_blank" rel="noopener noreferrer" href="https://wa.me/3814123324"> <img width={logoWidth} className=" p-1 bg-green-500 rounded-full" height={logoHeight} loading="lazy" src="../../logo-whatsapp.svg" alt="logo enlace a whatsapp" /></a>
