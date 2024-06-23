@@ -96,7 +96,7 @@ const News = () => {
 
 
 
-            <div className='mb-10 ' >
+            <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>TODAS LAS NOTAS</h1>
                 <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row flex-wrap'>
                     {
