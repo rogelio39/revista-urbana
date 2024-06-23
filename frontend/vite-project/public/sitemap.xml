@@ -1,40 +1,118 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 		<!--	created with www.mysitemapgenerator.com	-->
 		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 	<loc>https://revista-urbana.com/</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>1</priority>
 </url>
 <url>
 	<loc>https://revista-urbana.com/login</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.5</priority>
 </url>
 <url>
 	<loc>https://revista-urbana.com/profile</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.5</priority>
 </url>
 <url>
 	<loc>https://revista-urbana.com/newsById</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.8</priority>
 </url>
 <url>
 	<loc>https://revista-urbana.com/newsBySearch</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.8</priority>
 </url>
 <url>
-	<loc>https://revista-urbana.com/newsByCategory</loc>
-	<lastmod>2024-06-22T15:17:00-03:00
+	<loc>https://revista-urbana.com/newsByCategory/salud</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
 </lastmod>
 	<priority>0.8</priority>
 </url>
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/politica</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/espectaculo</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/sociedad</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/cultura</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/mundo</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/deportes</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/destacados</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/economia</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/notas%20color</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/policiales</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://revista-urbana.com/newsByCategory/noticias bandeñas</loc>
+	<lastmod>2024-06-23T15:17:00-03:00
+</lastmod>
+	<priority>0.8</priority>
+</url>
+
 </urlset>
