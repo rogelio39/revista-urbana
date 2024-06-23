@@ -139,7 +139,7 @@ const Navbar = () => {
                         <ul role="menu">
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>NOTAS COLOR</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>BUENAS VIBRAS, BUENA VIDA</button></li>
                             <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToPoliciales}>POLICIALES</button></li>
                         </ul>
                         <ul role="menu">
