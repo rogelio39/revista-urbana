@@ -4,13 +4,13 @@ import generateToken from "../config/jwt.js";
 export const register = async (req, res) => {
     try {
         if (!req.user) {
-            return res.status(400).send({ message: "Usuario ya existe" });
+            return res.status(401).json({ message: "Usuario ya existe" });
         }
 
-        res.status(200).send({ message: "Usuario registrado con exito" });
+        res.status(200).json({ message: "Usuario registrado con exito" });
 
     } catch (error) {
-        res.status(500).send({ message: error });
+        res.status(500).json({ message: error });
     }
 }
 

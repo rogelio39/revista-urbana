@@ -2,7 +2,7 @@
 const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
-export const registerUser = async (data) => {
+export const registerUser = async (setError, data) => {
 
     try {
         const response = await fetch(`${URL}/api/session/register`, {
@@ -15,11 +15,15 @@ export const registerUser = async (data) => {
         })
 
         if (response.ok) {
-            const responseData = await response.json()
-            return responseData;
+            const dataResponse = await response.json();
+            return dataResponse;
+        }else {
+            const text = await response.text();
+            throw new Error(`${text}`);
         }
     } catch (error) {
-        console.log("error", error)
+        setError(error.message)
+        throw error
     }
 
 }

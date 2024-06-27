@@ -10,7 +10,7 @@ const Comments = ({ news_id }) => {
     const { comments, createComments } = useContext(CommentContext);
     const [allComents, setAllComments] = useState([]);
     const textAreaRef = useRef()
-
+    const [error, setError] = useState('')
     useEffect(() => {
 
         const getComments = async () => {
@@ -29,6 +29,10 @@ const Comments = ({ news_id }) => {
     const handleComments = async (e) => {
         e.preventDefault();
         const userData = localStorage.getItem('user');
+        if (!userData) {
+            setError('No estas registrado, no puedes comentar. Si quieres dejar tu comentario registrate')
+            return
+        }
         const user = JSON.parse(userData)
         const token = getCookiesByName('jwtCookie');
         const formData = new FormData(formRef.current)
@@ -43,11 +47,14 @@ const Comments = ({ news_id }) => {
 
     return (
         <>
-            <form ref={formRef} onSubmit={handleComments} className='bg-slate-400 flex flex-col p-2 max-w-screen-lg'>
-                <label htmlFor="comentarios">Deja tu comentario</label>
-                <textarea ref={textAreaRef} name="comentarios" id="comentarios"></textarea>
-                <button className="bg-slate-200 w-32 rounded m-auto mt-2 hover:bg-slate-900 hover:text-white hover:border-2 hover:border-slate-100" type="submit">ENVIAR COMENTARIO</button>
-            </form>
+            {
+                error ? (<p className="bg-red-300 p-1 rounded text-center mb-16">{error}</p>) : <form ref={formRef} onSubmit={handleComments} className='bg-slate-400 flex flex-col p-2 max-w-screen-lg mt-4 mb-16'>
+                    <label htmlFor="comentarios">Deja tu comentario</label>
+                    <textarea ref={textAreaRef} name="comentarios" id="comentarios"></textarea>
+                    <button className="bg-slate-200 w-32 rounded m-auto mt-2 hover:bg-slate-900 hover:text-white hover:border-2 hover:border-slate-100" type="submit">ENVIAR COMENTARIO</button>
+                </form>
+            }
+
 
             {
                 allComents && (

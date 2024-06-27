@@ -8,14 +8,31 @@ const News = () => {
     const { fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState([]);
+    const [imageLCP, setImageLCP] = useState([])
+    const [lastNew, setLastNew] = useState({})
 
     useEffect(() => {
         const getTheNews = async () => {
             try {
                 const data = await fetchNews();
-                if (data) {
+                if (data && data.length > 0) {
+                    setLastNew(data[data.length - 1]);
                     setAllNews(data);
                     setLoading(false);
+                    if (lastNew.thumbnail && lastNew.thumbnail.length > 0) {
+                        setImageLCP(lastNew.thumbnail[0])
+                        if (imageLCP) {
+                            console.log("img", imageLCP)
+                            const link = document.createElement("link");
+                            link.rel = "preload";
+                            link.fetchPriority = "high";
+                            link.as = "image";
+                            link.href = imageLCP;
+                            link.type = "image/jpg";
+                            document.head.appendChild(link);
+                        }
+                    }
+
                 }
             } catch (error) {
                 console.log("error", error)
@@ -41,11 +58,11 @@ const News = () => {
                 {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
 
                 {
-                    allNews.length > 0 && (
+                    lastNew && (
 
                         <article
-                            key={allNews._id}
-                            className='w-full max-w-screen-md bg-slate-200'
+                            key={lastNew._id}
+                            className='w-full max-w-screen-md bg-slate-200 rounded'
                             itemScope
                             itemType="https://schema.org/NewsArticle"
                         >
@@ -54,9 +71,9 @@ const News = () => {
                                 width={300}
                                 height={300}
                                 className='w-auto'
-                                alt={`Imagen del artículo: ${allNews[allNews.length - 1].title}`}
+                                alt={`Imagen del artículo: ${lastNew.title}`}
                                 itemProp='image'
-                                src={allNews[allNews.length - 1].thumbnail}
+                                src={imageLCP}
                             />
 
                             {/* Título del artículo */}
@@ -64,7 +81,7 @@ const News = () => {
                                 itemProp="headline"
                                 className='bg-slate-300 font-bold text-xl mb-2'
                             >
-                                {allNews[allNews.length - 1].title}
+                                {lastNew.title}
                             </h1>
 
                             {/* Subtítulo del artículo */}
@@ -72,7 +89,7 @@ const News = () => {
                                 itemProp="alternativeHeadline"
                                 className='font-bold'
                             >
-                                {allNews[allNews.length - 1].subtitle}
+                                {lastNew.subtitle}
                             </h2>
 
                             {/* Enlace para ver más detalles */}
@@ -80,8 +97,8 @@ const News = () => {
                                 className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2'
                             >
                                 <Link
-                                    to={`/newById/${allNews[allNews.length - 1]._id}`}
-                                    aria-label={`Leer más sobre: ${allNews[allNews.length - 1].title}`}
+                                    to={`/newById/${lastNew._id}`}
+                                    aria-label={`Leer más sobre: ${lastNew.title}`}
                                 >
                                     Leer más
                                 </Link>

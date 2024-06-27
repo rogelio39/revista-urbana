@@ -10,25 +10,26 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [authenticated, setAuthenticated] = useState(false)
+    const [error, setError] = useState(null)
 
     const register = async(data) => {
-        await registerUser(data)
+        return registerUser(setError, data)
     }
 
     
     const login = async(data) => {
-        await loginUser(data, setUser, setAuthenticated)
+        return loginUser(data, setUser, setAuthenticated)
     }
 
     
     const logout = async(data) => {
-        await logoutUser(setUser, setAuthenticated, data)
+        return logoutUser(setUser, setAuthenticated, data)
     }
 
 
 
     return (
-        <AuthContext.Provider value={{ user, register, login, logout, authenticated }}>
+        <AuthContext.Provider value={{ user, error, register, login, logout, authenticated }}>
             {children}
         </AuthContext.Provider>
     )

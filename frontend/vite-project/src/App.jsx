@@ -8,6 +8,7 @@ import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import ImageLCP from './Components/imageLCP/ImageLCP';
 import { CommentProvider } from './context/CommentsContext';
 import {HelmetProvider} from 'react-helmet-async'
+import Register from './Components/Register/Register';
 
 
 
@@ -38,6 +39,7 @@ function App() {
                   <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
                   <Route path='/newById/:id' element={<NewsById />} />
                   <Route path='/login' element={<Login />} />
+                  <Route path='/register' element={<Register/>} />
                   <Route path='/profile' element={<Profile />} />
                 </Routes>
               </Suspense>
