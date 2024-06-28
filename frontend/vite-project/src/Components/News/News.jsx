@@ -71,7 +71,7 @@ const News = () => {
                             <img
                                 width={300}
                                 height={300}
-                                className='w-auto'
+                                className='w-auto rounded'
                                 alt={`Imagen del artículo: ${lastNew.title}`}
                                 itemProp='image'
                                 src={imageLCP}
