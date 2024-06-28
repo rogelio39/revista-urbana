@@ -70,7 +70,7 @@ export const logoutUser = async (setUser, setAuthenticated) => {
             const message = await response.json();
             setUser('');
             setAuthenticated(false);
-            localStorage.removeItem('jwtCookie');
+            document.cookie = "jwtCookie=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
             localStorage.removeItem('user');
             return message
         }
