@@ -63,7 +63,7 @@ const News = () => {
 
                         <article
                             key={lastNew._id}
-                            className='w-full max-w-screen-md bg-slate-200 '
+                            className='rounded w-full max-w-screen-md bg-slate-200 '
                             itemScope
                             itemType="https://schema.org/NewsArticle"
                         >
