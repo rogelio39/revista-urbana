@@ -19,16 +19,17 @@ const News = () => {
                     setLastNew(data[data.length - 1]);
                     setAllNews(data);
                     setLoading(false);
-                    if (lastNew.thumbnail && lastNew.thumbnail.length > 0) {
-                        setImageLCP(lastNew.thumbnail[0])
-                        if (imageLCP) {
-                            console.log("img", imageLCP)
+                    const lstNew = data[data.length -1];
+                    if (lstNew.thumbnail && lstNew.thumbnail.length > 0) {
+                        setImageLCP(lstNew.thumbnail[0]);
+                        const imgLcp = lstNew.thumbnail[0];
+                        if (imgLcp) {
                             const link = document.createElement("link");
                             link.rel = "preload";
                             link.fetchPriority = "high";
                             link.as = "image";
-                            link.href = imageLCP;
-                            link.type = "image/jpg";
+                            link.href = imgLcp;
+                            link.type = "image/webp";
                             document.head.appendChild(link);
                         }
                     }
