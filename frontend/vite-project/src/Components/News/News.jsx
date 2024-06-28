@@ -55,7 +55,7 @@ const News = () => {
             {/* <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' /> */}
 
 
-            <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
+            <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
                 {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
 
                 {
@@ -63,7 +63,7 @@ const News = () => {
 
                         <article
                             key={lastNew._id}
-                            className='w-full max-w-screen-md bg-slate-200 rounded'
+                            className='w-full max-w-screen-md bg-slate-200 '
                             itemScope
                             itemType="https://schema.org/NewsArticle"
                         >
