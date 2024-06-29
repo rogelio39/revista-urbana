@@ -19,16 +19,17 @@ const News = () => {
                     setLastNew(data[data.length - 1]);
                     setAllNews(data);
                     setLoading(false);
-                    if (lastNew.thumbnail && lastNew.thumbnail.length > 0) {
-                        setImageLCP(lastNew.thumbnail[0])
-                        if (imageLCP) {
-                            console.log("img", imageLCP)
+                    const lstNew = data[data.length -1];
+                    if (lstNew.thumbnail && lstNew.thumbnail.length > 0) {
+                        setImageLCP(lstNew.thumbnail[0]);
+                        const imgLcp = lstNew.thumbnail[0];
+                        if (imgLcp) {
                             const link = document.createElement("link");
                             link.rel = "preload";
                             link.fetchPriority = "high";
                             link.as = "image";
-                            link.href = imageLCP;
-                            link.type = "image/jpg";
+                            link.href = imgLcp;
+                            link.type = "image/webp";
                             document.head.appendChild(link);
                         }
                     }
@@ -54,15 +55,15 @@ const News = () => {
             {/* <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' /> */}
 
 
-            <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
-                {/* <Publicidades categoria= {1}  /> */}
+            <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
+                {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
 
                 {
                     lastNew && (
 
                         <article
                             key={lastNew._id}
-                            className='w-full max-w-screen-md bg-slate-200 rounded'
+                            className='rounded w-full max-w-screen-md bg-slate-200 '
                             itemScope
                             itemType="https://schema.org/NewsArticle"
                         >
@@ -70,7 +71,7 @@ const News = () => {
                             <img
                                 width={300}
                                 height={300}
-                                className='w-auto'
+                                className='w-auto rounded'
                                 alt={`Imagen del artículo: ${lastNew.title}`}
                                 itemProp='image'
                                 src={imageLCP}

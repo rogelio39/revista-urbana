@@ -36,9 +36,11 @@ const Login = () => {
     }
 
     const closeSession = async() => {
-        await logout();
-        setShowLogin(false);
-        navigate('/')
+        const message = await logout();
+        if(message.resultado === 'usuario deslogueado'){
+            setShowLogin(false);
+            navigate('/') 
+        }
     }
 
     if (loading) {
