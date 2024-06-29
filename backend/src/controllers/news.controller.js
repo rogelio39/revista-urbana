@@ -6,8 +6,14 @@ import sharp from 'sharp'
 
 
 export const getNews = async(req, res) => {
+
+    const {limit} = req.query
+
+    const lim = limit ? limit : 5
+
+
     try{
-        const news = await newsModels.find();
+        const news = await newsModels.paginate({limit: lim });
         if(news){
             res.status(200).json(news)
         }else{

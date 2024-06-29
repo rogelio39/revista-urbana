@@ -55,7 +55,7 @@ const News = () => {
 
 
             <div className='border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
-                {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
+                {/* <Publicidades categoria= {1}  /> */}
 
                 {
                     lastNew && (
