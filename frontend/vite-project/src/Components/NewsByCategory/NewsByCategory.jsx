@@ -2,30 +2,35 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
+import Pagination from "../Pagination/Pagination";
 
 const NewsByCategory = () => {
     const { query } = useParams();
-    const { fetchNews } = useContext(NewsContext);
+    const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true)
     const [newsFiltered, setNewsFiltered] = useState(null)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const productsByPage = 10;
+
+    const handlePage = (page) => {
+        console.log("se presiojjo handle page")
+        setCurrentPage(page)
+    }
 
 
     useEffect(() => {
         const getNewsByCategory = async () => {
-            const allNews = await fetchNews();
-            if (allNews) {
-                const newsByCategory = allNews.filter(news => news.category == query);
-                if (newsByCategory) {
-                    newsByCategory.sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished))
-                    setNewsFiltered(newsByCategory);
+            const allNews = await fetchNewsDataByCategory(query, productsByPage, currentPage);
+            if (allNews.docs) {
+                    setNewsFiltered(allNews.docs);
+                    setTotalPages(allNews.totalPages)
                     setLoading(false)
-                }
             }
         }
-
         getNewsByCategory();
 
-    }, [query]);
+    }, [query, currentPage]);
 
     if (loading) {
         return <div>Cargando...</div>
@@ -34,7 +39,7 @@ const NewsByCategory = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center mt-40">
+        <div className="flex flex-col justify-center items-center mt-40 mb-40">
             <div className="max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center">
                 {
                     newsFiltered && (newsFiltered.map(news => (
@@ -48,6 +53,7 @@ const NewsByCategory = () => {
                     )
                 }
             </div>
+            <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={handlePage} />
         </div>
     )
 }

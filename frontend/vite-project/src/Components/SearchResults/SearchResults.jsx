@@ -1,48 +1,47 @@
-import { lazy, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { NewsContext } from "../../context/NewsContext";
-// import React from "react";
+import New from "../New/New";
+import Pagination from "../Pagination/Pagination";
 
-const New = lazy(() => import('../New/New'))
 
 const SearchResults = () => {
     const { query } = useParams();
-    const { fetchNews } = useContext(NewsContext);
+    const { fetchNewsDataByTitle} = useContext(NewsContext);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('')
     const [newsBySearch, setNewsBySearch] = useState([])
     const [loading, setLoading] = useState(true)
-    // const [newsText, setNewsText] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const productsByPage = 10;
 
+    const handlePage = (page) => {
+            console.log("se presiono handlePage")
+            setCurrentPage(page)
+    }
 
 
     useEffect(() => {
         const getNewsByQuery = async () => {
             try {
-                const newsSearch = await fetchNews();
+                const newsSearch = await fetchNewsDataByTitle(query, productsByPage, currentPage);
                 if (!newsSearch) {
                     setError(true)
                     setErrorMessage('Las noticias no se encontraron');
                     return; // Salir de la función si no hay noticias
                 }
-                const newBySearch = newsSearch.filter(news => news.title.toLowerCase().includes(query.toLocaleLowerCase()));
+                setTotalPages(newsSearch.totalPages);
+                setNewsBySearch(newsSearch.docs)
+                const newBySearch = newsSearch.docs;
+                // const newBySearch = newsSearch.docs.filter(news => news.title.toLowerCase().includes(query.toLocaleLowerCase()));
                 if (newBySearch.length === 0) {
                     setError(true)
                     console.log('No se encontraron noticias que coincidan con la busqueda')
                     setErrorMessage('No se encontraron noticias por esta búsqueda');
                     return
                 }
-                const parts = newBySearch.map(news => {
-                    return news.text.split('**')
-                })
-                if (!parts) {
-                    setError(true)
-                    setErrorMessage('Error al visualizar texto de noticia');
-                    return
-                }
 
-                // setNewsText(parts)
-                setNewsBySearch(newBySearch);
                 setLoading(false)
                 setError(false)
             }
@@ -54,14 +53,14 @@ const SearchResults = () => {
         }
         getNewsByQuery();
 
-    }, [query, loading])
+    }, [query, currentPage])
 
     if (loading) {
         return <div>CARGANDO...</div>
     }
 
     return (
-        <div className="flex flex-col justify-center items-center mt-40">
+        <div className="flex flex-col justify-center items-center mt-40 mb-40">
             <div className='max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center'>
                 {
                     error ? (<p>{errorMessage}</p>) :
@@ -73,6 +72,8 @@ const SearchResults = () => {
                             }
                         </>)
                 }
+
+                <Pagination currentPage = {currentPage} totalPages = {totalPages} nextPage = {handlePage} />
 
             </div>
         </div>

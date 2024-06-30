@@ -7,13 +7,25 @@ import sharp from 'sharp'
 
 export const getNews = async(req, res) => {
 
-    const {limit} = req.query
+    const {limit, page} = req.query
 
-    const lim = limit ? limit : 5
 
+
+    const options = {
+        limit : limit ? parseInt(limit, 10) : 0,
+        page: page ? parseInt(page, 10) : 1,
+        sort : {datePublished: -1}
+    }
 
     try{
-        const news = await newsModels.paginate({limit: lim });
+        let news
+        if(limit > 0){
+            news = await newsModels.paginate({}, options);
+        }
+        else {
+            news = await newsModels.find();
+        }
+
         if(news){
             res.status(200).json(news)
         }else{
@@ -24,6 +36,59 @@ export const getNews = async(req, res) => {
         res.status(500).send({message: "error al traer noticias", error: error})
     }
 }
+
+export const getNewsByCategory = async(req, res) => {
+
+    const {limit, page, filter} = req.query
+
+    const options = {
+        limit: limit ? parseInt(limit, 10) : 10,
+        page : page ? parseInt(page, 10) : 1,
+        sort: {datePublished: -1}
+    }
+    const query = filter ? { category: { $regex: filter, $options: 'i' } } : {};
+
+    try{
+
+        const news = await newsModels.paginate(query, options);
+
+        if(news){
+            res.status(200).json(news)
+        }else{
+            res.status(400).send({message: "error al traer noticias"})
+        }
+
+    }catch(error){
+        res.status(500).send({message: "error al traer noticias", error: error})
+    }
+}
+
+
+export const getNewsByTitle = async(req, res) => {
+
+    const {filter, limit, page} = req.query
+
+    const options = {
+        limit: limit ? parseInt(limit, 10) : 10,
+        page: page ? parseInt(page, 10) : 1,
+        sort : {datePublished: -1}
+    }
+    const query = filter ? { title: { $regex: filter, $options: 'i' } } : {};
+
+    try{
+        const news = await newsModels.paginate(query, options);
+
+        if(news){
+            res.status(200).json(news)
+        }else{
+            res.status(400).send({message: "error al traer noticias"})
+        }
+
+    }catch(error){
+        res.status(500).send({message: "error al traer noticias", error: error})
+    }
+}
+
 
 export const getNewById = async(req, res) => {
     const {id} = req.params;

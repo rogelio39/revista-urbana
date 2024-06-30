@@ -5,9 +5,63 @@ const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE
 
 
 
-export const fetchNewsData = async (setNews, setError) => {
+const fetchNewsData = async (setNews, setError) => {
     try {
         const response = await fetch(`${URL}/api/news`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            setNews(data)
+            return data
+        } else {
+            const text = await response.text();
+            throw new Error(`Error ${response.status} ${text}`)
+        }
+    } catch (error) {
+        console.log("error", error.message);
+        setError(error.message);
+        throw error;
+    }
+}
+
+const fetchNewsByCategory = async (setNews, setError, query, productsByPage, currentPage) => {
+    try {
+        const response = await fetch(`${URL}/api/news/byCategory?filter=${query}&limit=${productsByPage}&page=${currentPage}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log("data en news by categori en config", data)
+            setNews(data)
+            return data
+        } else {
+            const text = await response.text();
+            throw new Error(`Error ${response.status} ${text}`)
+        }
+    } catch (error) {
+        console.log("error", error.message);
+        setError(error.message);
+        throw error;
+    }
+
+
+}
+
+
+const fetchNewsByTitle = async (setNews, setError, filter, productsByPage, currentPage) => {
+    try {
+        const response = await fetch(`${URL}/api/news/byTitle?filter=${filter}&limit=${productsByPage}&page=${currentPage}`, {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -31,8 +85,7 @@ export const fetchNewsData = async (setNews, setError) => {
 
 
 }
-
-export const fetchNewsDataById = async (id) => {
+const fetchNewsDataById = async (id) => {
     try {
         const response = await fetch(`${URL}/api/news/${id}`, {
             method: 'GET',
@@ -52,7 +105,7 @@ export const fetchNewsDataById = async (id) => {
 
 
 }
-export const createNewsData = async (data, token, setNews) => {
+const createNewsData = async (data, token, setNews) => {
 
     try {
         const response = await fetch(`${URL}/api/news`, {
@@ -78,7 +131,7 @@ export const createNewsData = async (data, token, setNews) => {
     }
 }
 
-export const updateNewsData = async (id, data, token, setNews) => {
+const updateNewsData = async (id, data, token, setNews) => {
 
 
     try {
@@ -108,7 +161,7 @@ export const updateNewsData = async (id, data, token, setNews) => {
 
 
 
-export const uploadImageData = async (idProd, formData) => {
+const uploadImageData = async (idProd, formData) => {
     try {
         const token = getCookiesByName('jwtCookie');
         if (formData && token) {
@@ -132,7 +185,7 @@ export const uploadImageData = async (idProd, formData) => {
 }
 
 
-export const deleteNews = async (idNew) => {
+const deleteNews = async (idNew) => {
     try {
         const token = getCookiesByName('jwtCookie');
         if (idNew && token) {
@@ -163,4 +216,4 @@ export const deleteNews = async (idNew) => {
 
 
 
-export { URL };
+export default {fetchNewsData, fetchNewsByCategory, fetchNewsByTitle ,fetchNewsDataById, createNewsData, deleteNews, updateNewsData, uploadImageData, URL}

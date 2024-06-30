@@ -11,11 +11,16 @@ const News = () => {
     const [imageLCP, setImageLCP] = useState([])
     const [lastNew, setLastNew] = useState({})
 
+
     useEffect(() => {
         const getTheNews = async () => {
             try {
                 const data = await fetchNews();
-                if (data && data.length > 0) {
+
+                if(!data){
+                    console.log("Error en fetch");
+                }
+                if (data && data.length > 0 ) {
                     setLastNew(data[data.length - 1]);
                     setAllNews(data);
                     setLoading(false);

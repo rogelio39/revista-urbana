@@ -18,7 +18,10 @@ const PORT = 8080;
 
 const URL = process.env.MODE === 'DEV' ? process.env.LOCAL_PORT : process.env.WEB_PORT;
 const whiteList = [URL];
-
+// app.use(cors({
+//     origin: '*',
+//     credentials: true
+// }));
 const corsOptions = {
     origin: function (origin, callback) {
         if (whiteList.indexOf(origin) != -1 || !origin) {

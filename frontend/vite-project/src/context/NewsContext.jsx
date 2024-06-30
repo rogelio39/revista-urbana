@@ -1,7 +1,9 @@
 import { createContext, useState } from "react";
 import PropTypes from 'prop-types';
-import { fetchNewsData, fetchNewsDataById, createNewsData, updateNewsData, uploadImageData, deleteNews} from "../config/newsContext.config";
+import newsApi from "../config/newsContext.config";
 
+
+const  { fetchNewsData, fetchNewsByCategory, fetchNewsByTitle, fetchNewsDataById, createNewsData, updateNewsData, uploadImageData, deleteNews} = newsApi
 
 const NewsContext = createContext({
     news: [],
@@ -24,6 +26,14 @@ const NewsProvider = ({ children }) => {
         return fetchNewsData(setNews, setError);
     }
 
+    const fetchNewsDataByCategory = async(query, productsByPage, currentPage) => {
+        return fetchNewsByCategory(setNews, setError, query, productsByPage, currentPage);
+    }
+
+    const fetchNewsDataByTitle = async(productsByPage, currentPage) => {
+        return fetchNewsByTitle(setNews, setError, productsByPage, currentPage);
+    }
+
     const fetchNewsById = async(id) => {
         return fetchNewsDataById(id)
     }
@@ -44,7 +54,7 @@ const NewsProvider = ({ children }) => {
         return deleteNews(idNew); 
     }
     return (
-        <NewsContext.Provider value={{ fetchNews, news, createNews, uploadImage, fetchNewsById, updateNews, delNews,  error }}>
+        <NewsContext.Provider value={{ fetchNews, fetchNewsDataByCategory, fetchNewsDataByTitle , news, createNews, uploadImage, fetchNewsById, updateNews, delNews,  error }}>
             {children}
         </NewsContext.Provider>
     )
