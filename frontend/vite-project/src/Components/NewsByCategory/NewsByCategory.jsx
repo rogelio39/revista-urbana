@@ -23,9 +23,9 @@ const NewsByCategory = () => {
         const getNewsByCategory = async () => {
             const allNews = await fetchNewsDataByCategory(query, productsByPage, currentPage);
             if (allNews.docs) {
-                    setNewsFiltered(allNews.docs);
-                    setTotalPages(allNews.totalPages)
-                    setLoading(false)
+                setNewsFiltered(allNews.docs);
+                setTotalPages(allNews.totalPages)
+                setLoading(false)
             }
         }
         getNewsByCategory();
@@ -40,6 +40,7 @@ const NewsByCategory = () => {
 
     return (
         <div className="flex flex-col justify-center items-center mt-40 mb-40">
+            <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={handlePage} />
             <div className="max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center">
                 {
                     newsFiltered && (newsFiltered.map(news => (
@@ -53,7 +54,6 @@ const NewsByCategory = () => {
                     )
                 }
             </div>
-            <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={handlePage} />
         </div>
     )
 }

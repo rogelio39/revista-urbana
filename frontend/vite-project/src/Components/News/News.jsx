@@ -3,9 +3,10 @@ import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
 // import Publicidades from '../Publicidades/Publicidades';
 import { Link } from 'react-router-dom';
+import Publicidades from '../Publicidades/Publicidades';
 
 const News = () => {
-    const { fetchNews } = useContext(NewsContext);
+    const { fetchNews} = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState([]);
     const [imageLCP, setImageLCP] = useState([])
@@ -16,9 +17,8 @@ const News = () => {
         const getTheNews = async () => {
             try {
                 const data = await fetchNews();
-
                 if(!data){
-                    console.log("Error en fetch");
+                    throw new Error("Error al cargar noticias");
                 }
                 if (data && data.length > 0 ) {
                     setLastNew(data[data.length - 1]);
@@ -42,6 +42,7 @@ const News = () => {
                 }
             } catch (error) {
                 console.log("error", error)
+                throw error
             }
         }
 
@@ -56,11 +57,9 @@ const News = () => {
     }
     return (
         <div className='p-10 flex flex-col items-center'>
-
-            {/* <Publicidades categoria={0} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 0)' /> */}
-
-
-            <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center mt-56 items-center  p-1'>
+            
+            <Publicidades categoria={0} altImg='Publicidad gym ateneo'/>
+            <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center items-center  p-1'>
                 {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
 
                 {

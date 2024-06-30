@@ -58,7 +58,7 @@ const New = ({ data }) => {
                 {
                     individualNews && (
                         <>
-                            <div className={`shadow-md bg-slate-200 text-justify  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 mt-36 ${individualNews.font}`}>
+                            <div className={`shadow-md bg-slate-200 text-justify  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 mt-10 ${individualNews.font}`}>
                                 <header>
                                     <h1 itemProp='headline' className='mb-5 sm:text-xl font-bold'>{individualNews.title}</h1>
                                 </header>

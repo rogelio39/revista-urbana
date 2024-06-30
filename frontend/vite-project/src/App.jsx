@@ -8,7 +8,8 @@ import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import { CommentProvider } from './context/CommentsContext';
 import { HelmetProvider } from 'react-helmet-async'
 import Register from './Components/Register/Register';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+
+
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'));
@@ -30,7 +31,7 @@ function App() {
               <HelmetProvider>
                 <Routes>
                   <Route path='*' />
-                  <Route path='/' element={<ErrorBoundary><MainSection /></ErrorBoundary>} />
+                  <Route path='/' element={<MainSection />} />
                   <Route path='/add-news' element={<AddEditNews />} />
                   <Route path='/search/:query' element={<SearchResults />} />
                   <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
