@@ -53,7 +53,7 @@ const NewsById = () => {
                 {
                     newData ? (<>
                         <Helmet>
-                            <title>REVISTA URBANA - {newData.title}</title>
+                            <title>{`REVISTA URBANA - ${newData.title}`}</title>
                             <meta name="description" content="Bienvenido a REVISTA URBANA. Descubre las últimas noticias. La mejor revista de banda del rio sali." />
                             <meta property="og:title" content={`Revista urbana ${newData.title}`} />
                             <meta property="og:description" content={newData.subtitle} />
