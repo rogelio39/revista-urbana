@@ -42,7 +42,6 @@ const fetchNewsByCategory = async (setNews, setError, query, productsByPage, cur
 
         if (response.ok) {
             const data = await response.json();
-            console.log("data en news by categori en config", data)
             setNews(data)
             return data
         } else {

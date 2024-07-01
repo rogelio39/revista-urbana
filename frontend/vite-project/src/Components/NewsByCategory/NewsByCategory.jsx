@@ -14,7 +14,6 @@ const NewsByCategory = () => {
     const productsByPage = 10;
 
     const handlePage = (page) => {
-        console.log("se presiojjo handle page")
         setCurrentPage(page)
     }
 

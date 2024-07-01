@@ -41,11 +41,11 @@ export const getNewsByCategory = async(req, res) => {
         page : page ? parseInt(page, 10) : 1,
         sort: {datePublished: -1}
     }
-    const query = filter ? { category: { $regex: filter, $options: 'i' } } : {};
+
 
     try{
 
-        const news = await newsRepository.findByCategory(query, options);
+        const news = await newsRepository.findByCategory(filter, options);
 
         if(news){
             res.status(200).json(news)
