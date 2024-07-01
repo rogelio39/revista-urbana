@@ -59,7 +59,7 @@ const Comments = ({ news_id }) => {
             {
                 allComents && (
                     allComents.map((comment) =>
-                    (<div className="bg-slate-200 p-1 border-2 border-slate-500" key={comment._id}>
+                    (<div className="bg-slate-200 p-1 m-2 border-2  border-slate-500" key={comment._id}>
                         <p>Usuario: {comment.user_id ? `${comment.user_id.first_name} ${comment.user_id.last_name}` : 'Usuario desconocido'}</p>
                         <p>{comment.comments}</p>
                     </div>)

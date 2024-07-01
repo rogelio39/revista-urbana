@@ -19,35 +19,25 @@ export const getComments = async(req, res) => {
     }
 }
 
-
 export const addComment = async(req, res) => {
 
     const {id} = req.params;
     const {comments, user_id} = req.body
-
-
     try{
         const newComment = await commentModels.create({ 
             news_id : id,
             user_id : user_id,
             comments: comments
         });
-
-        console.log("comment", newComment)
-
-
         if(!newComment){
             return res.status(404).json({message: "error al crear comentario" })
         }
-
         res.status(200).json(newComment);
-
     }catch(error){
         console.error("error al crear comentario", error)
         res.status(500).json({message: "error en el servidor", error: error});
     }
 }
-
 
 export const deleteComments = async(req, res) => {
     const {id} = req.params;
