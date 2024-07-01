@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
 import Comments from '../Comments/Comments';
-import { Helmet } from 'react-helmet-async';
 const New = ({ data }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
@@ -42,18 +41,7 @@ const New = ({ data }) => {
 
     return (
         <>
-            {
-                individualNews && individualNews.title &&
-                (
-                    <Helmet>
-                        <title>REVISTA URBANA - {individualNews.title}</title>
-                        <meta name="description" content="Bienvenido a la página categorias de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
-                        <meta property="og:title" content={`Revista urbana ${individualNews.title}`} />
-                        <meta property="og:description" content={individualNews.subtitle} />
-                        <meta property="og:image" content={thumbnailUrl} />
-                    </Helmet>
-                )
-            }
+            
             <article className='w-full max-w-screen-lg' itemScope itemType="https://schema.org/NewsArticle">
                 {
                     individualNews && (

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
 import Pagination from "../Pagination/Pagination";
-
+import { Helmet } from 'react-helmet-async';
 const NewsByCategory = () => {
     const { query } = useParams();
     const { fetchNewsDataByCategory } = useContext(NewsContext);
@@ -36,10 +36,25 @@ const NewsByCategory = () => {
         return <div>Cargando...</div>
     }
 
+    
+
 
 
     return (
         <div className="flex flex-col justify-center items-center mt-40 mb-40">
+            {
+                newsFiltered && (
+                    <Helmet>
+                        <title>REVISTA URBANA - CATEGORIAS {query}</title>
+                        <meta name="description" content={`Bienvenido a REVISTA URBANA. Descubre las últimas noticias de ${query}. La mejor revista de banda del rio sali.`} />
+                        <meta property="og:title" content={`Revista urbana ${query} `} />
+                        <meta property="og:description" content={`Ultimas noticias de $${query}`} />
+                        <meta property="og:image" content='../../logo-bg.png' />
+                    </Helmet>
+                )
+
+            }
+
             <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={handlePage} />
             <div className="max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center">
                 {
