@@ -8,7 +8,6 @@ import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import { CommentProvider } from './context/CommentsContext';
 import { HelmetProvider } from 'react-helmet-async'
 import Register from './Components/Register/Register';
-import { useEffect } from 'react';
 
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
@@ -18,20 +17,10 @@ const MainSection = lazy(() => import('./Components/MainSection/MainSection'));
 const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
-const GoogleAnalytics = lazy(() => import('./Components/googleAnalytics/GoogleAnalytics'))
+const GoogleAnalytics = lazy(() => import('./Components/googleAnalytics/GoogleAnalytics'));
+const GoogleAdsense = lazy(() => import('./Components/googleAdsense/GoogleAdsense'))
 function App() {
 
-  useEffect(() => {
-    const loadAdSenseScript = () => {
-      const script = document.createElement('script');
-      script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5685964602459573';
-      script.async = true;
-      script.crossOrigin = 'anonymous';
-      document.body.appendChild(script);
-    };
-
-    loadAdSenseScript();
-  }, []);
 
 
   return (
@@ -43,6 +32,7 @@ function App() {
             <Suspense fallback={<div>Cargando...</div>}>
               <HelmetProvider>
                 <GoogleAnalytics/>
+                <GoogleAdsense/>
                 <Routes>
                   <Route path='*' />
                   <Route path='/' element={<MainSection />} />
