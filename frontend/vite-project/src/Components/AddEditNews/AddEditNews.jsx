@@ -42,8 +42,6 @@ const AddEditNews = () => {
             data.text = textWithBoldString;
             data.tags = tags;
             data.url = url;
-            console.log("url", url)
-            console.log("Data", data.url)
 
             if (token) {
                 if (isCreating) {
@@ -139,7 +137,6 @@ const AddEditNews = () => {
     }
 
     const addUrl = () => {
-        console.log("url", currentUrl)
         setUrl(currentUrl)
         setCurrentUrl('');
     }

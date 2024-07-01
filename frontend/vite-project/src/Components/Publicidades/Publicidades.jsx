@@ -6,7 +6,7 @@ const imgWidth = 400
 const imgHeight = 100
 
     return (
-        <div className='z-1 flex justify-center items-center p-10'>
+        <div className='z-1 flex justify-center items-center p-10 mt-6'>
             {
                 categoria === 0 ? (
                     <div className='text-xs flex justify-center items-center'>
@@ -23,8 +23,8 @@ const imgHeight = 100
 
 
 Publicidades.propTypes = {
-    categoria: PropTypes.string.isRequired,
-    altImg : PropTypes.string.isRequiered
+    categoria: PropTypes.number.isRequired,
+    altImg : PropTypes.string.isRequired
 }
 
 export default Publicidades
