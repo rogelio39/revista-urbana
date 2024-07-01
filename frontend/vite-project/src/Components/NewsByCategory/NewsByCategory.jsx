@@ -45,7 +45,7 @@ const NewsByCategory = () => {
             {
                 newsFiltered && (
                     <Helmet>
-                        <title>REVISTA URBANA - CATEGORIAS {query}</title>
+                        <title>{`REVISTA URBANA - CATEGORIAS ${query}`}</title>
                         <meta name="description" content={`Bienvenido a REVISTA URBANA. Descubre las últimas noticias de ${query}. La mejor revista de banda del rio sali.`} />
                         <meta property="og:title" content={`Revista urbana ${query} `} />
                         <meta property="og:description" content={`Ultimas noticias de $${query}`} />
