@@ -30,8 +30,8 @@ const NewsProvider = ({ children }) => {
         return fetchNewsByCategory(setNews, setError, query, productsByPage, currentPage);
     }
 
-    const fetchNewsDataByTitle = async(productsByPage, currentPage) => {
-        return fetchNewsByTitle(setNews, setError, productsByPage, currentPage);
+    const fetchNewsDataByTitle = async(query, productsByPage, currentPage) => {
+        return fetchNewsByTitle(setNews, setError, query, productsByPage, currentPage);
     }
 
     const fetchNewsById = async(id) => {

@@ -58,9 +58,9 @@ const fetchNewsByCategory = async (setNews, setError, query, productsByPage, cur
 }
 
 
-const fetchNewsByTitle = async (setNews, setError, filter, productsByPage, currentPage) => {
+const fetchNewsByTitle = async (setNews, setError, query, productsByPage, currentPage) => {
     try {
-        const response = await fetch(`${URL}/api/news/byTitle?filter=${filter}&limit=${productsByPage}&page=${currentPage}`, {
+        const response = await fetch(`${URL}/api/news/byTitle?filter=${query}&limit=${productsByPage}&page=${currentPage}`, {
             method: 'GET',
             credentials: 'include',
             headers: {

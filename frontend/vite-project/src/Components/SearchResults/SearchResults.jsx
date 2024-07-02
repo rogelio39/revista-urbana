@@ -16,8 +16,8 @@ const SearchResults = () => {
     const [totalPages, setTotalPages] = useState(0);
     const productsByPage = 10;
 
+
     const handlePage = (page) => {
-            console.log("se presiono handlePage")
             setCurrentPage(page)
     }
 
