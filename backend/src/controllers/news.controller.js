@@ -68,10 +68,10 @@ export const getNewsByTitle = async(req, res) => {
         page: page ? parseInt(page, 10) : 1,
         sort : {datePublished: -1}
     }
-    const query = filter ? { title: { $regex: filter, $options: 'i' } } : {};
+
 
     try{
-        const news = await newsRepository.findByTitle(query, options);
+        const news = await newsRepository.findByTitle(filter, options);
 
         if(news){
             res.status(200).json(news)

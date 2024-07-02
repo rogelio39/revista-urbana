@@ -24,7 +24,7 @@ class NewsRepository {
 
 
     async findByTitle(filter, options){
-        const query = filter ? {title: {$regex: title, $options: 'i'}} : {}
+        const query = filter ? {title: {$regex: filter, $options: 'i'}} : {};
         return await newsModels.paginate(query, options);
     }
 
