@@ -22,7 +22,7 @@ const Comments = ({ news_id }) => {
 
         getComments();
 
-    }, [allComents])
+    }, [])
 
 
 
