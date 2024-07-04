@@ -48,7 +48,6 @@ const NewsByCategory = () => {
                         <meta name="description" content={`Bienvenido a REVISTA URBANA. Descubre las últimas noticias de ${query}. La mejor revista de banda del rio sali.`} />
                         <meta property="og:title" content={`Revista urbana ${query} `} />
                         <meta property="og:description" content={`Ultimas noticias de $${query}`} />
-                        <meta property="og:image" content='../../logo-bg.png' />
                     </Helmet>
                 )
 

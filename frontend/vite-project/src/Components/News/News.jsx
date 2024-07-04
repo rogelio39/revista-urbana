@@ -4,9 +4,10 @@ import NotesContainer from '../notesContainer/NotesContainer';
 // import Publicidades from '../Publicidades/Publicidades';
 import { Link } from 'react-router-dom';
 import Publicidades from '../Publicidades/Publicidades';
+import { Helmet } from "react-helmet-async"
 
 const News = () => {
-    const { fetchNews} = useContext(NewsContext);
+    const { fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState([]);
     const [imageLCP, setImageLCP] = useState([])
@@ -17,14 +18,14 @@ const News = () => {
         const getTheNews = async () => {
             try {
                 const data = await fetchNews();
-                if(!data){
+                if (!data) {
                     throw new Error("Error al cargar noticias");
                 }
-                if (data && data.length > 0 ) {
+                if (data && data.length > 0) {
                     setLastNew(data[data.length - 1]);
                     setAllNews(data);
                     setLoading(false);
-                    const lstNew = data[data.length -1];
+                    const lstNew = data[data.length - 1];
                     if (lstNew.thumbnail && lstNew.thumbnail.length > 0) {
                         setImageLCP(lstNew.thumbnail[0]);
                         const imgLcp = lstNew.thumbnail[0];
@@ -57,8 +58,15 @@ const News = () => {
     }
     return (
         <div className='p-10 flex flex-col items-center'>
-            
-            <Publicidades categoria={0} altImg='Publicidad gym ateneo'/>
+            <Helmet>
+                <title>REVISTA URBANA - Inicio</title>
+                <meta name="description" content="Bienvenido a la página principal de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
+                <meta property="og:title" content="REVISTA URBANA - Inicio" />
+                <meta property="og:description" content="Explora las noticias y tendencias más recientes de la cultura urbana." />
+                <meta property="og:image" content={imageLCP} />
+            </Helmet>
+
+            <Publicidades categoria={0} altImg='Publicidad gym ateneo' />
             <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center items-center  p-1'>
                 {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
 
