@@ -1,4 +1,3 @@
-import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary"
 import News from "../News/News"
 import { Helmet } from "react-helmet-async"
 const MainSection = () => {
@@ -11,7 +10,7 @@ const MainSection = () => {
                 <meta property="og:description" content="Explora las noticias y tendencias más recientes de la cultura urbana." />
                 <meta property="og:image" content="https://revista-urbana.com/logo-bg.png" />
             </Helmet>
-            <ErrorBoundary><News /></ErrorBoundary>
+            <News />
         </div>
     )
 }

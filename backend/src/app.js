@@ -10,9 +10,16 @@ import initializePassport from './config/passport.js';
 import router from './routes/index.routes.js';
 import __dirname from './path.js';
 import compression from 'express-compression';
+import responseTime from 'response-time';
+
+
+
+
 
 const app = express();
 const PORT = 8080;
+
+
 
 
 
@@ -48,6 +55,7 @@ try {
     console.log("error al establecer session", error)
 }
 
+app.use(responseTime());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsOptions));
 initializePassport();

@@ -31,5 +31,8 @@
     "passport-local": "^1.0.0",
     "sharp": "^0.33.4",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "response-time": "^2.3.2"
   }
 }

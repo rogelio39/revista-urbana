@@ -32,6 +32,8 @@ export const getNews = async(req, res) => {
     }
 }
 
+
+
 export const getNewsByCategory = async(req, res) => {
 
     const {limit, page, filter} = req.query
@@ -510,3 +512,51 @@ export const uploadImage = async (req, res) => {
 
     
 // }
+
+// export const getNews = async(req, res) => {
+
+//     const {limit, page} = req.query
+
+//     const options = {
+//         limit : limit ? parseInt(limit, 10) : 0,
+//         page: page ? parseInt(page, 10) : 1,
+//         sort : {datePublished: -1}
+//     }
+
+//     try{
+//         const reply = await client.get('noticias');
+//         if(!reply || reply === null || reply === undefined){
+//             console.log("no existe noticias");
+//         }
+
+//         if(reply){
+//             res.status(200).json(JSON.parse(reply));
+//         }else{
+//             const news = await newsRepository.findAll({}, options);
+//         if(news){
+//             await client.set('noticias', JSON.stringify(news), (err, reply) =>{
+//                 if(err){
+//                     console.log("error", err);
+//                     res.status(500).send({message:"error al guardar noticias", error: err})
+//                     return
+//                 }
+//             })
+//             res.status(200).json(news);
+//         }
+
+//         }
+//     }catch(error){
+//         res.status(500).send({message: "error al traer noticias", error: error})
+//     }
+// }
+
+// import { createClient } from 'redis';
+
+
+
+// const client = await createClient({
+//     host: '127.0.0.1',
+//     port: 6379
+// }).on('error', err => console.log('Redis Client Error', err)).connect();
+
+

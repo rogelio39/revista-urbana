@@ -13,10 +13,8 @@ const Comments = ({ news_id }) => {
     const [error, setError] = useState('')
     const [updateComment, setUpdateComment] = useState(false)
     useEffect(() => {
-
         const getComments = async () => {
             const fetchComments = await comments(news_id);
-            console.log("comments", fetchComments);
             setUpdateComment(true)
             if (fetchComments) {
                 setAllComments(fetchComments)
