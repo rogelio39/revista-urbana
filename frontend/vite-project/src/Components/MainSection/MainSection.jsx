@@ -8,7 +8,6 @@ const MainSection = () => {
                 <meta name="description" content="Bienvenido a la página principal de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
                 <meta property="og:title" content="REVISTA URBANA - Inicio" />
                 <meta property="og:description" content="Explora las noticias y tendencias más recientes de la cultura urbana." />
-                <meta property="og:image" content="https://revista-urbana.com/logo-bg.png" />
             </Helmet>
             <News />
         </div>
