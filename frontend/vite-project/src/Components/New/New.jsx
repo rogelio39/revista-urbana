@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
 import Comments from '../Comments/Comments';
-const New = ({ data }) => {
+const New = ({ data, isDeleteNews }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
-
 
 
     useEffect(() => {
@@ -41,7 +40,7 @@ const New = ({ data }) => {
 
     return (
         <>
-            
+
             <article className='w-full max-w-screen-lg' itemScope itemType="https://schema.org/NewsArticle">
                 {
                     individualNews && (
@@ -82,21 +81,25 @@ const New = ({ data }) => {
                                                 }
                                             </p>
                                         </section>
-                                        <footer>
-                                            <section itemProp='keywords' >
-                                                ETIQUETAS:
-                                                <ul className='flex flex-wrap'>
-                                                    {
-                                                        individualNews.tags && (individualNews.tags.map((tag, k) => (
-                                                            <li className='p-1 bg-blue-200 m-2 rounded hover:shadow-slate-800 cursor-pointer hover:shadow-md hover:bg-blue-400 hover:text-white  ' key={k}>{tag}</li>
-                                                        )))
-                                                    }
-                                                </ul>
-                                            </section>
-                                            <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
-                                        </footer>
                                         {
-                                            individualNews.url != undefined && individualNews.url.length > 0 && (
+                                            !isDeleteNews && <footer>
+                                                <section itemProp='keywords' >
+                                                    ETIQUETAS:
+                                                    <ul className='flex flex-wrap'>
+                                                        {
+                                                            individualNews.tags && (individualNews.tags.map((tag, k) => (
+                                                                <li className='p-1 bg-blue-200 m-2 rounded hover:shadow-slate-800 cursor-pointer hover:shadow-md hover:bg-blue-400 hover:text-white  ' key={k}>{tag}</li>
+                                                            )))
+                                                        }
+                                                    </ul>
+                                                </section>
+                                                <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
+                                            </footer>
+                                        }
+
+
+                                        {
+                                            individualNews.url != undefined && individualNews.url.length > 0 && !isDeleteNews && (
                                                 <div className=' flex flex-col'>
                                                     <>Ver video</>
                                                     <iframe className='m-auto w-full max-w-screen-lg' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
@@ -106,7 +109,7 @@ const New = ({ data }) => {
 
 
                                         {
-                                            individualNews.datePublished ? (
+                                            individualNews.datePublished && !isDeleteNews ? (
                                                 <time className='font-bold' dateTime={individualNews.datePublished}>
                                                     Fecha de publicación: {individualNews.datePublished.split('T')[0]}
                                                 </time>
@@ -117,8 +120,10 @@ const New = ({ data }) => {
 
                                 </main>
                             </div>
-                            <Comments news_id={individualNews._id} />
+                            {
+                                !isDeleteNews && <Comments news_id={individualNews._id} />
 
+                            }
                         </>
 
 
@@ -131,7 +136,8 @@ const New = ({ data }) => {
 }
 
 New.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    isDeleteNews: PropTypes.bool
 }
 
 export default New

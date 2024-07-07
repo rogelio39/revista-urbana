@@ -8,6 +8,7 @@ import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import { CommentProvider } from './context/CommentsContext';
 import { HelmetProvider } from 'react-helmet-async'
 import Register from './Components/Register/Register';
+import DeleteNews from './Components/deleteNews/DeleteNews';
 
 
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
@@ -37,6 +38,7 @@ function App() {
                   <Route path='*' />
                   <Route path='/' element={<MainSection />} />
                   <Route path='/add-news' element={<AddEditNews />} />
+                  <Route path='/delete-news' element={<DeleteNews/>}/>
                   <Route path='/search/:query' element={<SearchResults />} />
                   <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
                   <Route path='/newById/:id' element={<NewsById />} />

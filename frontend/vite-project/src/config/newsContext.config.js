@@ -5,9 +5,10 @@ const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE
 
 
 
-const fetchNewsData = async (setNews, setError) => {
+const fetchNewsData = async (setNews, setError, limit,  page) => {
+
     try {
-        const response = await fetch(`${URL}/api/news`, {
+        const response = await fetch(`${URL}/api/news?limit=${limit}&page=${page}`, {
             method: 'GET',
             credentials: 'include',
             headers: {

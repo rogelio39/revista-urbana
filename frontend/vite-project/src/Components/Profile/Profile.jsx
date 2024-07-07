@@ -17,17 +17,29 @@ const Profile = () => {
     const goToAddNews = () => {
         navigate('/add-news')
     }
+    const goToDeleteNews = () => {
+        navigate('/delete-news')
+    }
     return (
         <div className="m-2 mt-40 bg-red-200 flex flex-col justify-center items-center gap-2">
 
             {
-                userData && (
+                userData ? (
                     <>
                         <p>Usuario id: {userData._id}</p>
                         <p>Rol: {userData.rol}</p>
-                        <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={goToAddNews}>CARGAR NOTICIAS</button>
-                    </>)
+                        {
+                            userData.rol === "admin" && (
+                                <>
+                                    <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={goToAddNews}>CARGAR NOTICIAS</button>
+                                    <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={goToDeleteNews}>BORRAR NOTICIAS</button>
+                                </>
+                            )
+                        }
+                    </>) : <>NECESITAS LOGUEARTE PRIMERO
+                </>
             }
+
         </div>
     )
 }

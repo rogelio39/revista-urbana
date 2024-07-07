@@ -17,9 +17,8 @@ export const getNews = async(req, res) => {
         sort : {datePublished: -1}
     }
 
-    try{
-        
-        const news = await newsRepository.findAll({}, options);
+    try{    
+        const news = await newsRepository.findAll(options);
 
         if(news){
             res.status(200).json(news)

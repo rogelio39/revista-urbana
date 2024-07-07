@@ -22,8 +22,8 @@ const NewsProvider = ({ children }) => {
     const [error, setError] = useState(null)
 
 
-    const fetchNews = async() => {
-        return fetchNewsData(setNews, setError);
+    const fetchNews = async(limit, page) => {
+        return fetchNewsData(setNews, setError, limit, page);
     }
 
     const fetchNewsDataByCategory = async(query, productsByPage, currentPage) => {
