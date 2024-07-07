@@ -19,7 +19,7 @@ const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
 const GoogleAnalytics = lazy(() => import('./Components/googleAnalytics/GoogleAnalytics'));
-const GoogleAdsense = lazy(() => import('./Components/googleAdsense/GoogleAdsense'))
+
 function App() {
 
 
@@ -33,7 +33,6 @@ function App() {
             <Suspense fallback={<div>Cargando...</div>}>
               <HelmetProvider>
                 <GoogleAnalytics/>
-                <GoogleAdsense/>
                 <Routes>
                   <Route path='*' />
                   <Route path='/' element={<MainSection />} />
