@@ -26,7 +26,7 @@ const UsersSchema = new Schema({
     },
     rol: {
         type: String,
-        default: 'admin'
+        default: 'user'
     }
 
 })
