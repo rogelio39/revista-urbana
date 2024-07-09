@@ -5,18 +5,28 @@ import { useNavigate } from "react-router-dom"
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const [menuOpen, setMenuOpen] = useState(false)
-
+    const [subMenuOpen, setSubMenuOpen] = useState(false)
+    const [menuSociedad, setMenuSociedad] = useState(false)
+    const [menuPolitica, setMenuPolitica] = useState(false)
+    const [menuDeportes, setMenuDeportes] = useState(false)
+    const [menuSalud, setMenuSalud] = useState(false)
+    const [menuCultura, setMenuCultura] = useState(false)
 
 
     const handleClickOutside = (e) => {
         e.preventDefault()
-        if (!e.target.closest('.menu-container')) {
-            setMenuOpen(false)
+        if (!e.target.closest('.submenu')) {
+            setSubMenuOpen(false)
+            setMenuSociedad(false)
+            setMenuPolitica(false)
+            setMenuDeportes(false)
+            setMenuSalud(false)
+            setMenuCultura(false)
         }
     }
 
     useEffect(() => {
-        if (menuOpen) {
+        if (subMenuOpen) {
             document.addEventListener('click', handleClickOutside);
         }
         else {
@@ -25,7 +35,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener('click', handleClickOutside)
         }
-    }, [menuOpen])
+    }, [subMenuOpen])
 
     const navigate = useNavigate();
 
@@ -45,6 +55,30 @@ const Navbar = () => {
 
     const openMenu = () => {
         setMenuOpen(!menuOpen)
+    }
+
+    const openSubMenu = (categoria) => {
+        if (categoria === "sociedad") {
+            setMenuSociedad(!menuSociedad)
+
+        }
+        else if (categoria === "politica") {
+            setMenuPolitica(!menuPolitica)
+
+        }
+        else if (categoria === "deportes") {
+            setMenuDeportes(!menuDeportes)
+        }
+        else if (categoria === "salud") {
+            setMenuSalud(!menuSalud)
+        }
+        else if (categoria === "cultura"){
+            setMenuCultura(!menuCultura)
+        }
+
+
+        setSubMenuOpen(!subMenuOpen)
+
     }
 
     const goToSports = () => {
@@ -102,6 +136,28 @@ const Navbar = () => {
         navigate('/profile')
     }
 
+    const goToTurismo = () => {
+        navigate(`/newsByCategory/turismo`)
+    }
+
+
+    const goToPoliticsSubcategorys = (category) => {
+        navigate(`/newsByCategory/politica/${category}`)
+    }
+
+    const goToSocietySubcategorys = (category) => {
+        navigate(`/newsByCategory/sociedad/${category}`)
+    }
+
+    const goToSaludSubcategorys = (category) => {
+        navigate(`/newsByCategory/salud/${category}`)
+    }
+
+    const goToCultureSubcategorys = (category) => {
+        navigate(`/newsByCategory/cultura/${category}`)
+    }
+
+
     const logoWidth = 12
 
     return (
@@ -128,31 +184,127 @@ const Navbar = () => {
 
             {
                 menuOpen && (
-                    <div className=" left-0 top-0 bg-slate-900 p-10  absolute w-full flex flex-wrap gap-20  items-center transition duration-300 ease-in-out">
+                    <div className=" left-0 top-0 bg-slate-900 p-10  absolute w-full flex flex-wrap gap-20 justify-around  items-center transition duration-300 ease-in-out">
                         <ul role='z-0 menu'>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToRegister} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">REGISTER</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToProfile} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">MI PERFIL</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToPolitics} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button onClick={goToLogin} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">LOGIN</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button onClick={goToRegister} className="block w-full  text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">REGISTER</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button onClick={goToProfile} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">MI PERFIL</button></li>
+                            <ul role='submenu' className="submenu hover:text-slate-800">
+                                <div className="hover:bg-slate-700 hover:border-2 hover:border-slate-800 flex justify-center items-center p-1">
+                                    <button onClick={goToPolitics} className=" block w-full text-white text-1xl  shadow-lg shrink-0 focus:ring-1">POLITICA</button>
+                                    <button onClick={() => openSubMenu('politica')} aria-expanded={menuPolitica} aria-haspopup="true" aria-label="Toggle submenu" className=" text-white shrink-0 focus:ring-1">+</button>
+
+                                </div>
+                                {
+                                    subMenuOpen && menuPolitica &&
+                                    <div className="mt-2 transition duration-300 ease-in-out flex flex-col items-start hover:bg-slate-400 text-white">
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToPoliticsSubcategorys('internacional')} className="block   rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">POLITICA INTERNACIONAL</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToPoliticsSubcategorys('nacional')} className="block  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">POLITICA NACIONAL</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToPoliticsSubcategorys('provincial')} className="block  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">POLICITA PROVINCIAL</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToPoliticsSubcategorys('municipal')} className="block rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">POLITICA MUNICIPAL</button> </li>
+                                    </div>
+
+                                }
+                            </ul>
                         </ul>
                         <ul role="menu">
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToSociety}>SOCIEDAD</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToCulture}>CULTURA</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToSports} className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button></li>
+
+                            <ul role='submenu' className="submenu hover:text-slate-800">
+                                <div className="hover:bg-slate-700 hover:border-2 hover:border-slate-800 flex justify-center items-center p-1">
+                                    <button onClick={goToSociety} className=" block w-full text-white text-1xl  shadow-lg shrink-0 focus:ring-1">SOCIEDAD</button>
+                                    <button onClick={() => openSubMenu('sociedad')} aria-expanded={menuSociedad} aria-haspopup="true" aria-label="Toggle submenu" className=" text-white shrink-0 focus:ring-1">+</button>
+                                </div>
+                                {
+                                    subMenuOpen && menuSociedad &&
+                                    <div className="mt-2 transition duration-300 ease-in-out flex flex-col items-start hover:bg-slate-400">
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToSocietySubcategorys('eventos')} className="block text-white rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">EVENTOS</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToSocietySubcategorys('casamientos')} className="block text-white rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">CASAMIENTOS</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToSocietySubcategorys('cumpleaños15')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">CUMPLEAÑOS DE 15</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToSocietySubcategorys('cumpleaños18')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">CUMPLEAÑOS DE 18</button> </li>
+                                    </div>
+
+                                }
+                            </ul>
+                            <ul role='submenu' className="submenu hover:text-slate-800">
+                                <div className="hover:bg-slate-700 hover:border-2 hover:border-slate-800 flex justify-center items-center p-1">
+                                    <button onClick={goToCulture} className=" block w-full text-white text-1xl  shadow-lg shrink-0 focus:ring-1">CULTURA</button>
+                                    <button onClick={() => openSubMenu('cultura')} aria-expanded={menuCultura} aria-haspopup="true" aria-label="Toggle submenu" className=" text-white shrink-0 focus:ring-1">+</button>
+                                </div>
+                                {
+                                    subMenuOpen && menuCultura &&
+                                    <div className="mt-2 transition duration-300 ease-in-out flex flex-col items-start hover:bg-slate-400">
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToCultureSubcategorys('entrevistas')} className="block text-white rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">ENTREVISTAS EXCLUSIVAS</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToCultureSubcategorys('relatos')} className="block text-white rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">EL SEÑOR DE LOS RELATOS</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToCultureSubcategorys('historia')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">SOMOS HISTORIA</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToCultureSubcategorys('escolar')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">SUMPLEMENTO ESCOLAR</button> </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToCultureSubcategorys('efemerides')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">EFEMÉRIDES PATRIA
+                                        </button> </li>
+                                    </div>
+
+                                }
+                            </ul>
+
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToWorld}>MUNDO</button></li>
+                            <ul role='submenu' className="submenu hover:text-slate-800">
+                                <div className="hover:bg-slate-700 hover:border-2 hover:border-slate-800 flex justify-center items-center p-1">
+                                    <button onClick={goToSports} className=" block w-full text-white text-1xl  shadow-lg shrink-0 focus:ring-1">DEPORTES</button>
+                                    <button onClick={() => openSubMenu('deportes')} aria-expanded={menuDeportes} aria-haspopup="true" aria-label="Toggle submenu" className=" text-white shrink-0 focus:ring-1">+</button>
+
+                                </div>
+                                {
+                                    subMenuOpen && menuDeportes &&
+                                    <div className="mt-2 transition duration-300 ease-in-out flex flex-col items-start hover:bg-slate-400">
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button className="block  text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">FUTBOL INTERNACIONAL</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">FUTBOL NACIONAL</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">FUTBOL AMATEUR</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">BASQUET</button> </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">VOLEY</button> </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">ARTES MARCIALES</button> </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">GYM</button> </li>
+                                    </div>
+
+                                }
+                            </ul>
 
                         </ul>
 
                         <ul role="menu">
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>BUENAS VIBRAS, BUENA VIDA</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToPoliciales}>POLICIALES</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToDestacados}>DESTACADOS</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToEconomy}>ECONOMIA</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToColorNotes}>BUENAS VIBRAS, BUENA VIDA</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToPoliciales}>POLICIALES</button></li>
                         </ul>
                         <ul role="menu">
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToNoticiasBandeñas}>NOTICIAS BANDEÑAS</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button className=" block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
-                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-500"><button onClick={goToHealthy} className="block w-full text-white  rounded p-2 text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToNoticiasBandeñas}>NOTICIAS BANDEÑAS</button></li>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToShow}>ESPECTACULO</button></li>
+                            <ul role='submenu' className="submenu hover:text-slate-800">
+                                <div className="hover:bg-slate-700 hover:border-2 hover:border-slate-800 flex justify-center items-center p-1">
+                                    <button onClick={goToHealthy} className=" block w-full text-white text-1xl  shadow-lg shrink-0 focus:ring-1">SALUD</button>
+                                    <button onClick={() => openSubMenu('salud')} aria-expanded={menuSalud} aria-haspopup="true" aria-label="Toggle submenu" className=" text-white shrink-0 focus:ring-1">+</button>
+
+                                </div>
+                                {
+                                    subMenuOpen && menuSalud &&
+                                    <div className="mt-2 transition duration-300 ease-in-out flex flex-col items-start hover:bg-slate-400">
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToSaludSubcategorys('vidasana')} className="block  text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">VIDA SANA</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700">
+                                            <button onClick={() => goToSaludSubcategorys('fitness')} className="block text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">FITNESS</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToSaludSubcategorys('taichi')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">TAI CHI</button>  </li>
+                                        <li role='menu-item' className="w-full hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"> <button onClick={() => goToSaludSubcategorys('yoga')} className="block   text-white  rounded p-2 text-xs  shadow-lg shrink-0 focus:ring-1">YOGA</button> </li>
+                                    </div>
+
+                                }
+                            </ul>
+                            <li role='menu-item' className=" hover:text-slate-800 hover:border-2 hover:border-slate-800 hover:bg-slate-700"><button className=" block w-full text-white  rounded p-1 text-1xl  shadow-lg shrink-0 focus:ring-1" onClick={goToTurismo}>TURISMO</button></li>
                         </ul>
 
                     </div>

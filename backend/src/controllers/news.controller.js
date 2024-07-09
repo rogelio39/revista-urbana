@@ -35,7 +35,7 @@ export const getNews = async(req, res) => {
 
 export const getNewsByCategory = async(req, res) => {
 
-    const {limit, page, filter} = req.query
+    const {limit, page, category, subcategory} = req.query
 
     const options = {
         limit: limit ? parseInt(limit, 10) : 10,
@@ -46,7 +46,7 @@ export const getNewsByCategory = async(req, res) => {
 
     try{
 
-        const news = await newsRepository.findByCategory(filter, options);
+        const news = await newsRepository.findByCategory(category, subcategory, options);
 
         if(news){
             res.status(200).json(news)
@@ -104,10 +104,22 @@ export const getNewById = async(req, res) => {
 
 
 export const createNews = async(req, res) => {
-    const {title, subtitle, category, font, text, pieDeImagen, tags, url} = req.body;
+    const {title, subtitle, category, subcategory, font, text, pieDeImagen, tags, url} = req.body;
+
+    const newBody = {
+        title : title,
+        subtitle: subtitle,
+        category : category,
+        subcategory : subcategory,
+        font: font,
+        text: text,
+        pieDeImagen: pieDeImagen,
+        tags: tags,
+        url : url
+    }
 
     try{
-        const news = await newsRepository.create({title, subtitle, category, font, pieDeImagen, text, tags, url});
+        const news = await newsRepository.create(newBody);
 
         if(!news){
             return res.status(400).send({message: "no se creo noticia"})
@@ -253,7 +265,7 @@ export const uploadImage = async (req, res) => {
 
 
         const result = await s3Client.send(new PutObjectCommand(bucketParams));
-        console.log("result", result)
+
 
         if(result.ETag){
             const urlOcean = `${endpoint}/${bucketParams.Bucket}/${bucketParams.Key}`;

@@ -39,7 +39,8 @@ function App() {
                   <Route path='/add-news' element={<AddEditNews />} />
                   <Route path='/delete-news' element={<DeleteNews/>}/>
                   <Route path='/search/:query' element={<SearchResults />} />
-                  <Route path='/newsByCategory/:query' element={<NewsByCategory />} />
+                  <Route path='/newsByCategory/:category' element={<NewsByCategory />} />
+                  <Route path='/newsByCategory/:category/:subcategory' element={<NewsByCategory />} />
                   <Route path='/newById/:id' element={<NewsById />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />

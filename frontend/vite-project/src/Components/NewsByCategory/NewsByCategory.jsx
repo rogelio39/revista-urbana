@@ -5,7 +5,7 @@ import New from "../New/New";
 import Pagination from "../Pagination/Pagination";
 import { Helmet } from 'react-helmet-async';
 const NewsByCategory = () => {
-    const { query } = useParams();
+    const { category, subcategory } = useParams();
     const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true)
     const [newsFiltered, setNewsFiltered] = useState(null)
@@ -20,7 +20,7 @@ const NewsByCategory = () => {
 
     useEffect(() => {
         const getNewsByCategory = async () => {
-            const allNews = await fetchNewsDataByCategory(query, productsByPage, currentPage);
+            const allNews = await fetchNewsDataByCategory(category, subcategory, productsByPage, currentPage);
             if (allNews.docs) {
                 setNewsFiltered(allNews.docs);
                 setTotalPages(allNews.totalPages)
@@ -29,13 +29,13 @@ const NewsByCategory = () => {
         }
         getNewsByCategory();
 
-    }, [query, currentPage]);
+    }, [category, subcategory, currentPage]);
 
     if (loading) {
         return <div>Cargando...</div>
     }
 
-    
+
 
 
 
@@ -44,10 +44,10 @@ const NewsByCategory = () => {
             {
                 newsFiltered && (
                     <Helmet>
-                        <title>{`REVISTA URBANA - CATEGORIAS ${query}`}</title>
-                        <meta name="description" content={`Bienvenido a REVISTA URBANA. Descubre las últimas noticias de ${query}. La mejor revista de banda del rio sali.`} />
-                        <meta property="og:title" content={`Revista urbana ${query} `} />
-                        <meta property="og:description" content={`Ultimas noticias de $${query}`} />
+                        <title>{`REVISTA URBANA - CATEGORIAS ${category} ${subcategory ? subcategory : ''}`}</title>
+                        <meta name="description" content={`Bienvenido a REVISTA URBANA. Descubre las últimas noticias de ${category} ${subcategory ? subcategory : ''}. La mejor revista de banda del rio sali.`} />
+                        <meta property="og:title" content={`Revista urbana ${category} ${subcategory ? subcategory : ''} `} />
+                        <meta property="og:description" content={`Ultimas noticias de $${category} ${subcategory ? subcategory : ''}`} />
                     </Helmet>
                 )
 

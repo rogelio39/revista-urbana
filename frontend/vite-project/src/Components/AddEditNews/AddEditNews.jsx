@@ -10,6 +10,7 @@ const AddEditNews = () => {
     //propiedades de la noticia o atributos
     const [subtitles, setSubtitles] = useState(['']);
     const [categorys, setCategorys] = useState(['']);
+    const [subcategorys, setSubcategorys] = useState([''])
     const [font, setFont] = useState('');
     const [texts, setTexts] = useState(['']);
     const [tags, setTags] = useState([]);
@@ -71,6 +72,7 @@ const AddEditNews = () => {
         formRef.current.reset();
         setSubtitles(['']);
         setCategorys(['']);
+        setSubcategorys([''])
         setTexts(['']);
         setTags([]);
         setUrl('');
@@ -93,6 +95,12 @@ const AddEditNews = () => {
         const newCategorys = [...categorys];
         newCategorys[index] = event.target.value;
         setCategorys(newCategorys);
+    }
+
+    const handleSubCategoryChange = (event, index) => {
+        const newSubCategorys = [...subcategorys];
+        newSubCategorys[index] = event.target.value;
+        setCategorys(newSubCategorys);
     }
 
     const handleChangeFont = (event) => {
@@ -179,6 +187,18 @@ const AddEditNews = () => {
                             <div key={index}>
                                 <input className="px-2 py-1 rounded-lg border border-blue-300 focus-ring-1" type="text" id={`category-${index}`}
                                     onChange={(event) => handleCategoryChange(event, index)} name={`category`} />
+                            </div>
+                        ))}
+                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
+                    </div>
+
+                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+
+                        <label htmlFor="subcategory">Subcategoryas:</label>
+                        {subcategorys.map((subCategory, index) => (
+                            <div key={index}>
+                                <input className="px-2 py-1 rounded-lg border border-blue-300 focus-ring-1" type="text" id={`subcategory-${index}`}
+                                    onChange={(event) => handleSubCategoryChange(event, index)} name={`subcategory`} />
                             </div>
                         ))}
                         <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>

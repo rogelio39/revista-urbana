@@ -18,6 +18,10 @@ const newsSchema = new Schema({
         type: String,
         required: true
     },
+    subcategory: {
+        type: String,
+        required: false
+    },
     font: {
         type: String,
         required: true

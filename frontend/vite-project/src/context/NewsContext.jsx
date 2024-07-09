@@ -26,8 +26,8 @@ const NewsProvider = ({ children }) => {
         return fetchNewsData(setNews, setError, limit, page);
     }
 
-    const fetchNewsDataByCategory = async(query, productsByPage, currentPage) => {
-        return fetchNewsByCategory(setNews, setError, query, productsByPage, currentPage);
+    const fetchNewsDataByCategory = async(category, subcategory, productsByPage, currentPage) => {
+        return fetchNewsByCategory(setNews, setError, category, subcategory, productsByPage, currentPage);
     }
 
     const fetchNewsDataByTitle = async(query, productsByPage, currentPage) => {

@@ -15,9 +15,16 @@ class NewsRepository {
     }
 
 
-    async findByCategory(filter, options){
+    async findByCategory(category, subcategory, options){
 
-        const query = filter ? {category : { $regex : filter, $options : 'i'}} : {};
+        const query = {}
+
+        if(category){
+            query.category =  { $regex : category, $options : 'i'};
+        }
+        if(subcategory){
+            query.subcategory = { $regex : subcategory, $options : 'i'};
+        }
         return await newsModels.paginate(query, options)
     }
 

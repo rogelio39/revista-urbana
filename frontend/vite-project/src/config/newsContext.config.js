@@ -5,7 +5,7 @@ const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE
 
 
 
-const fetchNewsData = async (setNews, setError, limit,  page) => {
+const fetchNewsData = async (setNews, setError, limit, page) => {
 
     try {
         const response = await fetch(`${URL}/api/news?limit=${limit}&page=${page}`, {
@@ -31,15 +31,28 @@ const fetchNewsData = async (setNews, setError, limit,  page) => {
     }
 }
 
-const fetchNewsByCategory = async (setNews, setError, query, productsByPage, currentPage) => {
+const fetchNewsByCategory = async (setNews, setError, category, subcategory, productsByPage, currentPage) => {
     try {
-        const response = await fetch(`${URL}/api/news/byCategory?filter=${query}&limit=${productsByPage}&page=${currentPage}`, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Content-type': 'application/json'
-            }
-        });
+        console.log("subcategoru en config", subcategory)
+        let response
+        if (subcategory) {
+            response = await fetch(`${URL}/api/news/byCategory?category=${category}&subcategory=${subcategory}&limit=${productsByPage}&page=${currentPage}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        }else{
+            response = await fetch(`${URL}/api/news/byCategory?category=${category}&limit=${productsByPage}&page=${currentPage}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        }
+
 
         if (response.ok) {
             const data = await response.json();
@@ -216,4 +229,4 @@ const deleteNews = async (idNew) => {
 
 
 
-export default {fetchNewsData, fetchNewsByCategory, fetchNewsByTitle ,fetchNewsDataById, createNewsData, deleteNews, updateNewsData, uploadImageData, URL}
+export default { fetchNewsData, fetchNewsByCategory, fetchNewsByTitle, fetchNewsDataById, createNewsData, deleteNews, updateNewsData, uploadImageData, URL }
