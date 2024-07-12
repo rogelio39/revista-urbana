@@ -10,7 +10,7 @@ const imgHeight = 100
             {
                 categoria === 0 ? (
                     <div className='text-xs flex justify-center items-center'>
-                        <img className='w-[auto] h-[130px] sm:w-[auto] sm:h-[250px] md:w-[auto] md:h-[300px] lg:w-[auto]' width={imgWidth} height={imgHeight}  src='../../publicidad-atenea.jpg' alt={altImg} />
+                        <img className='object-cover w-full' width={imgWidth} height={imgHeight}  src='../../publicidad-atenea.jpg' alt={altImg} />
                     </div>
                 ) :  <div className='w-[200px] h-[100px] sm:w-[500px] sm:h-[200px] md:w-[600px] md:h-[250px] lg:w-[900px] lg:h-[300px] text-sm lg:text-2xl '>
                     <img src='../../publicidad-atenea.jpg' alt={altImg} />

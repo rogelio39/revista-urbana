@@ -67,66 +67,47 @@ const News = () => {
             </Helmet>
 
             <Publicidades categoria={0} altImg='Publicidad gym ateneo' />
-            <div className='rounded border-b-2 mb-10 w-full max-w-screen-lg border-gray-900  text-center  flex flex-wrap justify-center items-center  p-1'>
-                {/* <Publicidades categoria= {1} text= 'PUBLICITA TU NEGOCIO AQUI (CATEGORIA 1)' /> */}
+            <div><h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1></div>
+            <div className='rounded border-b-2 mb-10 w-full  border-gray-900  text-center  flex flex-wrap justify-around items-center p-1'>
 
-                {
+            {
                     lastNew && (
 
-                        <article
-                            key={lastNew._id}
-                            className='rounded w-full max-w-screen-md bg-slate-200 '
-                            itemScope
-                            itemType="https://schema.org/NewsArticle"
-                        >
+
+                        <article key={lastNew._id} className='rounded w-[700px] bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
                             {/* Imagen del artículo con texto alternativo descriptivo */}
-                            <img
-                                width={300}
-                                height={300}
-                                className='w-auto rounded'
-                                alt={`Imagen del artículo: ${lastNew.title}`}
-                                itemProp='image'
-                                src={imageLCP}
-                            />
+                            <img width={300} height={300} className='w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
 
-                            {/* Título del artículo */}
-                            <h1
-                                itemProp="headline"
-                                className='bg-slate-300 font-bold text-xl mb-2'
-                            >
-                                {lastNew.title}
-                            </h1>
+                            <h1 itemProp="headline" className='bg-slate-300 font-bold text-xl mb-2' > {lastNew.title} </h1>
 
-                            {/* Subtítulo del artículo */}
-                            <h2
-                                itemProp="alternativeHeadline"
-                                className='font-bold'
-                            >
-                                {lastNew.subtitle}
-                            </h2>
+                            <h2 itemProp="alternativeHeadline" className='font-bold' > {lastNew.subtitle} </h2>
 
-                            {/* Enlace para ver más detalles */}
-                            <div
-                                className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2'
-                            >
-                                <Link
-                                    to={`/newById/${lastNew._id}`}
-                                    aria-label={`Leer más sobre: ${lastNew.title}`}
-                                >
-                                    Leer más
-                                </Link>
+                            <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2' >
+                                <Link to={`/newById/${lastNew._id}`} aria-label={`Leer más sobre: ${lastNew.title}`} > Leer más </Link>
                             </div>
                         </article>
 
 
                     )
                 }
+                <div className='m-2 bg-slate-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
+                {
+                    allNews.slice(-5, -1).map(news => (
+                        <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-[300px] bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
+                        <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                        <h1 itemProp="headline" className='bg-slate-300 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
+                        <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded ' >
+                            <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`} > Leer más </Link> </div>
+                    </article>
+                    ))
+                }
+                </div>
             </div>
 
 
 
 
-            <div className='mb-10 w-auto' width={500} height={500} >
+            {/* <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>TODAS LAS NOTAS</h1>
                 <div className='flex flex-col  justify-start gap-5 items-center sm:flex-row flex-wrap'>
                     {
@@ -137,7 +118,7 @@ const News = () => {
                         ))
                     }
                 </div>
-            </div>
+            </div> */}
 
 
             <div className='mb-10 w-auto' width={500} height={500} >
