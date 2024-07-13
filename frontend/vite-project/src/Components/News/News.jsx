@@ -93,7 +93,7 @@ const News = () => {
                 <div className='m-2 bg-slate-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
                 {
                     allNews.slice(-5, -1).map(news => (
-                        <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-[300px] bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
+                        <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-auto bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
                         <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
                         <h1 itemProp="headline" className='bg-slate-300 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
                         <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded ' >
