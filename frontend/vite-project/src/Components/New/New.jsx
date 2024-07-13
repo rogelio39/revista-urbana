@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import React from 'react'
 import './New.css'
 import Comments from '../Comments/Comments';
+
 const New = ({ data, isDeleteNews }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
@@ -45,7 +46,7 @@ const New = ({ data, isDeleteNews }) => {
                 {
                     individualNews && (
                         <>
-                            <div className={`shadow-md bg-slate-200 text-justify  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 mt-10 ${individualNews.font}`}>
+                            <div className={`shadow-md bg-indigo-200 text-justify  shadow-white flex-column m-1 p-5 justify-center items-center mb-5 mt-10 ${individualNews.font}`}>
                                 <header>
                                     <h1 itemProp='headline' className='mb-5 sm:text-xl font-bold'>{individualNews.title}</h1>
                                 </header>
@@ -88,12 +89,12 @@ const New = ({ data, isDeleteNews }) => {
                                                     <ul className='flex flex-wrap'>
                                                         {
                                                             individualNews.tags && (individualNews.tags.map((tag, k) => (
-                                                                <li className='p-1 bg-blue-200 m-2 rounded hover:shadow-slate-800 cursor-pointer hover:shadow-md hover:bg-blue-400 hover:text-white  ' key={k}>{tag}</li>
+                                                                <li className='p-1 bg-indigo-200 m-2 rounded hover:shadow-indigo-800 cursor-pointer hover:shadow-md hover:bg-indigo-400 hover:text-white  ' key={k}>{tag}</li>
                                                             )))
                                                         }
                                                     </ul>
                                                 </section>
-                                                <p className='bg-slate-400 w-auto    p-1 rounded  text-center hover:bg-slate-500 hover:border-2 hover:border-slate-100 hover:text-slate-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
+                                                <p className='bg-indigo-400 w-auto    p-1 rounded  text-center hover:bg-indigo-500 hover:border-2 hover:border-indigo-100 hover:text-indigo-50   '><a href={`/newsByCategory/${individualNews.category}`}>Leer más noticias de {individualNews.category}</a></p>
                                             </footer>
                                         }
 

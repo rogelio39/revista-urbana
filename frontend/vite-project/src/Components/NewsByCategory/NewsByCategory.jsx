@@ -4,6 +4,7 @@ import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
 import Pagination from "../Pagination/Pagination";
 import { Helmet } from 'react-helmet-async';
+import Publicidades from "../Publicidades/Publicidades";
 const NewsByCategory = () => {
     const { category, subcategory } = useParams();
     const { fetchNewsDataByCategory } = useContext(NewsContext);
@@ -40,7 +41,11 @@ const NewsByCategory = () => {
 
 
     return (
+        <>
+        
+        
         <div className="flex flex-col justify-center items-center mt-40 mb-40">
+        <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
             {
                 newsFiltered && (
                     <Helmet>
@@ -68,6 +73,7 @@ const NewsByCategory = () => {
                 }
             </div>
         </div>
+        </>
     )
 }
 

@@ -84,6 +84,14 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use('/api', router);
 app.use('/uploads/news', express.static(`${__dirname}/uploads/news`));
+app.use('/public', express.static(`${__dirname}/public`));
+// Middleware para configurar cabeceras de caché para el logo
+app.use('/public/logo-pestaña-bg.webp', (req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=31536000'); // Almacenar en caché durante 1 año
+    next();
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port  ${PORT}`);

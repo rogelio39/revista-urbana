@@ -51,15 +51,15 @@ const AddImage = ({idNews}) => {
 
     return (
         <>
-            <div className="mt-2 flex flex-col justify-center items-center bg-blue-300 ml-2 rounded">
-                <div className="w-72 hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col items-center justify-start gap-5 sm:flex-row sm:w-auto">
+            <div className="mt-2 flex flex-col justify-center items-center bg-indigo-300 ml-2 rounded">
+                <div className="w-72 hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col items-center justify-start gap-5 sm:flex-row sm:w-auto">
                     <form className="flex flex-col sm:flex-row items-center gap-2 " encType="multipart/form-data">
                         <label htmlFor="newsImage">Imagen de portada:</label>
                         <input onChange={(e) => { setFile(e.target.files[0]) }} type="file" id="newsImage" className="w-64" name="newsImage" accept="image/*" multiple required />
                         {
                             !imageUpload &&
                             (
-                                <button onClick={handleSubmitImage} className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 sm:text-xl" type="button">SUBIR IMAGEN</button>
+                                <button onClick={handleSubmitImage} className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1 sm:text-xl" type="button">SUBIR IMAGEN</button>
                             )
                         }
                     </form>
@@ -78,7 +78,7 @@ const AddImage = ({idNews}) => {
                 {
                     imageUpload ?
                         <div className="m-4 p-4">
-                            <h1 className="bg-blue-400 text-white text-center font-bold text-xl">Imagen agregada correctamente. La noticia esta asi:</h1>
+                            <h1 className="bg-indigo-400 text-white text-center font-bold text-xl">Imagen agregada correctamente. La noticia esta asi:</h1>
                             <New data={lastNew} />
                         </div>
                         : <p className="hidden"></p>},

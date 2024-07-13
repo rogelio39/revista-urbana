@@ -7,28 +7,70 @@ const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE
 
 const fetchNewsData = async (setNews, setError, limit, page) => {
 
-    try {
-        const response = await fetch(`${URL}/api/news?limit=${limit}&page=${page}`, {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Content-type': 'application/json'
+    if (limit && page) {
+        const cacheKey = `news_${limit}_${page}`
+        try {
+            const data = localStorage.getItem(cacheKey);
+            if(data){
+                const parsedData = JSON.parse(data)
+                setNews(parsedData)
+                return parsedData
             }
-        });
 
-        if (response.ok) {
-            const data = await response.json();
-            setNews(data)
-            return data
-        } else {
-            const text = await response.text();
-            throw new Error(`Error ${response.status} ${text}`)
+
+            const response = await fetch(`${URL}/api/news?limit=${limit}&page=${page}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setNews(data.docs)
+                localStorage.setItem(cacheKey, JSON.stringify(data.docs))
+                return data.docs
+            } else {
+                const text = await response.text();
+                throw new Error(`Error ${response.status} ${text}`)
+            }
+        } catch (error) {
+            console.log("error", error.message);
+            setError(error.message);
+            throw error;
         }
-    } catch (error) {
-        console.log("error", error.message);
-        setError(error.message);
-        throw error;
+
+    } else {
+        console.log("se ejecuta lo segundo")
+        try {
+            const response = await fetch(`${URL}/api/news`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setNews(data)
+                return data
+            } else {
+                const text = await response.text();
+                throw new Error(`Error ${response.status} ${text}`)
+            }
+        } catch (error) {
+            console.log("error", error.message);
+            setError(error.message);
+            throw error;
+        }
+
     }
+
+
+
+
 }
 
 const fetchNewsByCategory = async (setNews, setError, category, subcategory, productsByPage, currentPage) => {
@@ -43,7 +85,7 @@ const fetchNewsByCategory = async (setNews, setError, category, subcategory, pro
                     'Content-type': 'application/json'
                 }
             });
-        }else{
+        } else {
             response = await fetch(`${URL}/api/news/byCategory?category=${category}&limit=${productsByPage}&page=${currentPage}`, {
                 method: 'GET',
                 credentials: 'include',

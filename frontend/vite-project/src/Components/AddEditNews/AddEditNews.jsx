@@ -160,15 +160,15 @@ const AddEditNews = () => {
 
     return (
         <div className="text-sm sm:text-xl gap-5 mt-40">
-            <div className="flex flex-col bg-red-200 m-3 rounded p-6 my-4  sm:flex-row flex-wraps items-center justify-center">
-                <form ref={formRef} className={`m-2 sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-red-100 flex-col items-center`} onSubmit={handleSubmit}>
+            <div className="flex flex-col bg-indigo-500 m-3 rounded p-6 my-4  sm:flex-row flex-wraps items-center justify-center">
+                <form ref={formRef} className={`m-2 sm:shadow-lg w-72 sm:w-auto sm:p-6 shadow-md rounded  bg-indigo-700 flex-col items-center`} onSubmit={handleSubmit}>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
                         <label htmlFor="title">Título:</label>
                         <input className="px-2 py-1 rounded-lg border border-blue-300 focus-ring-1" type="text" id="title" name="title" required />
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <label htmlFor="subtitles">Subtítulos:</label>
                         {subtitles.map((subtitle, index) => (
@@ -177,10 +177,10 @@ const AddEditNews = () => {
                                     onChange={(event) => handleSubtitleChange(event, index)} name={`subtitle`} />
                             </div>
                         ))}
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addSubtitle}>Agregar Subtítulo</button>
+                        <button className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" type="button" onClick={addSubtitle}>Agregar Subtítulo</button>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <label htmlFor="category">Categorias:</label>
                         {categorys.map((category, index) => (
@@ -189,10 +189,10 @@ const AddEditNews = () => {
                                     onChange={(event) => handleCategoryChange(event, index)} name={`category`} />
                             </div>
                         ))}
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
+                        <button className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <label htmlFor="subcategory">Subcategoryas:</label>
                         {subcategorys.map((subCategory, index) => (
@@ -201,15 +201,15 @@ const AddEditNews = () => {
                                     onChange={(event) => handleSubCategoryChange(event, index)} name={`subcategory`} />
                             </div>
                         ))}
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
+                        <button className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" type="button" onClick={addCategory}>Agregar Categoria</button>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="pieDeImagen">Agregar pie de imagen</label>
                         <input type="text" name="pieDeImagen" id='pieDeImagen' />
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start gap-5">
 
                         <select name="font" value={font} onChange={handleChangeFont}>
                             <option value="font-sanzs">Font-sanzs</option>
@@ -218,7 +218,7 @@ const AddEditNews = () => {
                         </select>
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="texts">Textos:</label>
                         {texts.map((text, index) => (
                             <div key={index}>
@@ -237,20 +237,20 @@ const AddEditNews = () => {
 
                     </div>
 
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="tags">Tags:</label>
                         <input onChange={handleTags} type="text" id='tags' name="tags" />
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addTags}>Agregar Tag</button>
+                        <button className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" type="button" onClick={addTags}>Agregar Tag</button>
 
                     </div>
-                    <div className="hover:shadow-xl hover:shadow-red-400 transition-shadow duration-700 shadow-md bg-red-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
+                    <div className="hover:shadow-xl hover:shadow-indigo-400 transition-shadow duration-700 shadow-md bg-indigo-100 rounded m-3 p-2 flex flex-col sm:flex-row items-center justify-start  gap-5">
                         <label htmlFor="url">Url de youtube:</label>
                         <input onChange={handleUrl} type="text" id='url' name="url" />
-                        <button className="hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" type="button" onClick={addUrl}>Agregar Url</button>
+                        <button className="hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" type="button" onClick={addUrl}>Agregar Url</button>
 
                     </div>
                     <div className="flex justify-center items-center">
-                        <button className=" hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1 w-24 mb-2" type="submit">{isCreating ? 'crear' : 'actualizar'}</button>
+                        <button className=" hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1 w-24 mb-2" type="submit">{isCreating ? 'crear' : 'actualizar'}</button>
                     </div>
 
                 </form>
@@ -260,7 +260,7 @@ const AddEditNews = () => {
 
                     <button onClick={deleteNew} className={newsCreated ? 'm-2 p-2 shadow-md bg-red-500 rounded sm:hover:bg-white sm:hover:shadow-xl sm:hover:text-red-500 sm:hover:shadow-red-500' : 'hidden'}>Eliminar noticia</button>
                     <div className="flex items-center justify-center mt-2">
-                        <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
+                        <button className="mb-2 hover:bg-indigo-700 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" onClick={() => setIsCreating(!isCreating)}>
                             {isCreating ? 'Cambiar para editar' : 'Cambiar para crear'}
                         </button>
                     </div>

@@ -17,7 +17,9 @@ const News = () => {
     useEffect(() => {
         const getTheNews = async () => {
             try {
-                const data = await fetchNews();
+                const limit = 5
+                const page = 1
+                const data = await fetchNews(limit, page);
                 if (!data) {
                     throw new Error("Error al cargar noticias");
                 }
@@ -37,6 +39,7 @@ const News = () => {
                             link.href = imgLcp;
                             link.type = "image/webp";
                             document.head.appendChild(link);
+
                         }
                     }
 
@@ -47,13 +50,16 @@ const News = () => {
             }
         }
 
-        getTheNews();
-    }, [imageLCP])
+        if (loading) {
+            getTheNews();
+        }
+
+    }, [])
 
 
 
     if (loading) {
-        return <div className='mt-36'>Cargando...</div>
+        return <div className='p-2 m-2 text-5xl text-white text-center mt-36'>Cargando...</div>
 
     }
     return (
@@ -66,23 +72,24 @@ const News = () => {
                 <meta property="og:image" content={imageLCP} />
             </Helmet>
 
-            <Publicidades categoria={0} altImg='Publicidad gym ateneo' />
+            <div className='hover:bg-indigo-800  bg-white p-2 rounded mt-10'><h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3></div>
+            <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
             <div><h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1></div>
             <div className='rounded border-b-2 mb-10 w-full  border-gray-900  text-center  flex flex-wrap justify-around items-center p-1'>
 
-            {
+                {
                     lastNew && (
 
 
-                        <article key={lastNew._id} className='rounded w-[700px] bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
+                        <article key={lastNew._id} className='rounded w-[700px] bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
                             {/* Imagen del artículo con texto alternativo descriptivo */}
                             <img width={300} height={300} className='w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
 
-                            <h1 itemProp="headline" className='bg-slate-300 font-bold text-xl mb-2' > {lastNew.title} </h1>
+                            <h1 itemProp="headline" className='bg-indigo-50 font-bold text-xl mb-2' > {lastNew.title} </h1>
 
                             <h2 itemProp="alternativeHeadline" className='font-bold' > {lastNew.subtitle} </h2>
 
-                            <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded p-1 mt-2' >
+                            <div className='font-bold text-xl border-2 border-indigo-600 bg-indigo-100 rounded p-1 mt-2 hover:bg-indigo-600 hover:text-white w-[10rem] m-auto mb-2' >
                                 <Link to={`/newById/${lastNew._id}`} aria-label={`Leer más sobre: ${lastNew.title}`} > Leer más </Link>
                             </div>
                         </article>
@@ -90,17 +97,17 @@ const News = () => {
 
                     )
                 }
-                <div className='m-2 bg-slate-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
-                {
-                    allNews.slice(-5, -1).map(news => (
-                        <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-auto bg-slate-200 ' itemScope itemType="https://schema.org/NewsArticle" >
-                        <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
-                        <h1 itemProp="headline" className='bg-slate-300 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
-                        <div className='font-bold text-xl border-2 border-slate-300 bg-slate-400 rounded ' >
-                            <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`} > Leer más </Link> </div>
-                    </article>
-                    ))
-                }
+                <div className='m-2 bg-indigo-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
+                    {
+                        allNews.slice(-5, -1).map(news => (
+                            <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
+                                <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                                <h1 itemProp="headline" className='bg-indigo-50 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
+                                <div className='font-bold text-xl border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white ' >
+                                    <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`} > Leer más </Link> </div>
+                            </article>
+                        ))
+                    }
                 </div>
             </div>
 

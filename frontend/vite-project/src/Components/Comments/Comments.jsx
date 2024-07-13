@@ -53,10 +53,10 @@ const Comments = ({ news_id }) => {
     return (
         <>
             {
-                error ? (<p className="bg-red-300 p-1 rounded text-center mb-16">{error}</p>) : <form ref={formRef} onSubmit={handleComments} className='bg-slate-400 flex flex-col p-2 max-w-screen-lg mt-4 mb-16'>
+                error ? (<p className="bg-red-300 p-1 rounded text-center mb-16">{error}</p>) : <form ref={formRef} onSubmit={handleComments} className='bg-indigo-400 flex flex-col p-2 max-w-screen-lg mt-4 mb-16'>
                     <label htmlFor="comentarios">Deja tu comentario</label>
                     <textarea ref={textAreaRef} name="comentarios" id="comentarios"></textarea>
-                    <button onClick={updateComments} className="bg-slate-200 w-32 rounded m-auto mt-2 hover:bg-slate-900 hover:text-white hover:border-2 hover:border-slate-100" type="submit">ENVIAR COMENTARIO</button>
+                    <button onClick={updateComments} className="bg-indigo-200 w-32 rounded m-auto mt-2 hover:bg-indigo-900 hover:text-white hover:border-2 hover:border-indigo-100" type="submit">ENVIAR COMENTARIO</button>
                 </form>
             }
 
@@ -64,7 +64,7 @@ const Comments = ({ news_id }) => {
             {
                 allComents && (
                     allComents.map((comment) =>
-                    (<div className="bg-slate-200 p-1 m-2 border-2  border-slate-500" key={comment._id}>
+                    (<div className="bg-indigo-200 p-1 m-2 border-2  border-indigo-500" key={comment._id}>
                         <p>Usuario: {comment.user_id ? `${comment.user_id.first_name} ${comment.user_id.last_name}` : 'Usuario desconocido'}</p>
                         <p>{comment.comments}</p>
                     </div>)

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
 import Pagination from "../Pagination/Pagination";
-
+import Publicidades from "../Publicidades/Publicidades";
 
 const SearchResults = () => {
     const { query } = useParams();
@@ -61,6 +61,7 @@ const SearchResults = () => {
 
     return (
         <div className="flex flex-col justify-center items-center mt-40 mb-40">
+                      <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
             <div className='max-w-screen-lg flex flex-col m-auto p-5 justify-center items-center'>
                 {
                     error ? (<p>{errorMessage}</p>) :

@@ -21,7 +21,7 @@ const Profile = () => {
         navigate('/delete-news')
     }
     return (
-        <div className="m-2 mt-40 bg-red-200 flex flex-col justify-center items-center gap-2">
+        <div className="w-max m-auto p-5 rounded mt-40 bg-indigo-200 flex flex-col justify-center items-center gap-2">
 
             {
                 userData ? (
@@ -31,8 +31,8 @@ const Profile = () => {
                         {
                             userData.rol === "admin" && (
                                 <>
-                                    <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={goToAddNews}>CARGAR NOTICIAS</button>
-                                    <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={goToDeleteNews}>BORRAR NOTICIAS</button>
+                                    <button className="mb-2 hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-400 p-2 rounded focus:ring-1" onClick={goToAddNews}>CARGAR NOTICIAS</button>
+                                    <button className="mb-2 hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-400 p-2 rounded focus:ring-1" onClick={goToDeleteNews}>BORRAR NOTICIAS</button>
                                 </>
                             )
                         }

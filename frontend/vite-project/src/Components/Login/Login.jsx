@@ -47,10 +47,10 @@ const Login = () => {
         return <div>Cargando...</div>
     }
     return (
-        <div className="flex flex-col justify-center items-center m-4 mt-40 rounded bg-blue-200 opacity-100 shadow-xl sm:flex-row">
+        <div className="flex flex-col justify-center items-center m-4 mt-40 rounded bg-indigo-200 opacity-100 shadow-xl sm:flex-row">
             {
                 showLogin ? (<div className="flex flex-col justify-center items-center"><h3>Ya estas logueado</h3>
-                <button onClick={closeSession} className="m-2 p-2 rounded bg-red-300 hover:bg-white hover:text-red-500">CERRAR SESION</button>
+                <button onClick={closeSession} className="m-2 p-2 rounded bg-indigo-300 hover:bg-white hover:text-indigo-500">CERRAR SESION</button>
 
                 </div>) :
                     (<form className="flex flex-col justify-center items-center p-5 gap-5 sm:flex-row" ref={formRef} onSubmit={handleLogin}>
@@ -63,7 +63,7 @@ const Login = () => {
                             <input className="w-full sm:w-auto" autoComplete="12345" type="password" id='password' name="password" required />
                         </div>
 
-                        <button className=" bg-red-200 p-2 rounded bg-opacity-100 m-4" type="submit">INICIAR SESION</button>
+                        <button className=" bg-indigo-500 p-2 rounded bg-opacity-100 m-4 hover:bg-indigo-400 hover:text-white" type="submit">INICIAR SESION</button>
 
                     </form>)
             }

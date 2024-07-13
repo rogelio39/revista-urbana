@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { NewsContext } from "../../context/NewsContext";
 import New from "../New/New";
 import { Helmet } from 'react-helmet-async';
-
+import Publicidades from "../Publicidades/Publicidades";
 const NewsById = () => {
     const { id } = useParams();
     const [newData, setNewData] = useState({});
@@ -48,6 +48,7 @@ const NewsById = () => {
 
     return (
         <div className="flex flex-col justify-center items-center mt-40 mb-20">
+            <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
             <div className='w-full max-w-screen-lg flex m-auto p-5 justify-center items-center'>
                 {
                     newData ? (<>

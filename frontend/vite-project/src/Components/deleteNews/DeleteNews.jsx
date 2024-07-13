@@ -40,9 +40,9 @@ const DeleteNews = () => {
             <Pagination currentPage={currentPage} totalPages={totalPages} nextPage={handlePage} />
             {
                 allNews && allNews.map((news) =>
-                    <div className="rounded border-2 border-blue-800 bg-slate-300 mb-20 flex flex-col justify-center items-center" key={news._id}>
+                    <div className="rounded border-2 border-indigo-800 bg-indigo-300 mb-20 flex flex-col justify-center items-center" key={news._id}>
                         <New isDeleteNews={true} data={news} />
-                        <button className="mb-2 hover:bg-blue-500 hover:text-white shadow-mg bg-blue-200 p-2 rounded focus:ring-1" onClick={() => handleDelete(news._id)}>Eliminar</button>
+                        <button className="mb-2 hover:bg-indigo-500 hover:text-white shadow-mg bg-indigo-200 p-2 rounded focus:ring-1" onClick={() => handleDelete(news._id)}>Eliminar</button>
                     </div>
                 )
             }
