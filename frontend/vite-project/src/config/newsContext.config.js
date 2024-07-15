@@ -42,7 +42,6 @@ const fetchNewsData = async (setNews, setError, limit, page) => {
         }
 
     } else {
-        console.log("se ejecuta lo segundo")
         try {
             const response = await fetch(`${URL}/api/news`, {
                 method: 'GET',
@@ -101,7 +100,7 @@ const fetchNewsByCategory = async (setNews, setError, category, subcategory, pro
         if (response.ok) {
             const data = await response.json();
             setNews(data)
-            return data.docs
+            return data
         } else {
             const text = await response.text();
             throw new Error(`Error ${response.status} ${text}`)
