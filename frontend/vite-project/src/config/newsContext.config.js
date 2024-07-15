@@ -29,8 +29,8 @@ const fetchNewsData = async (setNews, setError, limit, page) => {
             if (response.ok) {
                 const data = await response.json();
                 setNews(data.docs)
-                localStorage.setItem(cacheKey, JSON.stringify(data.docs))
-                return data.docs
+                localStorage.setItem(cacheKey, JSON.stringify(data))
+                return data
             } else {
                 const text = await response.text();
                 throw new Error(`Error ${response.status} ${text}`)

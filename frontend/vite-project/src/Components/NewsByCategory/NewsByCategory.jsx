@@ -18,9 +18,6 @@ const NewsByCategory = () => {
         setCurrentPage(page)
     }
 
-    console.log("categoria",category)
-    console.log("subcategory", subcategory)
-
     useEffect(() => {
         const getNewsByCategory = async () => {
             const allNews = await fetchNewsDataByCategory(category, subcategory, productsByPage, currentPage);
@@ -40,10 +37,6 @@ const NewsByCategory = () => {
 
 
 
-
-    if(newsFiltered){
-        console.log("newsfilter", newsFiltered)
-    }
 
 
     return (
