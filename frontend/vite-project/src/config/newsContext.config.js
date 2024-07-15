@@ -74,8 +74,8 @@ const fetchNewsData = async (setNews, setError, limit, page) => {
 }
 
 const fetchNewsByCategory = async (setNews, setError, category, subcategory, productsByPage, currentPage) => {
+
     try {
-        console.log("subcategoru en config", subcategory)
         let response
         if (subcategory) {
             response = await fetch(`${URL}/api/news/byCategory?category=${category}&subcategory=${subcategory}&limit=${productsByPage}&page=${currentPage}`, {
@@ -93,13 +93,15 @@ const fetchNewsByCategory = async (setNews, setError, category, subcategory, pro
                     'Content-type': 'application/json'
                 }
             });
+
+            
         }
 
 
         if (response.ok) {
             const data = await response.json();
             setNews(data)
-            return data
+            return data.docs
         } else {
             const text = await response.text();
             throw new Error(`Error ${response.status} ${text}`)
