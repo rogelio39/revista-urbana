@@ -31,7 +31,6 @@ const DeleteNews = () => {
     }
 
     const handlePage = (page) => {
-        console.log("page", page)
         setCurrentPage(page)
     }
 

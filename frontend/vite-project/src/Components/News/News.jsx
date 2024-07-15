@@ -19,7 +19,7 @@ const News = () => {
     const [lastNew, setLastNew] = useState({})
     const [latestNews, setLatestNew] = useState([])
     const categorys = ['politica', 'deportes', 'sociedad', 'cultura', 'mundo', 'destacados', 'economia', 'noticias bandeñas', 'policiales', 'espectaculo', 'salud', 'turismo', 'notas color']
-    const productsByPage = 10
+    const productsByPage = 4
     const currentPage = 1
     const subcategory = undefined
 
