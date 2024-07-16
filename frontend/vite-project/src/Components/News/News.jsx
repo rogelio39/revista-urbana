@@ -45,9 +45,11 @@ const News = () => {
                     newsByCategory[category].push(news)
                 })
 
+
                 if (results && results.length > 0) {
                     setAllNews(newsByCategory);
-                    setLatestNew(latestnew)
+                    const last3News = latestnew.slice(1,5);
+                    setLatestNew(last3News);
                     const lstNew = latestnew[0];
                     setLastNew(latestnew[0]);
                     if (lstNew.thumbnail && lstNew.thumbnail.length > 0) {
@@ -127,7 +129,7 @@ const News = () => {
                 <div className='m-2 bg-indigo-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
                     {
                         latestNews &&
-                        latestNews.slice(-4, -1).map(news => (
+                        latestNews.map(news => (
                             <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
                                 <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
                                 <h1 itemProp="headline" className='bg-indigo-50 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
