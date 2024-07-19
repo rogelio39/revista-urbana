@@ -43,7 +43,7 @@ export const addComment = async (setError, news_id, user_id, comments, token) =>
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ user_id: user_id, news_id: news_id, comments: comments })
+            body: JSON.stringify({ user_id: user_id,  comments: comments })
         })
 
 

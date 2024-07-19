@@ -11,6 +11,7 @@ import Register from './Components/Register/Register';
 import DeleteNews from './Components/deleteNews/DeleteNews';
 
 
+
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'));
 const Login = lazy(() => import('./Components/Login/Login'));

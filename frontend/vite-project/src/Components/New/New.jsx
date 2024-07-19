@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
-import './New.css'
+// import './New.css'
 import Comments from '../Comments/Comments';
+
 
 const New = ({ data, isDeleteNews }) => {
     const [individualNews, setIndividualNews] = useState({});

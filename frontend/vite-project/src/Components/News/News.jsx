@@ -1,7 +1,3 @@
-
-
-
-
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 import NotesContainer from '../notesContainer/NotesContainer';
@@ -9,8 +5,7 @@ import NotesContainer from '../notesContainer/NotesContainer';
 import { Link } from 'react-router-dom';
 import Publicidades from '../Publicidades/Publicidades';
 import { Helmet } from "react-helmet-async"
-
-
+import './News.css'
 const News = () => {
     const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
@@ -22,6 +17,7 @@ const News = () => {
     const productsByPage = 4
     const currentPage = 1
     const subcategory = undefined
+
 
     useEffect(() => {
         const getTheNews = async () => {
@@ -71,6 +67,7 @@ const News = () => {
 
                     setLoading(false);
 
+
                 } catch (error) {
                 console.log("error", error)
                 throw error
@@ -110,7 +107,7 @@ const News = () => {
                     lastNew && (
 
 
-                        <article key={lastNew._id} className='rounded w-[700px] bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
+                        <article  key={lastNew._id} className={`rounded w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle" >
                             {/* Imagen del artículo con texto alternativo descriptivo */}
                             <img width={300} height={300} className='w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
 
@@ -148,7 +145,7 @@ const News = () => {
 
             <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>POLITICA</h1>
-                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row sm:justify-center'>
+                <div className={`flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row sm:justify-center animate`}>
                     {
                         allNews &&
                         allNews.politica.slice(-4).map(news => (
@@ -163,7 +160,7 @@ const News = () => {
 
             <div className='mb-10 w-auto' width={500} height={500} >
                 <h1 className='text-center text-white mb-5 text-xl'>SALUD</h1>
-                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row sm:justify-center'>
+                <div className='flex flex-col flex-wrap justify-start gap-5 items-center sm:flex-row sm:justify-center animate'>
                     {
                         allNews &&
                         allNews.salud.slice(-4).map(news => (
