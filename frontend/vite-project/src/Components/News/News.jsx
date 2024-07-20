@@ -109,7 +109,7 @@ const News = () => {
             </Helmet>
 
             <div className='hover:bg-indigo-800   bg-white  p-2 rounded mt-12'><h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3></div>
-            <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
+            <Publicidades/>
             <div><h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1></div>
             <div className='rounded border-b-2 mb-10 w-full  border-gray-900  text-center  flex flex-wrap justify-around items-center p-1'>
 

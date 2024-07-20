@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import newsApi from "../config/newsContext.config";
 
 
-const  { fetchNewsData, fetchNewsByCategory, fetchNewsByTitle, fetchNewsDataById, createNewsData, updateNewsData, uploadImageData, deleteNews} = newsApi
+const  { fetchNewsData, fetchPublicities ,fetchNewsByCategory, fetchNewsByTitle, fetchNewsDataById, createNewsData, updateNewsData, uploadImageData, deleteNews} = newsApi
 
 const NewsContext = createContext({
     news: [],
@@ -24,6 +24,10 @@ const NewsProvider = ({ children }) => {
 
     const fetchNews = async(limit, page) => {
         return fetchNewsData(setNews, setError, limit, page);
+    }
+
+    const fetchAllPublicities = async(limit, page) => {
+        return fetchPublicities(setNews, setError, limit, page);
     }
 
     const fetchNewsDataByCategory = async(category, subcategory, productsByPage, currentPage) => {
@@ -54,7 +58,7 @@ const NewsProvider = ({ children }) => {
         return deleteNews(idNew); 
     }
     return (
-        <NewsContext.Provider value={{ fetchNews, fetchNewsDataByCategory, fetchNewsDataByTitle , news, createNews, uploadImage, fetchNewsById, updateNews, delNews,  error }}>
+        <NewsContext.Provider value={{ fetchNews,  fetchAllPublicities,fetchNewsDataByCategory, fetchNewsDataByTitle , news, createNews, uploadImage, fetchNewsById, updateNews, delNews,  error }}>
             {children}
         </NewsContext.Provider>
     )
