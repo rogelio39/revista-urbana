@@ -1,10 +1,11 @@
 import { NewsContext } from '../../context/NewsContext'
-import { useContext, useEffect, useState } from 'react'
-import NotesContainer from '../notesContainer/NotesContainer';
+import { lazy, useContext, useEffect, useState } from 'react'
 // import Publicidades from '../Publicidades/Publicidades';
 import { Link } from 'react-router-dom';
-import Publicidades from '../Publicidades/Publicidades';
 import { Helmet } from "react-helmet-async"
+
+const Publicidades = lazy(() => import('../Publicidades/Publicidades'));
+const NotesContainer = lazy(() => import('../notesContainer/NotesContainer'));
 const News = () => {
     const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
@@ -96,7 +97,7 @@ const News = () => {
 
     }
     return (
-        <div className='p-10 flex flex-col items-center'>
+        <div className='p-10 md:p-7 flex flex-col items-center'>
 
         
             <Helmet>
@@ -107,7 +108,7 @@ const News = () => {
                 <meta property="og:image" content={imageLCP} />
             </Helmet>
 
-            <div className='hover:bg-indigo-800  bg-white p-2 rounded mt-10'><h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3></div>
+            <div className='hover:bg-indigo-800   bg-white  p-2 rounded mt-12'><h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3></div>
             <Publicidades categoria={1} altImg='Publicidad gym ateneo' />
             <div><h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1></div>
             <div className='rounded border-b-2 mb-10 w-full  border-gray-900  text-center  flex flex-wrap justify-around items-center p-1'>
@@ -116,9 +117,9 @@ const News = () => {
                     lastNew && (
 
 
-                        <article  key={lastNew._id} className={`rounded w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle" >
+                        <article  key={lastNew._id} className={`rounded w-[250px] sm:w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle" >
                             {/* Imagen del artículo con texto alternativo descriptivo */}
-                            <img width={300} height={300} className='animate w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
+                            <img width={250} height={250} className='w-auto animate rounded sm:w-auto' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
 
                             <h1 itemProp="headline" className='bg-indigo-50 font-bold text-xl mb-2' > {lastNew.title} </h1>
 
@@ -132,7 +133,7 @@ const News = () => {
 
                     )
                 }
-                <div className='m-2 bg-indigo-50 p-2 rounded w-[600px]  flex flex-wrap justify-center lg:justify-around items-center gap-1'>
+                <div className='w-[250px] m-2 bg-indigo-50 p-2 rounded flex flex-wrap justify-center items-center gap-1 sm:w-[600px] md:justify-around '>
                     {
                         latestNews &&
                         latestNews.map(news => (

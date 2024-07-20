@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 const Publicidades = ({categoria, altImg}) => {
 
-const imgWidth = 400
+const imgWidth = 250
 const imgHeight = 100
 
     return (
@@ -10,9 +10,9 @@ const imgHeight = 100
             {
                 categoria === 0 ? (
                     <div className='text-xs flex justify-center items-center'>
-                        <img className='object-cover w-full' width={imgWidth} height={imgHeight}  src='../../publicidad-atenea.webp' alt={altImg} />
+                        <img className='w-60 sm:object-cover sm:w-auto' width={imgWidth} height={imgHeight}  src='../../publicidad-atenea.webp' alt={altImg} />
                     </div>
-                ) :  <div className='object-cover w-full '>
+                ) :  <div className='w-60 sm:object-cover sm:w-full '>
                     <img src='../../publicidad-atenea.webp' alt={altImg} />
                 </div>
             }

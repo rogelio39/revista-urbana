@@ -4,11 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NewsProvider } from './context/NewsContext';
 import { lazy, Suspense } from 'react';
 import { AuthProvider } from './context/Authcontext';
-import NewsByCategory from './Components/NewsByCategory/NewsByCategory';
 import { CommentProvider } from './context/CommentsContext';
 import { HelmetProvider } from 'react-helmet-async'
-import Register from './Components/Register/Register';
-import DeleteNews from './Components/deleteNews/DeleteNews';
+
+
 
 
 
@@ -20,7 +19,9 @@ const Profile = lazy(() => import('./Components/Profile/Profile'));
 const NewsById = lazy(() => import('./Components/NewsById/NewsById'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
 const GoogleAnalytics = lazy(() => import('./Components/googleAnalytics/GoogleAnalytics'));
-
+const DeleteNews = lazy(() => import('./Components/deleteNews/DeleteNews'));
+const Register = lazy(() => import('./Components/Register/Register'));
+const NewsByCategory = lazy(() => import('./Components/NewsByCategory/NewsByCategory'));
 function App() {
 
 
