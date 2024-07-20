@@ -5,7 +5,6 @@ import NotesContainer from '../notesContainer/NotesContainer';
 import { Link } from 'react-router-dom';
 import Publicidades from '../Publicidades/Publicidades';
 import { Helmet } from "react-helmet-async"
-import './News.css'
 const News = () => {
     const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
@@ -109,7 +108,7 @@ const News = () => {
 
                         <article  key={lastNew._id} className={`rounded w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle" >
                             {/* Imagen del artículo con texto alternativo descriptivo */}
-                            <img width={300} height={300} className='w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
+                            <img width={300} height={300} className='animate w-auto rounded' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
 
                             <h1 itemProp="headline" className='bg-indigo-50 font-bold text-xl mb-2' > {lastNew.title} </h1>
 
@@ -128,7 +127,7 @@ const News = () => {
                         latestNews &&
                         latestNews.map(news => (
                             <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
-                                <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                                <img width={200} height={200} className='animate w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
                                 <h1 itemProp="headline" className='bg-indigo-50 font-bold text-lg mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
                                 <div className='font-bold text-xl border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white ' >
                                     <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`} > Leer más </Link> </div>

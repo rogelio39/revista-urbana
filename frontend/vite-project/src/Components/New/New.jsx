@@ -57,7 +57,7 @@ const New = ({ data, isDeleteNews }) => {
                                             <img src={thumbnailUrl}
                                                 width={imgWidthForDesktop}
                                                 height={imgHeightForDesktop}
-                                                className='w-auto'
+                                                className='animate w-auto'
                                                 alt={`Imagen del artículo:${individualNews.title}`}
                                                 itemProp='image' />
                                             <p className='pie-de-imagen' >{individualNews.pieDeImagen ? individualNews.pieDeImagen : ''}</p>

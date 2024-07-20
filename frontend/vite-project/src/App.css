@@ -1,0 +1,23 @@
+@keyframes show {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.animate{
+    z-index: 2;
+    view-timeline-name: --image;
+    view-timeline-axis: block;
+    animation-timeline: --image;
+    animation-name: show;
+    animation-range: entry 15% cover 45%;
+}
+
+
