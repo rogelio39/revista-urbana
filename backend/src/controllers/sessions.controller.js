@@ -28,6 +28,7 @@ export const login = async (req, res) => {
         maxAge: 4320000
     })
 
+
     res.status(200).send({ message: "usuario logueado con exito", user: req.user, token: token});
 }
 

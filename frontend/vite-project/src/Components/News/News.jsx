@@ -9,9 +9,10 @@ const News = () => {
     const { fetchNewsDataByCategory } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState([]);
-    const [imageLCP, setImageLCP] = useState([])
-    const [lastNew, setLastNew] = useState({})
-    const [latestNews, setLatestNew] = useState([])
+    const [imageLCP, setImageLCP] = useState([]);
+    const imageLCP2 = '../../publicidad-atenea.webp' 
+    const [lastNew, setLastNew] = useState({});
+    const [latestNews, setLatestNew] = useState([]);
     const categorys = ['politica', 'deportes', 'sociedad', 'cultura', 'mundo', 'destacados', 'economia', 'noticias bandeñas', 'policiales', 'espectaculo', 'salud', 'turismo', 'notas color']
     const productsByPage = 4
     const currentPage = 1
@@ -58,7 +59,16 @@ const News = () => {
                             link.href = imgLcp;
                             link.type = "image/webp";
                             document.head.appendChild(link);
+                        }
 
+                        if (imageLCP2) {
+                            const link2 = document.createElement("link");
+                            link2.rel = "preload";
+                            link2.fetchPriority = "high";
+                            link2.as = "image";
+                            link2.href = imageLCP2;
+                            link2.type = "image/webp";
+                            document.head.appendChild(link2);
                         }
                     }
                 }
