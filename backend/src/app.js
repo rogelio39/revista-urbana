@@ -90,7 +90,7 @@ app.use('/public', (req, res, next) => {
 });
 
 app.use('/public', express.static(`${__dirname}/public`));
-// Middleware para configurar cabeceras de caché para el logo
+
 
 
 

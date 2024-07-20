@@ -260,7 +260,7 @@ export const uploadImage = async (req, res) => {
             Body: optimizedBuffer,
             ACL: 'public-read',
             ContentType: 'image/webp',
-            CacheControl: 'max-age=3600'
+            CacheControl: 'max-age=31536000'
         };
 
 
