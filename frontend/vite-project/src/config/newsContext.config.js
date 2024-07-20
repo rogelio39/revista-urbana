@@ -11,7 +11,7 @@ const fetchNewsData = async (setNews, setError, limit, page) => {
         const cacheKey = `news_${limit}_${page}`
         try {
             const data = localStorage.getItem(cacheKey);
-            if(data){
+            if (data) {
                 const parsedData = JSON.parse(data)
                 setNews(parsedData)
                 return parsedData
@@ -93,7 +93,7 @@ const fetchNewsByCategory = async (setNews, setError, category, subcategory, pro
                 }
             });
 
-            
+
         }
 
 
@@ -275,27 +275,36 @@ const deleteNews = async (idNew) => {
 
 const fetchPublicities = async (setError) => {
 
-    try{
-            const response = await fetch(`${URL}/api/publicity/get`, {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-type': 'application/json'
-                }
-            });
+    try {
+        const cacheKey = `publicities`
 
-            if (response.ok) {
-                const data = await response.json();
-                return data
-            } else {
-                const text = await response.text();
-                throw new Error(`Error ${response.status} ${text}`)
-            }
-        } catch (error) {
-            console.log("error", error.message);
-            setError(error.message);
-            throw error;
+        const data = localStorage.getItem(cacheKey);
+        if (data) {
+            const parsedData = JSON.parse(data)
+            return parsedData
         }
+
+        const response = await fetch(`${URL}/api/publicity/get`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem(cacheKey, JSON.stringify(data))
+            return data
+        } else {
+            const text = await response.text();
+            throw new Error(`Error ${response.status} ${text}`)
+        }
+    } catch (error) {
+        console.log("error", error.message);
+        setError(error.message);
+        throw error;
+    }
 
 }
 
