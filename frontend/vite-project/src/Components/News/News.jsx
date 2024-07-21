@@ -11,7 +11,7 @@ const News = () => {
     const [loading, setLoading] = useState(true);
     const [allNews, setAllNews] = useState([]);
     const [imageLCP, setImageLCP] = useState([]);
-    const imageLCP2 = '../../publicidad-atenea.webp' 
+    const imageLCP2 = 'https://nyc3.digitaloceanspaces.com/revista-urbana/35ebe94e-bfb8-412a-ab21-b8e752193134-publicidad-atenea.webp' 
     const [lastNew, setLastNew] = useState({});
     const [latestNews, setLatestNew] = useState([]);
     const categorys = ['politica', 'deportes', 'sociedad', 'cultura', 'mundo', 'destacados', 'economia', 'noticias bandeñas', 'policiales', 'espectaculo', 'salud', 'turismo', 'notas color']
