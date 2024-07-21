@@ -163,7 +163,7 @@ const Navbar = () => {
     return (
         <div className="z-50 fixed top-0 w-full bg-opacity-90 flex justify-between items-center bg-indigo-300  shadow-xl p-4">
             <div onClick={goToMain} className="m-2 bg-white rounded-full">
-                <img width={logoWidth} className="w-6 h-6 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-24 lg:h-24" src="../../logo-bg.webp" alt="LOGO" />
+                <img width={logoWidth} className="w-6 h-6 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-24 lg:h-24" src="https://nyc3.digitaloceanspaces.com/revista-urbana/a699e5c1-6c00-45be-8655-8d0356449b79-logo-bg.webp" alt="LOGO" />
             </div>
             <>
                 <form className="flex gap-2 shadow-md h-8 sm:h-10 " onSubmit={handleSearch}>
