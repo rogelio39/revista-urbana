@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { NewsContext } from '../../context/NewsContext'
 import { useContext, useEffect, useState } from 'react'
 
@@ -9,7 +8,6 @@ const Publicidades = () => {
             const getPublicities = async() => {
                 const publicities = await fetchAllPublicities();
                 if (publicities){
-                    console.log("publicities");
                     setAllPublicities(publicities)
                 }
             }
@@ -25,6 +23,7 @@ const imgHeight = 100
             {
                 allPublicities && allPublicities.map(publicity => 
 
+                    publicity.name === 'publicidad atenea' &&
                     <div className='text-xs flex justify-center items-center' key={publicity._id}>
                         <img className='w-60 sm:object-cover sm:w-auto' width={imgWidth} height={imgHeight} src={publicity.thumbnail[0]} alt={publicity.name} />
                     </div>
@@ -36,10 +35,6 @@ const imgHeight = 100
 }
 
 
-Publicidades.propTypes = {
-    categoria: PropTypes.number.isRequired,
-    altImg : PropTypes.string.isRequired
-}
 
 export default Publicidades
 
