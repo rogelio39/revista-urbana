@@ -4,6 +4,7 @@ import { lazy, useContext, useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async"
 import './News.css'
+import AdsContainer from '../AdsContainer/AdsContainer';
 
 const Publicidades = lazy(() => import('../Publicidades/Publicidades'));
 const NotesContainer = lazy(() => import('../notesContainer/NotesContainer'));
@@ -172,6 +173,7 @@ const News = () => {
                 </div>
             </div>
 
+            <AdsContainer/>
 
             <div className='md:overflow-hidden md:w-full'>
                 {categories.map(category => (

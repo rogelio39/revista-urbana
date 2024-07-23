@@ -25,6 +25,7 @@ const GoogleAnalytics = () => {
         };
     }, []);
 
+
     return null; // Este componente no necesita renderizar nada en la interfaz
 };
 
