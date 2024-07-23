@@ -4,10 +4,11 @@ import { lazy, useContext, useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async"
 import './News.css'
-import AdsContainer from '../AdsContainer/AdsContainer';
+
 
 const Publicidades = lazy(() => import('../Publicidades/Publicidades'));
 const NotesContainer = lazy(() => import('../notesContainer/NotesContainer'));
+const AdsContainer = lazy(() => import('../AdsContainer/AdsContainer'))
 const News = () => {
     const { fetchNewsDataByCategory, fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
