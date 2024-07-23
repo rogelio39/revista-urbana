@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+.logo-slide{
+    animation: 15s slide infinite linear;
+}
+
+.logos:hover .logo-slide{
+    animation-play-state: paused;
+}
