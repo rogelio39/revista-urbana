@@ -1,5 +1,5 @@
 import { NewsContext } from '../../context/NewsContext'
-import { lazy, useContext, useEffect, useState, useCallback } from 'react'
+import { lazy, useContext, useEffect, useState, useCallback, Suspense, useMemo } from 'react'
 // import Publicidades from '../Publicidades/Publicidades';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async"
@@ -114,8 +114,11 @@ const News = () => {
     }, [allNews, loadNewsByCategory]);
 
 
-    
 
+
+    const memoizedLatestNews = useMemo(() => latestNews, [latestNews]);
+    const memoizedLastNew = useMemo(() => lastNew, [lastNew]);
+    const memoizedAllNews = useMemo(() => allNews, [allNews]);
 
 
     if (loading) {
@@ -124,8 +127,6 @@ const News = () => {
     }
     return (
         <div className='p-5 md:p-0 flex flex-col items-center'>
-
-
             <Helmet>
                 <title>REVISTA URBANA - Inicio</title>
                 <meta name="description" content="Bienvenido a la página principal de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
@@ -134,68 +135,63 @@ const News = () => {
                 <meta property="og:image" content={imageLCP} />
             </Helmet>
 
-            <div className='hover:bg-indigo-800   bg-white  p-2 rounded mt-12'><h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3></div>
-            <Publicidades />
-            <div><h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1></div>
-            <div className='text-md sm:text-xl rounded border-b-2 mb-10 w-full  border-gray-900  text-center  flex flex-wrap justify-around items-center p-1'>
+            <div className='hover:bg-indigo-800 bg-white p-2 rounded mt-12'>
+                <h3 className='text-indigo-800 hover:text-white md:text-4xl'>PARA PUBLICITAR TU ESPACIO, CONTACTANOS A TRAVES DE WHATSAPP</h3>
+            </div>
 
-                {
-                    lastNew && (
+            <Suspense fallback={<div>Cargando publicidades...</div>}>
+                <Publicidades />
+            </Suspense>
 
+            <div>
+                <h1 className='text-center text-white mb-5 text-2xl'>ULTIMAS NOTICIAS</h1>
+            </div>
 
-                        <article key={lastNew._id} className={`animate rounded w-[250px] sm:w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle" >
-                            {/* Imagen del artículo con texto alternativo descriptivo */}
-                            <img width={250} height={250} className='w-auto animate rounded sm:w-auto' alt={`Imagen del artículo: ${lastNew.title}`} itemProp='image' src={imageLCP} />
-
-                            <h1 itemProp="headline" className='bg-indigo-50 font-bold  mb-2' > {lastNew.title} </h1>
-
-                            <h2 itemProp="alternativeHeadline" className='font-bold' > {lastNew.subtitle} </h2>
-
-                            <div className='font-bold  border-2 border-indigo-600 bg-indigo-100 rounded p-1 mt-2 hover:bg-indigo-600 hover:text-white w-[10rem] m-auto mb-2' >
-                                <Link to={`/newById/${lastNew._id}`} aria-label={`Leer más sobre: ${lastNew.title}`} > Leer más </Link>
+            <div className='text-md sm:text-xl rounded border-b-2 mb-10 w-full border-gray-900 text-center flex flex-wrap justify-around items-center p-1'>
+                {memoizedLastNew && (
+                    <article key={memoizedLastNew._id} className={`animate rounded w-[250px] sm:w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle">
+                        <img width={250} height={250} className='w-auto animate rounded sm:w-auto' alt={`Imagen del artículo: ${memoizedLastNew.title}`} itemProp='image' src={imageLCP} />
+                        <h1 itemProp="headline" className='bg-indigo-50 font-bold mb-2'>{memoizedLastNew.title}</h1>
+                        <h2 itemProp="alternativeHeadline" className='font-bold'>{memoizedLastNew.subtitle}</h2>
+                        <div className='font-bold border-2 border-indigo-600 bg-indigo-100 rounded p-1 mt-2 hover:bg-indigo-600 hover:text-white w-[10rem] m-auto mb-2'>
+                            <Link to={`/newById/${memoizedLastNew._id}`} aria-label={`Leer más sobre: ${memoizedLastNew.title}`}>Leer más</Link>
+                        </div>
+                    </article>
+                )}
+                <div className='text-md sm:text-xl w-[250px] m-2 bg-indigo-50 p-2 rounded flex flex-wrap justify-center items-center gap-1 sm:w-[600px] md:justify-around'>
+                    {memoizedLatestNews && memoizedLatestNews.map(news => (
+                        <article key={news._id} className='animate rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50' itemScope itemType="https://schema.org/NewsArticle">
+                            <img width={200} height={200} className='animate w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                            <h1 itemProp="headline" className='bg-indigo-50 font-bold mb-2 h-[50px] overflow-hidden'>{news.title}</h1>
+                            <div className='font-bold border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white'>
+                                <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`}>Leer más</Link>
                             </div>
                         </article>
-
-
-                    )
-                }
-                <div className='text-md sm:text-xl w-[250px] m-2 bg-indigo-50 p-2 rounded flex flex-wrap justify-center items-center gap-1 sm:w-[600px] md:justify-around '>
-                    {
-                        latestNews &&
-                        latestNews.map(news => (
-                            <article key={news._id} className='animate rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50 ' itemScope itemType="https://schema.org/NewsArticle" >
-                                <img width={200} height={200} className='animate w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
-                                <h1 itemProp="headline" className='bg-indigo-50 font-bold  mb-2 h-[50px] overflow-hidden '>{news.title} </h1>
-                                <div className='font-bold  border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white ' >
-                                    <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`} > Leer más </Link> </div>
-                            </article>
-                        ))
-                    }
+                    ))}
                 </div>
             </div>
 
-            <AdsContainer/>
+            <Suspense fallback={<div>Cargando anuncios...</div>}>
+                <AdsContainer />
+            </Suspense>
 
-            <div className='md:overflow-hidden md:w-full'>
-                {categories.map(category => (
-                    <div key={category} className='mb-10 w-auto md:flex md:flex-col' data-category={category}>
-                        <h1 className='text-center text-white mb-5 md:mb-10 text-md sm:text-2xl'>{category.toUpperCase()}</h1>
-                        <div className='news flex flex-col justify-start gap-4 items-center sm:flex-row sm:flex-wrap sm:justify-center md:bg-white md:p-10 md:w-auto md:flex-nowrap md:justify-between '>
-                            {allNews[category] && allNews[category].slice(0, 4).map(news => (
-                                <div className='news-slide' key={news._id}>
+            {categories.map(category => (
+                <div key={category} className='mb-10 w-auto md:flex md:flex-col' data-category={category}>
+                    <h1 className='text-center text-white mb-5 md:mb-10 text-md sm:text-2xl'>{category.toUpperCase()}</h1>
+                    <div className='flex flex-col justify-start gap-4 items-center sm:flex-row sm:flex-wrap sm:justify-center md:bg-white md:p-10 md:w-auto md:justify-between'>
+                        {memoizedAllNews[category] && memoizedAllNews[category].slice(0, 4).map(news => (
+                            <div key={news._id}>
+                                <Suspense fallback={<div>Cargando noticias...</div>}>
                                     <NotesContainer data={news} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>))
-                }
-            </div>
-
-        </div >
+                                </Suspense>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
     )
 }
-
-
 
 export default News
 
@@ -218,6 +214,20 @@ export default News
 
 
 
+// <div className='md:overflow-hidden md:w-full'>
+// {categories.map(category => (
+//     <div key={category} className='mb-10 w-auto md:flex md:flex-col' data-category={category}>
+//         <h1 className='text-center text-white mb-5 md:mb-10 text-md sm:text-2xl'>{category.toUpperCase()}</h1>
+//         <div className='news flex flex-col justify-start gap-4 items-center sm:flex-row sm:flex-wrap sm:justify-center md:bg-white md:p-10 md:w-auto md:flex-nowrap md:justify-between '>
+//             {allNews[category] && allNews[category].slice(0, 4).map(news => (
+//                 <div className='news-slide' key={news._id}>
+//                     <NotesContainer data={news} />
+//                 </div>
+//             ))}
+//         </div>
+//     </div>))
+// }
+// </div>
 
 
 
