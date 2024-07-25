@@ -3,7 +3,6 @@ import { lazy, useContext, useEffect, useState, useCallback, Suspense, useMemo }
 // import Publicidades from '../Publicidades/Publicidades';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet-async"
-import './News.css'
 
 
 const Publicidades = lazy(() => import('../Publicidades/Publicidades'));
@@ -126,7 +125,7 @@ const News = () => {
 
     }
     return (
-        <div className='p-5 md:p-0 flex flex-col items-center'>
+        <div className='p-5 md:p-0 flex flex-col items-center mb-12'>
             <Helmet>
                 <title>REVISTA URBANA - Inicio</title>
                 <meta name="description" content="Bienvenido a la página principal de REVISTA URBANA. Descubre las últimas noticias y tendencias urbanas." />
@@ -149,8 +148,8 @@ const News = () => {
 
             <div className='text-md sm:text-xl rounded border-b-2 mb-10 w-full border-gray-900 text-center flex flex-wrap justify-around items-center p-1'>
                 {memoizedLastNew && (
-                    <article key={memoizedLastNew._id} className={`animate rounded w-[250px] sm:w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle">
-                        <img width={250} height={250} className='w-auto animate rounded sm:w-auto' alt={`Imagen del artículo: ${memoizedLastNew.title}`} itemProp='image' src={imageLCP} />
+                    <article key={memoizedLastNew._id} className={`rounded w-[250px] sm:w-[700px] bg-indigo-50`} itemScope itemType="https://schema.org/NewsArticle">
+                        <img width={250} height={250} className='w-auto rounded sm:w-auto' alt={`Imagen del artículo: ${memoizedLastNew.title}`} itemProp='image' src={imageLCP} />
                         <h1 itemProp="headline" className='bg-indigo-50 font-bold mb-2'>{memoizedLastNew.title}</h1>
                         <h2 itemProp="alternativeHeadline" className='font-bold'>{memoizedLastNew.subtitle}</h2>
                         <div className='font-bold border-2 border-indigo-600 bg-indigo-100 rounded p-1 mt-2 hover:bg-indigo-600 hover:text-white w-[10rem] m-auto mb-2'>
@@ -160,8 +159,8 @@ const News = () => {
                 )}
                 <div className='text-md sm:text-xl w-[250px] m-2 bg-indigo-50 p-2 rounded flex flex-wrap justify-center items-center gap-1 sm:w-[600px] md:justify-around'>
                     {memoizedLatestNews && memoizedLatestNews.map(news => (
-                        <article key={news._id} className='animate rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50' itemScope itemType="https://schema.org/NewsArticle">
-                            <img width={200} height={200} className='animate w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                        <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50' itemScope itemType="https://schema.org/NewsArticle">
+                            <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
                             <h1 itemProp="headline" className='bg-indigo-50 font-bold mb-2 h-[50px] overflow-hidden'>{news.title}</h1>
                             <div className='font-bold border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white'>
                                 <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`}>Leer más</Link>
@@ -178,7 +177,7 @@ const News = () => {
             {categories.map(category => (
                 <div key={category} className='mb-10 w-auto md:flex md:flex-col' data-category={category}>
                     <h1 className='text-center text-white mb-5 md:mb-10 text-md sm:text-2xl'>{category.toUpperCase()}</h1>
-                    <div className='flex flex-col justify-start gap-4 items-center sm:flex-row sm:flex-wrap sm:justify-center md:bg-white md:p-10 md:w-auto md:justify-between'>
+                    <div className='flex flex-col justify-start gap-4 items-center sm:flex-row sm:flex-wrap sm:justify-center md:p-10 md:w-auto md:justify-center  lg:bg-white'>
                         {memoizedAllNews[category] && memoizedAllNews[category].slice(0, 4).map(news => (
                             <div key={news._id}>
                                 <Suspense fallback={<div>Cargando noticias...</div>}>

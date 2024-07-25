@@ -48,7 +48,7 @@ const Register = () => {
                 </div>) : <div className="flex flex-col m-auto">
 
                     <p className={message && "m-auto bg-red-300 p-2 rounded font-bold w-fit text-center mt-40"}>{message}</p>
-                    <form ref={formRef} className="mt-40 rounded flex flex-col bg-slate-500 p-10 gap-1 m-auto" onSubmit={handleRegister}>
+                    <form ref={formRef} className="mt-40 rounded flex flex-col bg-indigo-500 p-10 gap-1 m-auto" onSubmit={handleRegister}>
                         <label htmlFor="first_name">Nombre</label>
                         <input autoComplete="ejemplo: raul" type="text" name="first_name" id="first_name" required />
 
@@ -64,7 +64,7 @@ const Register = () => {
                         <label htmlFor="password">Password</label>
                         <input autoComplete="12345" type="password" id="password" name="password" required />
 
-                        <button className="rounded p-1 bg-blue-400 mt-2 focus:ring-1 ring-blue-700 hover:bg-blue-500" type="submit">registrarse</button>
+                        <button className="rounded p-1 bg-indigo-400 mt-2 focus:ring-1 ring-indigo-700 hover:bg-indigo-600 hover:text-white" type="submit">registrarse</button>
                     </form>
                 </div>
             }
