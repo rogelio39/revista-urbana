@@ -1,5 +1,6 @@
 import getCookiesByName from "../utils/utils";
 
+
 const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE_REACT_APP_LOCAL_URL : import.meta.env.VITE_REACT_APP_WEB_URL;
 
 
@@ -8,7 +9,9 @@ const URL = import.meta.env.VITE_REACT_APP_MODE === 'DEV' ? import.meta.env.VITE
 const fetchNewsData = async (setNews, setError, limit, page) => {
 
     if (limit && page) {
-        const cacheKey = `news_${limit}_${page}`
+
+        const cacheKey = `news_${limit}_${page}_${new Date}`
+        console.log("cachekey", cacheKey)
         try {
             const data = localStorage.getItem(cacheKey);
             if (data) {
