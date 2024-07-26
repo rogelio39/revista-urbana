@@ -34,26 +34,26 @@ export const addComment = async (req, res) => {
             return res.status(404).json({ message: "error al crear comentario" })
         }
 
-        // const user = await usersModels.findById({ _id: user_id });
-        // if (user) {
-        //     console.log("user en db", user);
-        //     const email = user.email;
-        //     console.log("email", email)
-        //     if (email) {
-        //         const {data, error} = await resend.emails.send({
-        //             from: 'Acme <onboarding@resend.dev>',
-        //             to: [`${email}`],
-        //             subject: 'Hola, prueba mail',
-        //             html: '<strong>FUNCIONA!!</strong>',
-        //         });
+        const user = await usersModels.findById({ _id: user_id });
+        if (user) {
+            console.log("user en db", user);
+            const email = user.email;
+            console.log("email", email)
+            if (email) {
+                const {data, error} = await resend.emails.send({
+                    from: 'Acme <andresrogesu@gmail.com>',
+                    to: [`${email}`],
+                    subject: 'Hola, prueba mail',
+                    html: '<strong>FUNCIONA!!</strong>',
+                });
 
-        //         if(error){
-        //             console.log("error en resend", {error})
-        //         }
+                if(error){
+                    console.log("error en resend", {error})
+                }
 
-        //         console.log("data en resend",{data})
-        //     }
-        // }
+                console.log("data en resend",{data})
+            }
+        }
 
         res.status(200).json(newComment);
     } catch (error) {
