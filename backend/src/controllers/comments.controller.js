@@ -36,15 +36,13 @@ export const addComment = async (req, res) => {
 
         const user = await usersModels.findById({ _id: user_id });
         if (user) {
-            console.log("user en db", user);
             const email = user.email;
-            console.log("email", email)
             if (email) {
                 const {data, error} = await resend.emails.send({
-                    from: 'Acme <andresrogesu@gmail.com>',
+                    from: 'Acme <bandadelriosali@revista-urbana.com>',
                     to: [`${email}`],
-                    subject: 'Hola, prueba mail',
-                    html: '<strong>FUNCIONA!!</strong>',
+                    subject: 'NOVEDADES',
+                    html: '<strong>¿Quieres recibir nuestras ultimas noticias a diario?</strong>',
                 });
 
                 if(error){
