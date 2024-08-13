@@ -10,7 +10,6 @@ import { HelmetProvider } from 'react-helmet-async'
 
 
 
-
 const SearchResults = lazy(() => import('./Components/SearchResults/SearchResults'));
 const AddEditNews = lazy(() => import('./Components/AddEditNews/AddEditNews'));
 const Login = lazy(() => import('./Components/Login/Login'));
@@ -47,6 +46,7 @@ function App() {
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />
                   <Route path='/profile' element={<Profile />} />
+
                 </Routes>
               </HelmetProvider>
             </Suspense>

@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import React from 'react'
-// import './New.css'
+import './New.css'
 import Comments from '../Comments/Comments';
-
-
+import '@justinribeiro/lite-youtube'
 const New = ({ data, isDeleteNews }) => {
     const [individualNews, setIndividualNews] = useState({});
     const [newsText, setNewsText] = useState([])
@@ -104,7 +103,7 @@ const New = ({ data, isDeleteNews }) => {
                                             individualNews.url != undefined && individualNews.url.length > 0 && !isDeleteNews && (
                                                 <div className=' flex flex-col'>
                                                     <>Ver video</>
-                                                    <iframe className='m-auto w-full max-w-screen-lg' width="560" height="315" src={`${individualNews.url}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                                    <lite-youtube videoid={individualNews.url}></lite-youtube>
                                                 </div>
                                             )
                                         }
