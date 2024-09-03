@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async"
 
 const Publicidades = lazy(() => import('../Publicidades/Publicidades'));
 const NotesContainer = lazy(() => import('../notesContainer/NotesContainer'));
-const AdsContainer = lazy(() => import('../AdsContainer/AdsContainer'))
+// const AdsContainer = lazy(() => import('../AdsContainer/AdsContainer'))
 const News = () => {
     const { fetchNewsDataByCategory, fetchNews } = useContext(NewsContext);
     const [loading, setLoading] = useState(true);
@@ -170,9 +170,9 @@ const News = () => {
                 </div>
             </div>
 
-            <Suspense fallback={<div>Cargando anuncios...</div>}>
+            {/* <Suspense fallback={<div>Cargando anuncios...</div>}>
                 <AdsContainer />
-            </Suspense>
+            </Suspense> */}
 
             {categories.map(category => (
                 <div key={category} className='mb-10 w-auto md:flex md:flex-col' data-category={category}>
