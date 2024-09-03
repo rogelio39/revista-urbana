@@ -160,7 +160,7 @@ const News = () => {
                 <div className='text-md sm:text-xl w-[250px] m-2 bg-indigo-50 p-2 rounded flex flex-wrap justify-center items-center gap-1 sm:w-[600px] md:justify-around'>
                     {memoizedLatestNews && memoizedLatestNews.map(news => (
                         <article key={news._id} className='rounded w-[200px] h-auto sm:w-[280px] sm:h-full bg-indigo-50' itemScope itemType="https://schema.org/NewsArticle">
-                            <img width={200} height={200} className='w-auto object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
+                            <img width={200} height={200} className='w-auto md:h-64  object-cover rounded' alt={`Imagen del artículo: ${news.title}`} itemProp='image' src={news.thumbnail[0]} />
                             <h1 itemProp="headline" className='bg-indigo-50 font-bold mb-2 h-[50px] overflow-hidden'>{news.title}</h1>
                             <div className='font-bold border-2 border-indigo-300 bg-indigo-50 rounded hover:bg-indigo-600 hover:text-white'>
                                 <Link to={`/newById/${news._id}`} aria-label={`Leer más sobre: ${news.title}`}>Leer más</Link>
